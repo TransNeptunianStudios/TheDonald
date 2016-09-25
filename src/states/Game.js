@@ -6,6 +6,7 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
+    console.log("GAME!");
     let banner = this.add.text(this.game.world.centerX, this.game.world.centerY, 'The Donald')
     banner.font = 'Nunito'
     banner.fontSize = 40

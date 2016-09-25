@@ -8,12 +8,14 @@ export default class extends Phaser.State {
 
   create () {
 
+    this.background = this.game.add.sprite(0, 0, 'menuBackground');
+
     this.title = new Phaser.Text(this.game, this.game.world.centerX, this.game.world.centerY-this.game.world.height/4, 'The Donald', {
       font: '36px Tahoma',
       fill: 'white',
       align: 'center'
     })
-    
+
     this.title.anchor.setTo(0.5)
 
     this.playBtn = new TextButton({
@@ -30,11 +32,17 @@ export default class extends Phaser.State {
         font: '16px Verdana',
         fill: 'white',
         align: 'center'
-      }
+      },
+      callback: this.startGame,
+      callbackContext: this
     })
 
     this.menuGrp = this.add.group()
     this.menuGrp.add(this.title)
     this.menuGrp.add(this.playBtn)
+  }
+
+  startGame () {
+    this.state.start('Game');
   }
 }
