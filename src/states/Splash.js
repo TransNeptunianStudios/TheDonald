@@ -9,6 +9,8 @@ export default class extends Phaser.State {
     this.load.image('tnsLogo', './assets/images/tns-logo.png')
     this.load.image('playBtn', './assets/images/play-button.png')
     this.load.image('menuBackground', './assets/images/menu-background.png')
+    this.load.image('trump', './assets/images/trump.png')
+    this.load.image('baseCorridor', './assets/images/base-corridor.png')
   }
 
   create () {
@@ -28,7 +30,7 @@ export default class extends Phaser.State {
         }, this)
       }, this)
     })
-    
+
     this.game.input.onDown.add(()=>{
           this.state.start('MainMenu')
     }, this)
