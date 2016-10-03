@@ -45,7 +45,7 @@ export default class extends Phaser.State {
 
   playPressed () {
     // Move trump into the tower, then start the game
-    let trumpWalk = this.game.add.tween(this.trump).to({x: 600}, 3000, Phaser.Easing.Linear.None, true)
+    let trumpWalk = this.game.add.tween(this.trump).to({x: 600}, 1000, Phaser.Easing.Linear.None, true)
     trumpWalk.onComplete.add(()=>{
           this.state.start('Game');
       }, this)
