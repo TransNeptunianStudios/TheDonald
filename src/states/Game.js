@@ -1,35 +1,42 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
+import PrideParty from '../levels/PrideParty'
+import KkkMeeting from '../levels/KkkMeeting'
 
 export default class extends Phaser.State {
   init () {}
   preload () {}
 
   create () {
-    this.newCorridor();
+
+    // 1. Create list with all corridors
+    // 2. Run lobby scene
+    // 3. Pick a corridor
+    // 4. Start corridor scene
+    // 5. Wait for corridor scene to complete
+    // 6. Pick new corridor
+    // 7. IF more corridors Goto 4 ELSE Goto 8
+    // 8. Run final scene
+
+    this.levels = []
+    this.levels.push(new PrideParty(this.game))
+    this.levels.push(new KkkMeeting(this.game))
+    this.nextLevel()
   }
 
-  newCorridor () {
-     this.camera.flash('#000000');
+  nextLevel () {
+    if (this.levels.length > 0) {
+      this.level = this.levels.pop()
 
-    this.background = this.game.add.sprite(0, 0, 'baseCorridor');
-    this.inElevator = this.game.add.sprite(50, 201, 'elevator');
-    this.outElevator = this.game.add.sprite(700, 201, 'elevator');
+      this.level.onLevelComplete.addOnce(()=>{
+        this.nextLevel()
+      })
 
-    this.trump = this.game.add.sprite(90, 340, 'trump');
-    this.trump.anchor.setTo(0.5, 1);
-
-    // Create simple walk
-    let trumpWalkOut = this.game.add.tween(this.trump).to({y: 450}, 1000, Phaser.Easing.Linear.None, true, 1000);
-    let trumpWalkOver = this.game.add.tween(this.trump).to({x: 750}, 3000, Phaser.Easing.Linear.None);
-    let trumpWalkIn = this.game.add.tween(this.trump).to({y: 340}, 1000, Phaser.Easing.Linear.None);
-
-    trumpWalkOut.chain(trumpWalkOver);
-    trumpWalkOver.chain(trumpWalkIn);
-    trumpWalkIn.onComplete.add(()=>{
-      this.camera.fade('#000000');
-      this.camera.onFadeComplete.add(this.newCorridor, this);
-      }, this)
+      this.level.start()
+    }
+    else {
+      console.log('Game complete!')
+    }
   }
 
   render () {
