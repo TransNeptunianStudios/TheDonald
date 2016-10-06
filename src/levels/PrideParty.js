@@ -1,4 +1,5 @@
 import Level from '../levels/Level'
+import Debate from '../objects/Debate'
 
 export default class PrideParty extends Level {
   constructor(game) {
@@ -14,7 +15,10 @@ export default class PrideParty extends Level {
   }
 
   startDebate() {
-    console.log('Start debate')
-    this.trump.doRestOfWalk()
+    let debate = new Debate(this.game, [], [])
+    debate.onDebateComplete.addOnce(()=>{
+      this.trump.doRestOfWalk()
+    }, this)
+    debate.runDebate()
   }
 }
