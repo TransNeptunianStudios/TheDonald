@@ -6,16 +6,20 @@ export default class Level {
     this.game = game
     this.background = 'baseCorridor'
     this.onLevelComplete = new Phaser.Signal()
+
     this.trump = new Trump(this.game)
   }
 
   start() {
     this.game.camera.flash('#000000');
 
-    this.game.add.sprite(0, 0, this.background);
-    this.game.add.sprite(50, 201, 'elevator');
-    this.game.add.sprite(700, 201, 'elevator');
-    this.game.add.existing(this.trump)
+    this.backgroundGroup = this.game.add.group();
+    this.gameGroup = this.game.add.group();
+
+    this.backgroundGroup.create(0, 0, this.background);
+    this.backgroundGroup.create(50, 201, 'elevator');
+    this.backgroundGroup.create(700, 201, 'elevator');
+    this.gameGroup.add(this.trump)
 
     this.trump.onWalkComplete.addOnce(()=>{
       this.game.camera.fade('#000000');
@@ -24,7 +28,6 @@ export default class Level {
       }, this)
     })
 
-    
     this.doWalk()
   }
 
