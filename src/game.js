@@ -1,7 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
-import PrideParty from '../levels/PrideParty'
-import KkkMeeting from '../levels/KkkMeeting'
+import PrideParty from './prideparty'
+import KkkMeeting from './kkkmeeting'
 
 export default class extends Phaser.State {
   init () {}

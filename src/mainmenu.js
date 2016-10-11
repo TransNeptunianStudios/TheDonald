@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import TextButton from '../objects/TextButton'
+import TextButton from './textbutton'
 
 export default class extends Phaser.State {
   init () {
