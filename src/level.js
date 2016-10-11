@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
-import Trump from '../objects/Trump'
-import Elevator from '../objects/Elevator'
+import Elevator from './Elevator'
+import Trump from './trump'
 
 export default class Level {
   constructor(game) {

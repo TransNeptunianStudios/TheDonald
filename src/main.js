@@ -2,10 +2,10 @@ import 'pixi'
 import 'p2'
 import Phaser from 'phaser'
 
-import BootState from './states/Boot'
-import SplashState from './states/Splash'
-import MainMenuState from './states/MainMenu'
-import GameState from './states/Game'
+import BootState from './boot'
+import SplashState from './splash'
+import MainMenuState from './mainmenu'
+import GameState from './game'
 
 class Game extends Phaser.Game {
 

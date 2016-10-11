@@ -1,5 +1,5 @@
-import Level from '../levels/Level'
-import Debate from '../objects/Debate'
+import Level from './level'
+import Debate from './debate'
 
 export default class PrideParty extends Level {
   constructor(game) {
