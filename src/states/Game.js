@@ -39,6 +39,10 @@ export default class extends Phaser.State {
     }
   }
 
+  update () {
+    this.level.update();
+  }
+
   render () {
 //    if (__DEV__) {
 //    }
