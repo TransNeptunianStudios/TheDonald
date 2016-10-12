@@ -24,7 +24,9 @@ export default class Level {
 
     this.trump.onWalkComplete.addOnce(()=>{
       this.outElevator.open(1000);
-      this.game.add.tween(this.trump).to({y: 335}, 500, Phaser.Easing.Linear.None, true, 500);
+      let elevatorWalk = this.game.add.tween(this.trump).to({y: 335}, 500, Phaser.Easing.Linear.None, true, 500);
+      elevatorWalk.onStart.add(()=>{this.trump.animations.play('north')}, this)
+      elevatorWalk.onComplete.add(()=>{this.trump.animations.stop()}, this)
       this.outElevator.onDoorClose.addOnce(()=>{
         this.game.camera.fade('#000000');
         this.game.camera.onFadeComplete.addOnce(()=>{
