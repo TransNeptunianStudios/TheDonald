@@ -16,6 +16,7 @@ export default class extends Phaser.State {
     this.load.image('prideCorridor', './assets/images/pride-corridor.png')
     this.load.image('kkkCorridor', './assets/images/kkk-corridor.png')
     this.load.image('elevator', './assets/images/elevator.png')
+    this.load.image('elevator-door', './assets/images/elevator-door.png')
     this.load.audio('suffer', './assets/sounds/i_just_want_them_to_suffer.mp3')
   }
 

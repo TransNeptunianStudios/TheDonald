@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import Elevator from './Elevator'
 import Trump from './trump'
 
 export default class Level {
@@ -6,16 +7,22 @@ export default class Level {
     this.game = game
     this.background = 'baseCorridor'
     this.onLevelComplete = new Phaser.Signal()
+
     this.trump = new Trump(this.game)
   }
 
   start() {
-    this.game.camera.flash('#000000');
+    this.game.camera.flash('#000000')
 
-    this.game.add.sprite(0, 0, this.background);
-    this.game.add.sprite(50, 201, 'elevator');
-    this.game.add.sprite(700, 201, 'elevator');
-    this.game.add.existing(this.trump)
+    this.backGroup = this.game.add.group()
+    this.midGroup = this.game.add.group()
+
+    this.backGroup.create(0, 0, this.background)
+
+    this.inElevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
+    this.outElevator = this.backGroup.create(700, 201, 'elevator')
+
+    this.midGroup.add(this.trump)
 
     this.trump.onWalkComplete.addOnce(()=>{
       this.game.camera.fade('#000000');
@@ -24,11 +31,18 @@ export default class Level {
       }, this)
     })
 
-    
-    this.doWalk()
+    this.inElevator.onDoorOpen.addOnce(()=>{
+      this.doWalk()
+    })
+
+    this.inElevator.open(1500);
   }
 
   doWalk() {
     this.trump.doSimpleWalk()
+  }
+
+  update() {
+    this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
   }
 }
