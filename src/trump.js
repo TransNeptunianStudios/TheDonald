@@ -5,10 +5,15 @@ export default class Trump extends Phaser.Sprite {
   constructor(game) {
     super(game, 90, 340, 'trump')
     this.anchor.setTo(0.5, 1);
+
+    // while we use knug graphics
+    this.scale.setTo(2.5, 2.5);
+    this.frame = 2;
+
     this.onWalkComplete = new Phaser.Signal()
     this.onWalkToPercentComplete = new Phaser.Signal()
-    this.enterTween = this.game.add.tween(this).to({y: 450}, 1000, Phaser.Easing.Linear.None, false, 1000);
-    this.exitTween = this.game.add.tween(this).to({y: 340}, 1000, Phaser.Easing.Linear.None);
+    this.enterTween = this.game.add.tween(this).to({y: 450}, 1000, Phaser.Easing.Linear.None, false, 500);
+    this.exitTween = this.game.add.tween(this).to({y: 355}, 1000, Phaser.Easing.Linear.None);
     this.exitTween.onComplete.addOnce(()=>{
       this.onWalkComplete.dispatch()
     }, this)

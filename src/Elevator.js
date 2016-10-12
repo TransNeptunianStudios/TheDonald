@@ -12,12 +12,15 @@ export default class Elevator  {
     this.door = midGroup.create(x+35, y, 'elevator-door')
     this.door.anchor.setTo(1, 1)
 
+    this.arriveSound = game.add.audio('elevatorBing');
+
     this.openTween = game.add.tween(this.door.scale).to({ x: 0}, 500, Phaser.Easing.Linear.None, false);
     this.closeTween = game.add.tween(this.door.scale).to({ x: 1}, 500, Phaser.Easing.Linear.None, false, 1000);
     this.openTween.chain(this.closeTween);
   }
 
   open (duration) {
+    this.arriveSound.play();
     this.closeTween.delay(duration)
 
     this.openTween.onComplete.addOnce(()=>{
