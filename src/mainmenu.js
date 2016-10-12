@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import TextButton from './textbutton'
+import Trump from './trump'
 
 export default class extends Phaser.State {
   init () {
@@ -9,7 +10,10 @@ export default class extends Phaser.State {
   create () {
 
     this.background = this.game.add.sprite(0, 0, 'menuBackground');
-    this.trump = this.game.add.sprite(150, 300, 'trump');
+
+    this.trump = new Trump(this.game)
+    this.game.add.existing(this.trump)
+    this.trump.position.setTo(150, 400);
 
     this.title = new Phaser.Text(this.game, this.game.world.centerX, this.game.world.centerY-this.game.world.height/4, 'The Donald', {
       font: '36px Tahoma',
