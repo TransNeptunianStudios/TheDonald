@@ -15,6 +15,13 @@ export default class Quote {
   }
 
   runQuote() {
+    let quoteDuration = 0.0
+
+    // Calculate total duration of quote
+    for (var key in this.sound.markers) {
+      quoteDuration += this.sound.markers[key].duration
+    }
+
     this.numberOfWords = this.words.length
     
     this.words.forEach((word) => {

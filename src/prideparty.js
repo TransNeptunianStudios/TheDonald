@@ -15,7 +15,7 @@ export default class PrideParty extends Level {
   }
 
   startDebate() {
-    let debate = new Debate(this.game, [], [])
+    let debate = new Debate(this.game, this.trump.quotes, [])
     debate.onDebateComplete.addOnce(()=>{
       this.trump.doRestOfWalk()
     }, this)

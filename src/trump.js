@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import Quote from './quote'
 
 export default class Trump extends Phaser.Sprite {
   constructor(game) {
@@ -11,6 +12,21 @@ export default class Trump extends Phaser.Sprite {
     this.exitTween.onComplete.addOnce(()=>{
       this.onWalkComplete.dispatch()
     }, this)
+
+    this.createQuotes()
+  }
+
+  createQuotes () {
+    this.quotes = []
+    
+    let suffer = new Quote(game, 'suffer')
+    suffer.addWord('i', 0.0, 0.35)
+    suffer.addWord('just', 0.35, 0.30)
+    suffer.addWord('want', 0.65, 0.25)
+    suffer.addWord('them', 0.90, 0.20)
+    suffer.addWord('to', 1.10, 0.25)
+    suffer.addWord('suffer', 1.35, 0.65)
+    this.quotes.push(suffer)
   }
 
   walkOverTween(percent) {
