@@ -18,14 +18,18 @@ export default class Level {
     this.backGroup.create(0, 0, this.background)
 
     this.inElevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
-    this.outElevator = this.backGroup.create(700, 201, 'elevator')
+    this.outElevator = new Elevator(game, this.game.width-100, 341, this.backGroup, this.midGroup)
 
     this.midGroup.add(this.trump)
 
     this.trump.onWalkComplete.addOnce(()=>{
-      this.game.camera.fade('#000000');
-      this.game.camera.onFadeComplete.addOnce(()=>{
-        this.onLevelComplete.dispatch()
+      this.outElevator.open(1000);
+      this.game.add.tween(this.trump).to({y: 335}, 500, Phaser.Easing.Linear.None, true, 500);
+      this.outElevator.onDoorClose.addOnce(()=>{
+        this.game.camera.fade('#000000');
+        this.game.camera.onFadeComplete.addOnce(()=>{
+          this.onLevelComplete.dispatch()
+        }, this)
       }, this)
     })
 
@@ -35,7 +39,7 @@ export default class Level {
 
     this.game.camera.flash('#000000')
     this.game.camera.onFlashComplete.addOnce(()=>{
-        this.inElevator.open(1500);
+        this.inElevator.open(1000);
     }, this)
   }
 
