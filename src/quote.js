@@ -11,16 +11,23 @@ export default class Quote {
 
   addWord(word, start, duration) {
     this.sound.addMarker(word, start, duration)
-    this.words.push(new Word(this.game, this.sound, word))
+    this.words.push(new Word(this.game, word))
   }
 
   runQuote() {
-    let word = this.words.pop()
-
-    word.onWordComplete.add(() => {
-      this.onQuoteComplete.dispatch()
+    this.numberOfWords = this.words.length
+    
+    this.words.forEach((word) => {
+      
+      word.onWordPressed.add(() => {
+        this.sound.play(word.word)
+        this.numberOfWords -= 1
+        if (this.numberOfWords == 0) {
+          this.onQuoteComplete.dispatch()
+        }
+      })
+      
+      word.runWord()
     })
-
-    word.runWord()
   }
 }

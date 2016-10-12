@@ -1,30 +1,32 @@
 import Phaser from 'phaser'
+import TextButton from './textbutton'
 
 export default class Word {
-  constructor (game, sound, word) {
+  constructor (game, word) {
     this.game = game
-    this.sound = sound
     this.word = word
-    this.onWordComplete = new Phaser.Signal()
-    this.sound.onStop.add(() => {
-      this.onWordComplete.dispatch()
-    })
+    this.onWordPressed = new Phaser.Signal()
   }
 
   runWord () {
-    let text = this.game.add.text(this.game.world.centerX,
-                                  this.game.world.centerY,
-                                  this.word,
-                                  {font: "65px Arial",
-                                   fill: "#ff0044",
-                                   align: "center"})
-
-    text.anchor.set(0.5)
+    // Get a random position
+    let rndX = this.game.rnd.integerInRange(0, this.game.width)
+    let rndY = this.game.rnd.integerInRange(0, this.game.height)
+    
+    let text = this.game.add.text(rndX,
+                                  rndY,
+                                  '   ' + this.word + '   ',
+                                  {
+                                    font: '16px Verdana',
+                                    fill: '#ffffff',
+                                    backgroundColor: 'rgba(0,255,0,0.25)'
+                                  })
 
     text.inputEnabled = true
 
-    text.events.onInputDown.add(() => {
-      this.sound.play(this.word)
+    text.events.onInputDown.addOnce(() => {
+      this.onWordPressed.dispatch()
+      text.destroy()
     })
   }
 }
