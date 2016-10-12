@@ -12,8 +12,6 @@ export default class Level {
   }
 
   start() {
-    this.game.camera.flash('#000000')
-
     this.backGroup = this.game.add.group()
     this.midGroup = this.game.add.group()
 
@@ -35,7 +33,10 @@ export default class Level {
       this.doWalk()
     })
 
-    this.inElevator.open(1500);
+    this.game.camera.flash('#000000')
+    this.game.camera.onFlashComplete.addOnce(()=>{
+        this.inElevator.open(1500);
+    }, this)
   }
 
   doWalk() {
