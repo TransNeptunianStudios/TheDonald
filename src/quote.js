@@ -23,14 +23,28 @@ export default class Quote {
     }
 
     this.numberOfWords = this.words.length
+
+    // Reverse the array so that we can pop the first word of the quote
+    this.words.reverse()
+
+    let wordsInOrder = true
     
     this.words.forEach((word) => {
       
       word.onWordPressed.add(() => {
+
         this.sound.play(word.word)
+
+        let correctWord = this.words.pop()
+
+        if (correctWord.word != word.word) {
+          wordsInOrder = false
+        }
+
         this.numberOfWords -= 1
+        
         if (this.numberOfWords == 0) {
-          this.onQuoteComplete.dispatch()
+          this.onQuoteComplete.dispatch(wordsInOrder)
         }
       })
       

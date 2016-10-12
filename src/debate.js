@@ -13,7 +13,10 @@ export default class Debate {
 
     quote.runQuote()
 
-    quote.onQuoteComplete.addOnce(() => {
+    quote.onQuoteComplete.addOnce((wordsInOrder) => {
+
+      console.log('Words in order: ' + wordsInOrder)
+      
       if (this.trumpQuotes.length != 0) {
         this.runDebate()
       }
