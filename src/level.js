@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import Elevator from './Elevator'
+import Elevator from './elevator'
 import Trump from './trump'
 
 export default class Level {
@@ -24,7 +24,7 @@ export default class Level {
 
     // when trump is at the end elevator, do this behemoth
     this.trump.onCallingElevator.addOnce(()=>{
-      this.outElevator.open(1000);
+      this.outElevator.open();
       this.outElevator.onDoorOpen.addOnce(()=>{
         this.trump.walkDirection(0, -30);
       }, this)
@@ -42,7 +42,7 @@ export default class Level {
 
     this.game.camera.flash('#000000')
     this.game.camera.onFlashComplete.addOnce(()=>{
-        this.inElevator.open(1000);
+        this.inElevator.open();
     }, this)
   }
 

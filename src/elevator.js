@@ -19,9 +19,9 @@ export default class Elevator  {
     this.openTween.chain(this.closeTween);
   }
 
-  open (duration) {
-    this.arriveSound.play();
-    this.closeTween.delay(duration)
+  open () {
+    this.arriveSound.play('', 0, 0.5);
+    this.closeTween.delay(1000)
 
     this.openTween.onComplete.addOnce(()=>{
       this.onDoorOpen.dispatch();

@@ -16,7 +16,7 @@ export default class Trump extends Phaser.Sprite {
 
     this.onCallingElevator = new Phaser.Signal()
     this.onReadyForDebate = new Phaser.Signal()
-    this.walkTween = this.game.add.tween(this).to({ x: 600 }, 2000, Phaser.Easing.Linear.None)
+    this.walkTween = this.game.add.tween(this);
 
     this.createQuotes()
   }
@@ -24,7 +24,7 @@ export default class Trump extends Phaser.Sprite {
   walkDirection(dx, dy){
     let time = Math.max(Math.abs(dx), Math.abs(dy))*5;
 
-    this.walkTween = this.game.add.tween(this).to({x: this.x+dx, y: this.y+dy}, time, Phaser.Easing.Quadratic.InOut, true);
+    this.walkTween = this.game.add.tween(this).to({x: this.x+dx,y: this.y+dy}, time, Phaser.Easing.Quadratic.InOut, true);
     this.walkTween.onComplete.add(()=>{this.animations.stop()}, this)
 
     if( dx == 0 && dy == 0 ) this.animations.stop()
@@ -50,9 +50,9 @@ export default class Trump extends Phaser.Sprite {
   }
 
   doFullWalk() {
-    this.walkDirection(0, 100).onComplete.addOnce(()=>{
+    this.walkDirection(0, 120).onComplete.addOnce(()=>{
         this.walkDirection(666, 0).onComplete.addOnce(()=>{
-          this.walkDirection(0, -80).onComplete.addOnce(()=>{
+          this.walkDirection(0, -100).onComplete.addOnce(()=>{
             this.onCallingElevator.dispatch();
           }, this)
         }, this)
@@ -60,7 +60,7 @@ export default class Trump extends Phaser.Sprite {
   }
 
   doDebateWalk() {
-    this.walkDirection(0, 100).onComplete.addOnce(()=>{
+    this.walkDirection(0, 120).onComplete.addOnce(()=>{
       this.walkDirection(333, 0).onComplete.addOnce(()=>{
         this.onReadyForDebate.dispatch();
       }, this)
@@ -69,7 +69,7 @@ export default class Trump extends Phaser.Sprite {
 
   doRestOfWalk() {
     this.walkDirection(333, 0).onComplete.addOnce(()=>{
-      this.walkDirection(0, -80).onComplete.addOnce(()=>{
+      this.walkDirection(0, -100).onComplete.addOnce(()=>{
         this.onCallingElevator.dispatch();
       }, this)
     }, this)
