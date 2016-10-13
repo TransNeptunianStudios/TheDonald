@@ -8,10 +8,10 @@ export default class PrideParty extends Level {
   }
 
   doWalk() {
-    this.trump.onWalkToPercentComplete.addOnce(()=>{
+    this.trump.doDebateWalk();
+    this.trump.onReadyForDebate.addOnce(()=>{
       this.startDebate()
     }, this)
-    this.trump.doWalkToPercent(0.5)
   }
 
   startDebate() {

@@ -22,11 +22,12 @@ export default class Level {
 
     this.midGroup.add(this.trump)
 
-    this.trump.onWalkComplete.addOnce(()=>{
+    // when trump is at the end elevator, do this behemoth
+    this.trump.onCallingElevator.addOnce(()=>{
       this.outElevator.open(1000);
-      let elevatorWalk = this.game.add.tween(this.trump).to({y: 335}, 500, Phaser.Easing.Linear.None, true, 500);
-      elevatorWalk.onStart.add(()=>{this.trump.animations.play('north')}, this)
-      elevatorWalk.onComplete.add(()=>{this.trump.animations.stop()}, this)
+      this.outElevator.onDoorOpen.addOnce(()=>{
+        this.trump.walkDirection(0, -30);
+      }, this)
       this.outElevator.onDoorClose.addOnce(()=>{
         this.game.camera.fade('#000000');
         this.game.camera.onFadeComplete.addOnce(()=>{
@@ -46,7 +47,7 @@ export default class Level {
   }
 
   doWalk() {
-    this.trump.doSimpleWalk()
+    this.trump.doFullWalk()
   }
 
   update() {

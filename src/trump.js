@@ -14,25 +14,26 @@ export default class Trump extends Phaser.Sprite {
     this.animations.add('south', [20, 21, 22, 23, 24, 25, 26, 27], 15, true);
     this.animations.add('east', [28, 29, 30, 31, 32, 33, 34, 35], 15, true);
 
-    this.onWalkComplete = new Phaser.Signal()
-    this.onWalkToPercentComplete = new Phaser.Signal()
-
-    this.menuTween = this.game.add.tween(this).to({x: 600}, 1000, Phaser.Easing.Linear.None)
-    this.menuTween.onStart.add(()=>{this.animations.play('east')}, this)
-    this.menuTween.onComplete.add(()=>{this.animations.stop()}, this)
-
-    this.enterTween = this.game.add.tween(this).to({y: 450}, 1000, Phaser.Easing.Linear.None, false, 500);
-    this.enterTween.onStart.add(()=>{this.animations.play('south')}, this)
-    this.enterTween.onComplete.add(()=>{this.animations.stop()}, this)
-
-    this.exitTween = this.game.add.tween(this).to({y: 355}, 1000, Phaser.Easing.Linear.None);
-    this.exitTween.onStart.add(()=>{this.animations.play('north')}, this)
-    this.exitTween.onComplete.addOnce(()=>{
-      this.onWalkComplete.dispatch()
-      this.animations.stop()
-    }, this)
+    this.onCallingElevator = new Phaser.Signal()
+    this.onReadyForDebate = new Phaser.Signal()
+    this.walkTween = this.game.add.tween(this).to({ x: 600 }, 2000, Phaser.Easing.Linear.None)
 
     this.createQuotes()
+  }
+
+  walkDirection(dx, dy){
+    let time = Math.max(Math.abs(dx), Math.abs(dy))*5;
+
+    this.walkTween = this.game.add.tween(this).to({x: this.x+dx, y: this.y+dy}, time, Phaser.Easing.Quadratic.InOut, true);
+    this.walkTween.onComplete.add(()=>{this.animations.stop()}, this)
+
+    if( dx == 0 && dy == 0 ) this.animations.stop()
+    else if( dx > 0 ) this.animations.play('east')
+    else if( dy > 0 ) this.animations.play('south')
+    else if( dx < 0 ) this.animations.play('west')
+    else if( dy < 0 ) this.animations.play('north')
+
+    return this.walkTween;
   }
 
   createQuotes () {
@@ -48,41 +49,29 @@ export default class Trump extends Phaser.Sprite {
     this.quotes.push(suffer)
   }
 
-  walkOverTween(percent) {
-    let tween = this.game.add.tween(this).to({x: 750 * percent}, 3000 * percent, Phaser.Easing.Linear.None)
-    tween.onStart.add(()=>{this.animations.play('east')}, this)
-    tween.onComplete.add(()=>{this.animations.stop()}, this)
-    return tween
-  }
-
-  finishWalkOverTween() {
-    let percentOfWalkLeft = 1.0 - ((this.x - 90) / 660)
-    let tween = this.game.add.tween(this).to({x: 750}, 3000 * percentOfWalkLeft, Phaser.Easing.Linear.None)
-    tween.onStart.add(()=>{this.animations.play('east')}, this)
-    tween.onComplete.add(()=>{this.animations.stop()}, this)
-    return tween
-  }
-
-  doSimpleWalk() {
-    let trumpWalkOver = this.walkOverTween(1.0)
-    this.enterTween.chain(trumpWalkOver);
-    trumpWalkOver.chain(this.exitTween);
-    this.enterTween.start()
-  }
-
-  doWalkToPercent(percent) {
-    this.percent = percent
-    let walkOverTween = this.walkOverTween(percent)
-    this.enterTween.chain(walkOverTween);
-    walkOverTween.onComplete.addOnce(()=>{
-      this.onWalkToPercentComplete.dispatch()
+  doFullWalk() {
+    this.walkDirection(0, 100).onComplete.addOnce(()=>{
+        this.walkDirection(666, 0).onComplete.addOnce(()=>{
+          this.walkDirection(0, -80).onComplete.addOnce(()=>{
+            this.onCallingElevator.dispatch();
+          }, this)
+        }, this)
     }, this)
-    this.enterTween.start()
+  }
+
+  doDebateWalk() {
+    this.walkDirection(0, 100).onComplete.addOnce(()=>{
+      this.walkDirection(333, 0).onComplete.addOnce(()=>{
+        this.onReadyForDebate.dispatch();
+      }, this)
+    }, this)
   }
 
   doRestOfWalk() {
-    let walkOverTween = this.finishWalkOverTween()
-    walkOverTween.chain(this.exitTween);
-    walkOverTween.start()
+    this.walkDirection(333, 0).onComplete.addOnce(()=>{
+      this.walkDirection(0, -80).onComplete.addOnce(()=>{
+        this.onCallingElevator.dispatch();
+      }, this)
+    }, this)
   }
 }
