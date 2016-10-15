@@ -13,10 +13,12 @@ export default class extends Phaser.State {
     this.load.image('baseCorridor', './assets/images/base-corridor.png')
     this.load.image('prideCorridor', './assets/images/pride-corridor.png')
     this.load.image('kkkCorridor', './assets/images/kkk-corridor.png')
+    this.load.image('office', './assets/images/office.png')
     this.load.image('elevator', './assets/images/elevator.png')
     this.load.image('elevator-door', './assets/images/elevator-door.png')
 
     this.load.spritesheet('trump', './assets/images/trump.png', 17, 32)
+    this.load.spritesheet('opponent', './assets/images/vickan.png', 17, 32)
 
     this.load.audio('suffer', './assets/sounds/i_just_want_them_to_suffer.mp3')
     this.load.audio('elevatorBing', './assets/sounds/elevator_bing.mp3')

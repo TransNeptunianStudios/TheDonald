@@ -35,12 +35,13 @@ export default class extends Phaser.State {
       this.level.start()
     }
     else {
-      console.log('Game complete!')
+        this.state.start('GameOverMenu')
     }
   }
 
   update () {
-    this.level.update();
+    if(this.level)
+      this.level.update();
   }
 
   render () {

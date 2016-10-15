@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
-import Elevator from './Elevator'
+import Elevator from './elevator'
 import Trump from './trump'
+import Debate from './debate'
 
 export default class Level {
   constructor(game) {
@@ -11,7 +12,10 @@ export default class Level {
     this.trump = new Trump(this.game)
   }
 
+
   start() {
+    // backgroup for all background stuff
+    // midgroup is above and z-ordered
     this.backGroup = this.game.add.group()
     this.midGroup = this.game.add.group()
 
@@ -20,13 +24,18 @@ export default class Level {
     this.inElevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
     this.outElevator = new Elevator(game, this.game.width-100, 341, this.backGroup, this.midGroup)
 
+    // trump and possible opponent added
     this.midGroup.add(this.trump)
+    if(this.opponent)
+      this.midGroup.add(this.opponent)
 
-    this.trump.onWalkComplete.addOnce(()=>{
-      this.outElevator.open(1000);
-      let elevatorWalk = this.game.add.tween(this.trump).to({y: 335}, 500, Phaser.Easing.Linear.None, true, 500);
-      elevatorWalk.onStart.add(()=>{this.trump.animations.play('north')}, this)
-      elevatorWalk.onComplete.add(()=>{this.trump.animations.stop()}, this)
+    // When trump is calling an elevator, open it and walk trump
+    // into it. When door closed, start fade, then lvl complete
+    this.trump.onCallingElevator.addOnce(()=>{
+      this.outElevator.open();
+      this.outElevator.onDoorOpen.addOnce(()=>{
+        this.trump.walkDirection(0, -30);
+      }, this)
       this.outElevator.onDoorClose.addOnce(()=>{
         this.game.camera.fade('#000000');
         this.game.camera.onFadeComplete.addOnce(()=>{
@@ -39,14 +48,23 @@ export default class Level {
       this.doWalk()
     })
 
-    this.game.camera.flash('#000000')
     this.game.camera.onFlashComplete.addOnce(()=>{
-        this.inElevator.open(1000);
+        this.inElevator.open();
     }, this)
+
+    this.game.camera.flash('#000000')
+  }
+
+  startDebate() {
+    let debate = new Debate(this.game, this.trump, this.opponent)
+    debate.onDebateComplete.addOnce(()=>{
+      this.trump.doRestOfWalk()
+    }, this)
+    debate.runDebate()
   }
 
   doWalk() {
-    this.trump.doSimpleWalk()
+    this.trump.doFullWalk()
   }
 
   update() {
