@@ -7,6 +7,35 @@ export default class Quote {
     this.sound = game.add.audio(asset)
     this.onQuoteComplete = new Phaser.Signal()
     this.words = []
+
+    // Word table
+    //
+    // nrOfRows = 
+    // nrOfColumns = 
+    // rowWidth = 
+    // columnWidth =
+    //
+    // 1. Calculate center position for each cell in the table
+    // 2. Store these values in a list
+    // 3. "Scrabble" list
+    // 4. Pick a position for each word
+  }
+
+  // size = nr of rows and columns
+  createWordTable(size, columnWidth, rowHeight) {
+    let cx = this.game.world.centerX - (size * columnWidth / 2.0)
+    let cy = this.game.world.centerY - (size * rowHeight / 2.0)
+
+    let cells = []
+
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        cells.push({x: cx + (i * columnWidth),
+                    y: cy + (j * rowHeight)})
+      }
+    }
+
+    return cells
   }
 
   addWord(word, start, duration) {
@@ -23,6 +52,13 @@ export default class Quote {
     }
 
     this.numberOfWords = this.words.length
+
+    let wordTableSize = Math.floor(this.numberOfWords / 2.0 + 0.5)
+
+    // TODO: Get column width and row height by inspecting word list
+    let cells = this.createWordTable(wordTableSize, 150, 50)
+    
+    cells = Phaser.ArrayUtils.shuffle(cells)
 
     // Reverse the array so that we can pop the first word of the quote
     this.words.reverse()
@@ -48,7 +84,9 @@ export default class Quote {
         }
       })
 
-      word.runWord()
+      let position = cells.pop()
+
+      word.runWord(position.x, position.y)
     })
   }
 }

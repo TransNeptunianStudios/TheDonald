@@ -19,8 +19,8 @@ export default class extends Phaser.State {
     // 8. Run final scene
 
     this.levels = []
-    this.levels.push(new PrideParty(this.game))
     this.levels.push(new KkkMeeting(this.game))
+    this.levels.push(new PrideParty(this.game))
     this.nextLevel()
   }
 

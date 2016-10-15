@@ -7,14 +7,10 @@ export default class Word {
     this.word = word
     this.onWordPressed = new Phaser.Signal()
 
-    // Get a random position
-    let rndX = this.game.rnd.integerInRange(0, this.game.width)
-    let rndY = this.game.rnd.integerInRange(0, this.game.height)
-
     this.text = new Phaser.Text(
       game,
-      rndX,
-      rndY,
+      0, // The position will be set later
+      0,
       '   ' + this.word + '   ',
       {
         font: '16px Verdana',
@@ -22,11 +18,16 @@ export default class Word {
         backgroundColor: 'rgba(0,255,0,0.25)'
       })
 
+    this.text.anchor.set(0.5)
+
     this.text.inputEnabled = true
   }
 
-  runWord() {
-   this.game.add.existing(this.text)
+  runWord(x, y) {
+    this.text.x = x
+    this.text.y = y
+
+    this.game.add.existing(this.text)
     
     this.text.events.onInputDown.addOnce(() => {
       this.onWordPressed.dispatch()
