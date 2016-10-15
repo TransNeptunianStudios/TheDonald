@@ -13,7 +13,7 @@ export default class Opponent extends Phaser.Sprite {
     this.animations.add('talk', [0, 1], 10, true)
     this.animations.add('collapse', [2, 3], 10, true)
 
-    this.sanity = 2;
+    this.sanity = 1;
   }
 
   getStupidAnswer() {

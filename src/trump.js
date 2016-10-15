@@ -21,6 +21,7 @@ export default class Trump extends Phaser.Sprite {
     this.createQuotes()
   }
 
+  // walks trump in a direction with the animation running
   walkDirection(dx, dy){
     let time = Math.max(Math.abs(dx), Math.abs(dy))*5;
 
@@ -49,6 +50,7 @@ export default class Trump extends Phaser.Sprite {
     this.quotes.push(suffer)
   }
 
+  // walks from elevator to elevator
   doFullWalk() {
     this.walkDirection(0, 120).onComplete.addOnce(()=>{
         this.walkDirection(670, 0).onComplete.addOnce(()=>{
@@ -59,6 +61,7 @@ export default class Trump extends Phaser.Sprite {
     }, this)
   }
 
+  // walks from elevator to level middle
   doDebateWalk() {
     this.walkDirection(0, 120).onComplete.addOnce(()=>{
       this.walkDirection(335, 0).onComplete.addOnce(()=>{
@@ -67,6 +70,7 @@ export default class Trump extends Phaser.Sprite {
     }, this)
   }
 
+  // walks from middle to end elevator
   doRestOfWalk() {
     this.walkDirection(335, 0).onComplete.addOnce(()=>{
       this.walkDirection(0, -100).onComplete.addOnce(()=>{

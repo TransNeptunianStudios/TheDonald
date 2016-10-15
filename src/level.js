@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import Elevator from './elevator'
 import Trump from './trump'
+import Debate from './debate'
 
 export default class Level {
   constructor(game) {
@@ -13,6 +14,8 @@ export default class Level {
 
 
   start() {
+    // backgroup for all background stuff
+    // midgroup is above and z-ordered
     this.backGroup = this.game.add.group()
     this.midGroup = this.game.add.group()
 
@@ -21,11 +24,13 @@ export default class Level {
     this.inElevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
     this.outElevator = new Elevator(game, this.game.width-100, 341, this.backGroup, this.midGroup)
 
+    // trump and possible opponent added
     this.midGroup.add(this.trump)
     if(this.opponent)
       this.midGroup.add(this.opponent)
 
-    // when trump is at the end elevator, do this behemoth
+    // When trump is calling an elevator, open it and walk trump
+    // into it. When door closed, start fade, then lvl complete
     this.trump.onCallingElevator.addOnce(()=>{
       this.outElevator.open();
       this.outElevator.onDoorOpen.addOnce(()=>{
@@ -48,6 +53,14 @@ export default class Level {
     }, this)
 
     this.game.camera.flash('#000000')
+  }
+
+  startDebate() {
+    let debate = new Debate(this.game, this.trump, this.opponent)
+    debate.onDebateComplete.addOnce(()=>{
+      this.trump.doRestOfWalk()
+    }, this)
+    debate.runDebate()
   }
 
   doWalk() {
