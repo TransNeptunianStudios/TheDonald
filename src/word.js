@@ -12,9 +12,11 @@ export default class Word {
     let rndY = this.game.rnd.integerInRange(0, this.game.height)
 
     this.text = new Phaser.Text(
+      game,
       rndX,
       rndY,
-      '   ' + this.word + '   ', {
+      '   ' + this.word + '   ',
+      {
         font: '16px Verdana',
         fill: '#ffffff',
         backgroundColor: 'rgba(0,255,0,0.25)'
@@ -24,11 +26,11 @@ export default class Word {
   }
 
   runWord() {
-    this.game.add.existing(this.text)
+   this.game.add.existing(this.text)
     
-    text.events.onInputDown.addOnce(() => {
+    this.text.events.onInputDown.addOnce(() => {
       this.onWordPressed.dispatch()
-      text.destroy()
-    })
-  }
+      this.text.destroy()
+   })
+ }
 }
