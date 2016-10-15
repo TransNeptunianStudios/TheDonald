@@ -11,6 +11,7 @@ export default class Level {
     this.trump = new Trump(this.game)
   }
 
+
   start() {
     this.backGroup = this.game.add.group()
     this.midGroup = this.game.add.group()
@@ -21,6 +22,8 @@ export default class Level {
     this.outElevator = new Elevator(game, this.game.width-100, 341, this.backGroup, this.midGroup)
 
     this.midGroup.add(this.trump)
+    if(this.opponent)
+      this.midGroup.add(this.opponent)
 
     // when trump is at the end elevator, do this behemoth
     this.trump.onCallingElevator.addOnce(()=>{
@@ -40,10 +43,11 @@ export default class Level {
       this.doWalk()
     })
 
-    this.game.camera.flash('#000000')
     this.game.camera.onFlashComplete.addOnce(()=>{
         this.inElevator.open();
     }, this)
+
+    this.game.camera.flash('#000000')
   }
 
   doWalk() {

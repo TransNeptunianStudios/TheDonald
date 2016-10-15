@@ -21,7 +21,7 @@ export default class Elevator  {
 
   open () {
     this.arriveSound.play('', 0, 0.5);
-    this.closeTween.delay(1000)
+    this.closeTween.delay(500)
 
     this.openTween.onComplete.addOnce(()=>{
       this.onDoorOpen.dispatch();
