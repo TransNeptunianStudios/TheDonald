@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 import Word from './word'
 
 export default class Quote {
-  constructor (game, asset) {
+  constructor(game, asset) {
     this.game = game
     this.sound = game.add.audio(asset)
     this.onQuoteComplete = new Phaser.Signal()
@@ -28,9 +28,9 @@ export default class Quote {
     this.words.reverse()
 
     let wordsInOrder = true
-    
+
     this.words.forEach((word) => {
-      
+
       word.onWordPressed.add(() => {
 
         this.sound.play(word.word)
@@ -42,12 +42,12 @@ export default class Quote {
         }
 
         this.numberOfWords -= 1
-        
+
         if (this.numberOfWords == 0) {
           this.onQuoteComplete.dispatch(wordsInOrder)
         }
       })
-      
+
       word.runWord()
     })
   }
