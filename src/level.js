@@ -6,6 +6,7 @@ import Debate from './debate'
 export default class Level {
   constructor(game) {
     this.game = game
+
     this.background = 'baseCorridor'
     this.onLevelComplete = new Phaser.Signal()
 
@@ -19,6 +20,8 @@ export default class Level {
     this.backGroup = this.game.add.group()
     this.midGroup = this.game.add.group()
 
+    this.sky = game.add.tileSprite(0, 0, 854, 480, 'sky')
+    this.backGroup.add(this.sky)
     this.backGroup.create(0, 0, this.background)
 
     this.inElevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
@@ -69,5 +72,6 @@ export default class Level {
 
   update() {
     this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
+    this.sky.tilePosition.x += 1
   }
 }
