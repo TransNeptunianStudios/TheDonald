@@ -48,6 +48,15 @@ export default class Trump extends Phaser.Sprite {
     suffer.addWord('to', 1.10, 0.25)
     suffer.addWord('suffer', 1.35, 0.65)
     this.quotes.push(suffer)
+
+    let noAction = new Quote(game, 'noAction')
+    noAction.addWord('to', 0.0, 0.25)
+    noAction.addWord('much', 0.20, 0.35)
+    noAction.addWord('talk', 0.6, 0.5)
+    noAction.addWord('not', 1.30, 0.22)
+    noAction.addWord('enough', 1.55, 0.20)
+    noAction.addWord('action', 1.75, 0.4)
+    this.quotes.push(noAction)
   }
 
   // walks from elevator to elevator

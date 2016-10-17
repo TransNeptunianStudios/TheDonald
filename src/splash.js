@@ -22,6 +22,7 @@ export default class extends Phaser.State {
     this.load.spritesheet('opponent', './assets/images/vickan.png', 17, 32)
 
     this.load.audio('suffer', './assets/sounds/i_just_want_them_to_suffer.mp3')
+    this.load.audio('noAction', './assets/sounds/too_much_talk_not_enough_action.mp3')
     this.load.audio('elevatorBing', './assets/sounds/elevator_bing.mp3')
   }
 
