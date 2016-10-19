@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import Quote from './quote'
+import HealthBar from './healthbar'
 
 export default class Trump extends Phaser.Sprite {
   constructor(game) {
@@ -18,6 +19,10 @@ export default class Trump extends Phaser.Sprite {
     this.onReadyForDebate = new Phaser.Signal()
     this.walkTween = this.game.add.tween(this);
 
+    this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX, y: 50})
+
+    this.confidence = 100
+
     this.createQuotes()
   }
 
@@ -25,6 +30,7 @@ export default class Trump extends Phaser.Sprite {
   initLevel(point) {
     this.frame = 2
     this.position.setTo(point.x, point.y - 10)
+    this.healthbar.draw()
   }
 
   // walks trump in a direction with the animation running
@@ -65,6 +71,21 @@ export default class Trump extends Phaser.Sprite {
     this.quotes.push(noAction)
   }
 
+  getQuotes (difficulty) {
+    // TODO: Add more quotes and sort with difficulties
+    return this.quotes
+  }
+
+  incrementConfidence () {
+    this.confidence += 10
+    this.healthbar.setPercent(this.confidence);
+  }
+  
+  decrementConfidence () {
+    this.confidence -= 10
+    this.healthbar.setPercent(this.confidence);
+  }
+  
   // walks from elevator to elevator
   doFullWalk() {
     this.walkDirection(0, 120).onComplete.addOnce(()=>{

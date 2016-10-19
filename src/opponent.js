@@ -12,15 +12,11 @@ export default class Opponent extends Phaser.Sprite {
     this.frame = 0
     this.animations.add('talk', [0, 1], 10, true)
     this.animations.add('collapse', [2, 3], 10, true)
-
-    this.sanity = 1;
   }
 
-  getStupidAnswer() {
-    this.displayText.destroy()
-    this.sanity -= 1
-    if(this.sanity < 1){
-      this.animations.play('collapse')
+  reset() {
+    if (this.displayText) {
+      this.displayText.destroy()
     }
   }
 
@@ -42,7 +38,8 @@ export default class Opponent extends Phaser.Sprite {
                                     fill: '#ffffff',
                                     backgroundColor: 'rgba(0,255,0,0.25)'
                                   })
-     this.animations.play('talk')
+
+    this.animations.play('talk')
 
      // Ask question for 2 seconds
      this.game.time.events.add(Phaser.Timer.SECOND * 2, () => {

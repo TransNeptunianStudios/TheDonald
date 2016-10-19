@@ -58,8 +58,8 @@ export default class Level {
     this.game.camera.flash('#000000')
   }
 
-  startDebate() {
-    let debate = new Debate(this.game, this.trump, this.opponent)
+  startDebate(difficulty) {
+    let debate = new Debate(this.game, this.trump, this.opponent, difficulty)
     debate.onDebateComplete.addOnce(()=>{
       this.trump.doRestOfWalk()
     }, this)

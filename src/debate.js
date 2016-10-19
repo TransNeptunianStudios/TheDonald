@@ -1,34 +1,43 @@
 import Phaser from 'phaser'
 
 export default class Debate {
-  constructor (game, trump, opponent) {
+  constructor (game, trump, opponent, difficulty) {
     this.game = game
     this.trump = trump
     this.opponent = opponent
+    this.trumpQuotes = this.trump.getQuotes(difficulty)
     this.onDebateComplete = new Phaser.Signal()
   }
 
-  runDebate () {
-    this.opponent.askQuestion();
-    let quote = this.trump.quotes.pop()
-    if(!quote){
-      console.log('No more quotes, I guess you lost?')
-      return;
-    }
+  runDebate (difficulty) {
 
-    // wait 2 seconds then show trump thoughts
+    if (this.trumpQuotes.length == 0) {
+      this.onDebateComplete.dispatch()
+      return
+    }
+    
+    this.opponent.askQuestion();
+    
+    let quote = this.trumpQuotes.pop()
+    
     this.opponent.waitingForAnswer.addOnce((wordsInOrder) => {
       quote.runQuote()
     }, this)
 
     quote.onQuoteComplete.addOnce((wordsInOrder) => {
-      this.opponent.getStupidAnswer()
-      console.log('Words in order: ' + wordsInOrder)
 
-      if(this.opponent.sanity > 0)
-        this.runDebate();
+      this.opponent.reset()
+
+      if (wordsInOrder)
+      {
+        this.trump.incrementConfidence()
+      }
       else
-        this.onDebateComplete.dispatch()
+      {
+        this.trump.decrementConfidence()
+      }      
+      
+      this.runDebate();
     })
 
   }
