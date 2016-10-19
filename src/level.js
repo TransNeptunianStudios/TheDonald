@@ -4,13 +4,11 @@ import Trump from './trump'
 import Debate from './debate'
 
 export default class Level {
-  constructor(game) {
+  constructor(game, trump) {
     this.game = game
-
+    this.trump = trump
     this.background = 'baseCorridor'
     this.onLevelComplete = new Phaser.Signal()
-
-    this.trump = new Trump(this.game)
   }
 
 
@@ -27,6 +25,8 @@ export default class Level {
     this.inElevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
     this.outElevator = new Elevator(game, this.game.width-100, 341, this.backGroup, this.midGroup)
 
+    this.trump.initLevel(this.inElevator.position)
+    
     // trump and possible opponent added
     this.midGroup.add(this.trump)
     if(this.opponent)

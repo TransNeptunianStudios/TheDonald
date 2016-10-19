@@ -3,6 +3,8 @@ import Phaser from 'phaser'
 export default class Elevator  {
   constructor(game, x, y, backGroup, midGroup) {
 
+    this.position = new Phaser.Point(x, y)
+    
     this.onDoorOpen = new Phaser.Signal()
     this.onDoorClose = new Phaser.Signal()
 

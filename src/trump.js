@@ -3,7 +3,7 @@ import Quote from './quote'
 
 export default class Trump extends Phaser.Sprite {
   constructor(game) {
-    super(game, 90, 335, 'trump')
+    super(game, 0, 0, 'trump')
     this.anchor.setTo(0.5, 1);
 
     // while we use knug graphics
@@ -19,6 +19,12 @@ export default class Trump extends Phaser.Sprite {
     this.walkTween = this.game.add.tween(this);
 
     this.createQuotes()
+  }
+
+  // Initialize Trump for a new level
+  initLevel(point) {
+    this.frame = 2
+    this.position.setTo(point.x, point.y - 10)
   }
 
   // walks trump in a direction with the animation running

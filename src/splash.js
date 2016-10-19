@@ -39,7 +39,7 @@ export default class extends Phaser.State {
         // Start to fade out
         let fadeOutTween = this.game.add.tween(this.logo).to({alpha: 0}, 2000, Phaser.Easing.Linear.None, true)
         fadeOutTween.onComplete.add(()=>{
-              this.state.start('MainMenu')
+          this.state.start('MainMenu')
         }, this)
       }, this)
     })

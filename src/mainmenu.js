@@ -50,7 +50,7 @@ export default class extends Phaser.State {
   playPressed () {
     // Move trump into the tower, then start the game
     this.trump.walkDirection(500, 0).onComplete.add(()=>{
-          this.state.start('Game');
+      this.state.start('Game');
       }, this)
   }
 }
