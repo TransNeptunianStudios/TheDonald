@@ -3,6 +3,7 @@ import Phaser from 'phaser'
 import Trump from './trump'
 import PrideParty from './prideparty'
 import KkkMeeting from './kkkmeeting'
+import ChurchMeeting from './churchMeeting'
 
 export default class extends Phaser.State {
   init () {}
@@ -12,7 +13,7 @@ export default class extends Phaser.State {
   create () {
 
     this.trump = new Trump(this.game)
-    
+
     // 1. Create list with all corridors
     // 2. Run lobby scene
     // 3. Pick a corridor
@@ -24,6 +25,7 @@ export default class extends Phaser.State {
 
     this.levels = []
     this.levels.push(new KkkMeeting(this.game, this.trump))
+    this.levels.push(new ChurchMeeting(this.game, this.trump))
     this.levels.push(new PrideParty(this.game, this.trump))
     this.nextLevel()
   }

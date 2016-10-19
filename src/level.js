@@ -22,11 +22,11 @@ export default class Level {
     this.backGroup.add(this.sky)
     this.backGroup.create(0, 0, this.background)
 
-    this.inElevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
-    this.outElevator = new Elevator(game, this.game.width-100, 341, this.backGroup, this.midGroup)
+    this.inElevator = new Elevator(game, 80, 341, this.backGroup, this.midGroup)
+    this.outElevator = new Elevator(game, this.game.width-80, 341, this.backGroup, this.midGroup)
 
     this.trump.initLevel(this.inElevator.position)
-    
+
     // trump and possible opponent added
     this.midGroup.add(this.trump)
     if(this.opponent)
