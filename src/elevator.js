@@ -4,14 +4,18 @@ export default class Elevator  {
   constructor(game, x, y, backGroup, midGroup) {
 
     this.position = new Phaser.Point(x, y)
-    
+
     this.onDoorOpen = new Phaser.Signal()
     this.onDoorClose = new Phaser.Signal()
 
     this.base = backGroup.create(x, y, 'elevator')
     this.base.anchor.setTo(0.5, 1)
 
-    this.door = midGroup.create(x+35, y, 'elevator-door')
+    this.button = backGroup.create(5 + x + this.base.width/2, y - 70, 'elevator-button')
+    this.base.anchor.setTo(0.5, 1)
+
+    this.door = midGroup.create(x, y, 'elevator-door')
+    this.door.position.x += this.door.width/2;
     this.door.anchor.setTo(1, 1)
 
     this.arriveSound = game.add.audio('elevatorBing');

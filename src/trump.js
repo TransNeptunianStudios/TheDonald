@@ -89,7 +89,7 @@ export default class Trump extends Phaser.Sprite {
   // walks from elevator to elevator
   doFullWalk() {
     this.walkDirection(0, 120).onComplete.addOnce(()=>{
-        this.walkDirection(670, 0).onComplete.addOnce(()=>{
+        this.walkDirection(690, 0).onComplete.addOnce(()=>{
           this.walkDirection(0, -100).onComplete.addOnce(()=>{
             this.onCallingElevator.dispatch();
           }, this)
@@ -100,7 +100,7 @@ export default class Trump extends Phaser.Sprite {
   // walks from elevator to level middle
   doDebateWalk() {
     this.walkDirection(0, 120).onComplete.addOnce(()=>{
-      this.walkDirection(335, 0).onComplete.addOnce(()=>{
+      this.walkDirection(345, 0).onComplete.addOnce(()=>{
         this.onReadyForDebate.dispatch();
       }, this)
     }, this)
@@ -108,7 +108,7 @@ export default class Trump extends Phaser.Sprite {
 
   // walks from middle to end elevator
   doRestOfWalk() {
-    this.walkDirection(335, 0).onComplete.addOnce(()=>{
+    this.walkDirection(345, 0).onComplete.addOnce(()=>{
       this.walkDirection(0, -100).onComplete.addOnce(()=>{
         this.onCallingElevator.dispatch();
       }, this)
