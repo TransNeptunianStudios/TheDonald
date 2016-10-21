@@ -3,7 +3,7 @@ import Phaser from 'phaser'
 import Trump from './trump'
 import PrideParty from './prideparty'
 import KkkMeeting from './kkkmeeting'
-import ChurchMeeting from './churchMeeting'
+import ChurchMeeting from './churchmeeting'
 
 export default class extends Phaser.State {
   init () {}
