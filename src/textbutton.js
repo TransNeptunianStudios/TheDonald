@@ -11,7 +11,7 @@ export default class TextButton extends Phaser.Button {
         this.text = new Phaser.Text(this.game, 0, 0, this.label, this.style);
         this.text.anchor.setTo(0.5);
 
-        this.addChild(this.text);
+        //this.addChild(this.text);
 
     }
 }
