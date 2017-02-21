@@ -2,7 +2,7 @@
 import Phaser from 'phaser'
 import Trump from './trump'
 import PrideParty from './prideparty'
-import KkkMeeting from './kkkmeeting'
+import kkkMeeting from './kkkmeeting'
 import ChurchMeeting from './churchmeeting'
 
 export default class extends Phaser.State {
@@ -24,9 +24,9 @@ export default class extends Phaser.State {
     // 8. Run final scene
 
     this.levels = []
-    this.levels.push(new KkkMeeting(this.game, this.trump))
-    this.levels.push(new ChurchMeeting(this.game, this.trump))
-    this.levels.push(new PrideParty(this.game, this.trump))
+    this.levels.push(new kkkMeeting(this.game, this.trump))
+    //this.levels.push(new ChurchMeeting(this.game, this.trump))
+    //this.levels.push(new PrideParty(this.game, this.trump))
     this.nextLevel()
   }
 
