@@ -11,13 +11,9 @@ export default class extends Phaser.State {
 
     this.background = this.game.add.sprite(0, 0, 'menuBackground');
 
-    this.trump = new Trump(this.game)
-    this.game.add.existing(this.trump)
-    this.trump.position.setTo(150, 400);
-
-    this.title = new Phaser.Text(this.game, this.game.world.centerX, this.game.world.centerY-this.game.world.height/4, 'The Donald', {
+    this.title = new Phaser.Text(this.game, this.game.world.centerX, 40, 'The Donald', {
       font: '36px Tahoma',
-      fill: 'white',
+      fill: 'black',
       align: 'center'
     })
 
@@ -26,7 +22,7 @@ export default class extends Phaser.State {
     this.playBtn = new TextButton({
       game: this.game,
       x: this.game.world.centerX,
-      y: this.game.world.centerY,
+      y: this.game.world.centerY+80,
       asset: 'playBtn',
       overFrame: 2,
       outFrame: 1,
@@ -48,9 +44,6 @@ export default class extends Phaser.State {
   }
 
   playPressed () {
-    // Move trump into the tower, then start the game
-    this.trump.walkDirection(500, 0).onComplete.add(()=>{
       this.state.start('Game');
-      }, this)
   }
 }
