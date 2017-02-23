@@ -13,6 +13,11 @@ export default class kkkMeeting extends Level {
 	cross.animations.add('burn')
 	cross.animations.play('burn', 10, true)
 
+	var clansman = this.midGroup.create(this.game.width/2-100, 330, 'clansman')
+	clansman.anchor.setTo(0.5)
+	clansman.animations.add('stand', [0, 1])
+	clansman.animations.play('stand', 5, true)
+
 	var ladder = this.midGroup.create(125, 220, 'kkk_ladder')
 	ladder.anchor.setTo(0.5)
 
