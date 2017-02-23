@@ -8,8 +8,16 @@ export default class kkkMeeting extends Level {
 
     start() {
 	super.start()
-	var cross = this.midGroup.create(300, 200, 'cross')
+	var cross = this.midGroup.create(this.game.width/2, 300, 'cross')
+	cross.anchor.setTo(0.5)
 	cross.animations.add('burn')
 	cross.animations.play('burn', 10, true)
+
+	var ladder = this.midGroup.create(125, 220, 'kkk_ladder')
+	ladder.anchor.setTo(0.5)
+
+	var seller = this.midGroup.create(650, 320, 'kkk_seller')
+	seller.anchor.setTo(0.5)
+
     }
 }

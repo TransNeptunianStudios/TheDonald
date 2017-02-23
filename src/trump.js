@@ -7,7 +7,6 @@ export default class Trump extends Phaser.Sprite {
     super(game, 0, 0, 'trump')
     this.anchor.setTo(0.5, 1);
 
-    // while we use knug graphics
     this.frame = 2;
     this.animations.add('north', [4, 5, 6, 7, 8, 9, 10, 11], 15, true);
     this.animations.add('west', [12, 13, 14, 15, 16, 17, 18, 19], 15, true);
@@ -34,7 +33,7 @@ export default class Trump extends Phaser.Sprite {
 
   // walks trump in a direction with the animation running
   walkDirection(dx, dy){
-    let time = Math.max(Math.abs(dx), Math.abs(dy))*5;
+    let time = Math.max(Math.abs(dx), Math.abs(dy))*7.5;
 
     this.walkTween = this.game.add.tween(this).to({x: this.x+dx,y: this.y+dy}, time, Phaser.Easing.Linear.None, true);
     this.walkTween.onComplete.add(()=>{this.animations.stop()}, this)
@@ -89,7 +88,7 @@ export default class Trump extends Phaser.Sprite {
   doFullWalk() {
     this.walkDirection(0, 120).onComplete.addOnce(()=>{
         this.walkDirection(690, 0).onComplete.addOnce(()=>{
-          this.walkDirection(0, -100).onComplete.addOnce(()=>{
+          this.walkDirection(0, -90).onComplete.addOnce(()=>{
             this.onCallingElevator.dispatch();
           }, this)
         }, this)
@@ -108,7 +107,7 @@ export default class Trump extends Phaser.Sprite {
   // walks from middle to end elevator
   doRestOfWalk() {
     this.walkDirection(345, 0).onComplete.addOnce(()=>{
-      this.walkDirection(0, -100).onComplete.addOnce(()=>{
+      this.walkDirection(0, -90).onComplete.addOnce(()=>{
         this.onCallingElevator.dispatch();
       }, this)
     }, this)
