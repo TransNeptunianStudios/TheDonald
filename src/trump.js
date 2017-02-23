@@ -8,7 +8,6 @@ export default class Trump extends Phaser.Sprite {
     this.anchor.setTo(0.5, 1);
 
     // while we use knug graphics
-    this.scale.setTo(2.5, 2.5);
     this.frame = 2;
     this.animations.add('north', [4, 5, 6, 7, 8, 9, 10, 11], 15, true);
     this.animations.add('west', [12, 13, 14, 15, 16, 17, 18, 19], 15, true);
@@ -80,12 +79,12 @@ export default class Trump extends Phaser.Sprite {
     this.confidence += 10
     this.healthbar.setPercent(this.confidence);
   }
-  
+
   decrementConfidence () {
     this.confidence -= 10
     this.healthbar.setPercent(this.confidence);
   }
-  
+
   // walks from elevator to elevator
   doFullWalk() {
     this.walkDirection(0, 120).onComplete.addOnce(()=>{
