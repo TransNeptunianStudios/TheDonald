@@ -13,9 +13,8 @@ export default class kkkMeeting extends Level {
 	this.add_animated_loop('kkk_clansman_2', this.game.width/2-10, 370, 10, [0, 1])
 	this.add_animated_loop('kkk_ladder', 125, 220, 1)
 	this.add_sprite('kkk_seller', 650, 320)
-	this.add_sprite('kkk_kid_dog', 270, 330)
-	this.add_sprite('kkk_clansman_3', 555, 340)
-	this.add_sprite('kkk_clansman_1', 335, 330)
+	this.add_animated_loop('kkk_kids_and_dog', 270, 330)
+	this.add_animated_loop('kkk_clansman_1', 555, 330)
 
 	this.add_sprite('hanging_lamp', this.game.width*0.3, 50)
 	this.add_sprite('hanging_lamp', this.game.width*0.5, 50)

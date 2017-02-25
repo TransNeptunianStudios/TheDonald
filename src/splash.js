@@ -28,9 +28,8 @@ export default class extends Phaser.State {
 	this.load.spritesheet('kkk_ladder', './assets/images/kkk/ladder.png', 196, 261)
 	this.load.image('kkk_seller', './assets/images/kkk/seller.png')
 	this.load.spritesheet('kkk_clansman_2', './assets/images/kkk/clansman_2.png', 80, 123)
-	this.load.image('kkk_kid_dog', './assets/images/kkk/kid_dog.png')
-	this.load.image('kkk_clansman_1', './assets/images/kkk/clansman_1.png')
-	this.load.image('kkk_clansman_3', './assets/images/kkk/clansman_3.png')
+	this.load.spritesheet('kkk_kids_and_dog', './assets/images/kkk/kids_and_dog.png', 133,73)
+	this.load.spritesheet('kkk_clansman_1', './assets/images/kkk/clansman_1.png', 61, 110)
 
 	this.load.spritesheet('trump', './assets/images/trump.png', 50, 100)
         this.load.spritesheet('trump_game_over', './assets/images/trump_death.png', 50, 150)
