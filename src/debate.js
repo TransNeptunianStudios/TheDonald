@@ -1,40 +1,40 @@
 import Phaser from 'phaser'
 
 export default class Debate {
-  constructor (game, trump, opponent, difficulty) {
-    this.game = game
-    this.trump = trump
-    this.opponent = opponent
-    this.trumpQuotes = this.trump.getQuotes(difficulty)
-    this.onDebateComplete = new Phaser.Signal()
-  }
-
-  runDebate (difficulty) {
-
-    if (this.trumpQuotes.length == 0) {
-      this.onDebateComplete.dispatch()
-      return
+    constructor (game, trump, opponent, difficulty) {
+	this.game = game
+	this.trump = trump
+	this.opponent = opponent
+	this.trumpQuotes = this.trump.getQuotes(difficulty)
+	this.onDebateComplete = new Phaser.Signal()
     }
 
-    this.opponent.askQuestion();
+    runDebate (difficulty) {
+	if (this.trumpQuotes.length == 0) {
+	    this.onDebateComplete.dispatch()
+	    return
+	}
 
-    let quote = this.trumpQuotes.pop()
+	this.opponent.askQuestion();
 
-    this.opponent.waitingForAnswer.addOnce((wordsInOrder) => {
-      quote.runQuote()
-    }, this)
+	let quote = this.trumpQuotes.pop()
 
-    quote.onQuoteComplete.addOnce((wordsInOrder) => {
+	this.opponent.waitingForAnswer.addOnce((wordsInOrder) => {
+	    this.trump.show_thought_bubble()
+	    quote.runQuote()
+	}, this)
 
-      this.opponent.reset()
+	quote.onQuoteComplete.addOnce((wordsInOrder) => {
+	    this.trump.remove_thought_bubble()
+	    this.opponent.reset()
 
-      if (!wordsInOrder)
-      {
-        this.trump.decrementConfidence()
-      }
+	    if (!wordsInOrder)
+	    {
+		this.trump.decrementConfidence()
+	    }
 
-      this.runDebate();
-    })
+	    this.runDebate();
+	})
 
-  }
+    }
 }

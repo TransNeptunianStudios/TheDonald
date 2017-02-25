@@ -17,7 +17,7 @@ export default class Trump extends Phaser.Sprite {
 	this.onReadyForDebate = new Phaser.Signal()
 	this.walkTween = this.game.add.tween(this);
 
-	this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX, y: 50, width: 182, height: 32, bgImage: 'health_frame'})
+	this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX, y: 40, width: 182, height: 32, bgImage: 'health_frame'})
 
 	this.confidence = 100
 
@@ -34,6 +34,8 @@ export default class Trump extends Phaser.Sprite {
 	    this.play('fissle', 10, true)
 	}, this);
     }
+
+
 
     // Initialize Trump for a new level
     initLevel(point) {
@@ -78,6 +80,14 @@ export default class Trump extends Phaser.Sprite {
 	noAction.addWord('enough', 1.55, 0.20)
 	noAction.addWord('action', 1.75, 0.4)
 	this.quotes.push(noAction)
+    }
+
+    show_thought_bubble(){
+	this.bubble = this.game.add.sprite(140, 120, 'thought_bubble')
+    }
+
+    remove_thought_bubble(){
+	this.bubble.destroy()
     }
 
     getQuotes (difficulty) {

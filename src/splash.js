@@ -11,6 +11,7 @@ export default class extends Phaser.State {
 	this.load.image('playBtn', './assets/images/play-button.png')
 	this.load.image('menuBackground', './assets/images/menu-background.png')
 	this.load.image('health_frame', './assets/images/Confidence_meter_frame.png')
+	this.load.image('thought_bubble', './assets/images/thoughts.png')
 
 	this.load.image('baseCorridor', './assets/images/base-corridor.png')
 	this.load.image('office', './assets/images/office.png')
