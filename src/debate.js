@@ -31,6 +31,13 @@ export default class Debate {
 	    if (!wordsInOrder)
 	    {
 		this.trump.decrementConfidence()
+		if ( this.trump.confidence < 1){
+		    this.trump.game_over();
+		    return
+		}
+	    }
+	    else {
+		this.opponent.sanity =- 1
 	    }
 
 	    this.runDebate();

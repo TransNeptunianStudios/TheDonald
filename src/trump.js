@@ -35,8 +35,6 @@ export default class Trump extends Phaser.Sprite {
 	}, this);
     }
 
-
-
     // Initialize Trump for a new level
     initLevel(point) {
 	this.frame = 2
@@ -96,12 +94,12 @@ export default class Trump extends Phaser.Sprite {
     }
 
     incrementConfidence () {
-	this.confidence += 10
+	//this.confidence += 10
 	this.healthbar.setPercent(this.confidence);
     }
 
     decrementConfidence () {
-	this.confidence -= 10
+	this.confidence -= 50
 	this.healthbar.setPercent(this.confidence);
     }
 

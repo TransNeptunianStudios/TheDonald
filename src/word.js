@@ -15,7 +15,7 @@ export default class Word {
 	    {
 		font: '16px Verdana',
 		//fill: '#000000',
-		backgroundColor: 'rgba(0,255,0,0.25)'
+		//backgroundColor: 'rgba(0,255,0,0.25)'
 	    })
 
 	this.text.anchor.set(0.5)
