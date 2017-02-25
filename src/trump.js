@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import Quote from './quote'
-import HealthBar from './healthbar'
+import HealthBar from './healthbar.js'
 
 export default class Trump extends Phaser.Sprite {
     constructor(game) {
@@ -17,7 +17,7 @@ export default class Trump extends Phaser.Sprite {
 	this.onReadyForDebate = new Phaser.Signal()
 	this.walkTween = this.game.add.tween(this);
 
-	this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX, y: 50})
+	this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX, y: 50, width: 182, height: 32, bgImage: 'health_frame'})
 
 	this.confidence = 100
 
@@ -27,7 +27,7 @@ export default class Trump extends Phaser.Sprite {
     game_over(){
 	this.loadTexture('trump_game_over', 0);
 	this.animations.add('explode');
-	this.animations.add('fissle', [33, 34])
+	this.animations.add('fissle', [31, 32, 33, 34])
 	this.animations.play('explode', 10);
 
 	this.events.onAnimationComplete.add(function(){
@@ -110,8 +110,7 @@ export default class Trump extends Phaser.Sprite {
     doDebateWalk() {
 	this.walkDirection(0, 120).onComplete.addOnce(()=>{
 	    this.walkDirection(345, 0).onComplete.addOnce(()=>{
-		this.game_over()
-		//this.onReadyForDebate.dispatch();
+		this.onReadyForDebate.dispatch();
 	    }, this)
 	}, this)
     }

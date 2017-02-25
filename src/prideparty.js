@@ -4,7 +4,7 @@ import Opponent from './opponent'
 export default class PrideParty extends Level {
   constructor(game, trump) {
     super(game, trump)
-    this.background = 'prideCorridor'
+    this.background = 'baseCorridor'
     this.opponent = new Opponent(game);
   }
 

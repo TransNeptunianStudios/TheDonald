@@ -15,11 +15,11 @@ export default class Debate {
       this.onDebateComplete.dispatch()
       return
     }
-    
+
     this.opponent.askQuestion();
-    
+
     let quote = this.trumpQuotes.pop()
-    
+
     this.opponent.waitingForAnswer.addOnce((wordsInOrder) => {
       quote.runQuote()
     }, this)
@@ -28,15 +28,11 @@ export default class Debate {
 
       this.opponent.reset()
 
-      if (wordsInOrder)
-      {
-        this.trump.incrementConfidence()
-      }
-      else
+      if (!wordsInOrder)
       {
         this.trump.decrementConfidence()
-      }      
-      
+      }
+
       this.runDebate();
     })
 

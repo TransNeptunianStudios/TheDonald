@@ -1,24 +1,24 @@
 /**
- Copyright (c) 2015 Belahcen Marwane (b.marwane@gmail.com)
+   Copyright (c) 2015 Belahcen Marwane (b.marwane@gmail.com)
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
 
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
- */
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+*/
 
 var HealthBar = function(game, providedConfig) {
     this.game = game;
@@ -33,9 +33,9 @@ var HealthBar = function(game, providedConfig) {
 HealthBar.prototype.constructor = HealthBar;
 
 HealthBar.prototype.draw = function () {
-  this.drawBackground();
-  this.drawHealthBar();
-  this.setFixedToCamera(this.config.isFixedToCamera);
+    this.drawBackground();
+    this.drawHealthBar();
+    this.setFixedToCamera(this.config.isFixedToCamera);
 };
 
 HealthBar.prototype.setupConfiguration = function (providedConfig) {
@@ -47,13 +47,17 @@ HealthBar.prototype.mergeWithDefaultConfiguration = function(newConfig) {
     var defaultConfig= {
         width: 250,
         height: 40,
+	bgSprite: false,
         x: 0,
         y: 0,
         bg: {
             color: '#651828'
         },
         bar: {
-            color: '#FEFF03'
+            color: '#FEFF03',
+	    from: '#00FF00',
+	    to: '#FF0000'
+
         },
         animationDuration: 200,
         flipped: false,
@@ -75,14 +79,20 @@ function mergeObjetcs(targetObj, newObj) {
 }
 
 HealthBar.prototype.drawBackground = function() {
+    if( this.config.bgImage )
+    {
+	this.bgSprite = this.game.add.sprite(this.x-9, this.y, this.config.bgImage);
+    }
+    else
+    {
+	var bmd = this.game.add.bitmapData(this.config.width, this.config.height);
+	bmd.ctx.fillStyle = this.config.bg.color;
+	bmd.ctx.beginPath();
+	bmd.ctx.rect(0, 0, this.config.width, this.config.height);
+	bmd.ctx.fill();
 
-    var bmd = this.game.add.bitmapData(this.config.width, this.config.height);
-    bmd.ctx.fillStyle = this.config.bg.color;
-    bmd.ctx.beginPath();
-    bmd.ctx.rect(0, 0, this.config.width, this.config.height);
-    bmd.ctx.fill();
-
-    this.bgSprite = this.game.add.sprite(this.x, this.y, bmd);
+	this.bgSprite = this.game.add.sprite(this.x, this.y, bmd);
+    }
     this.bgSprite.anchor.set(0.5);
 
     if(this.flipped){
@@ -92,7 +102,8 @@ HealthBar.prototype.drawBackground = function() {
 
 HealthBar.prototype.drawHealthBar = function() {
     var bmd = this.game.add.bitmapData(this.config.width, this.config.height);
-    bmd.ctx.fillStyle = this.config.bar.color;
+    var color = this.config.bar.color
+    bmd.ctx.fillStyle = color
     bmd.ctx.beginPath();
     bmd.ctx.rect(0, 0, (this.percent * this.config.width) / 100, this.config.height);
     bmd.ctx.fill();
