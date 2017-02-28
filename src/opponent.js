@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import Bubble from './bubble'
 
 export default class Opponent extends Phaser.Sprite {
     constructor(game) {
