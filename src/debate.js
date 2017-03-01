@@ -10,7 +10,8 @@ export default class Debate {
     }
 
     runDebate (difficulty) {
-	if (this.trumpQuotes.length == 0) {
+	if (this.trumpQuotes.length == 0 || this.opponent.sanity < 1) {
+	    this.opponent.reset()
 	    this.onDebateComplete.dispatch()
 	    return
 	}
