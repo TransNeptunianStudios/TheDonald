@@ -40,9 +40,7 @@ export default class Debate {
 	    else {
 		this.opponent.sanity =- 1
 	    }
-
 	    this.runDebate();
 	})
-
     }
 }

@@ -7,6 +7,7 @@ export default class Quote {
 	this.sound = game.add.audio(asset)
 	this.onQuoteComplete = new Phaser.Signal()
 	this.words = []
+	this.words_said = []
 
 	// Word table
 	//
@@ -67,11 +68,10 @@ export default class Quote {
 	this.words.forEach((word) => {
 
 	    word.onWordPressed.add(() => {
-
-		this.sound.play(word.word)
+		this.words_said.push(word)
+		//this.sound.play(word.word)
 
 		let correctWord = this.words.pop()
-
 		if (correctWord.word != word.word) {
 		    wordsInOrder = false
 		}
@@ -81,7 +81,7 @@ export default class Quote {
 		if (this.numberOfWords == 0) {
 		    this.onQuoteComplete.dispatch(wordsInOrder)
 		}
-	    })
+	    }, this)
 
 	    let position = cells.pop()
 

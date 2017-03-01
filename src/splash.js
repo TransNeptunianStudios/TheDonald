@@ -29,6 +29,8 @@ export default class extends Phaser.State {
 	this.load.image('pride_flag', './assets/images/pride/Pride_flag.png')
 	this.load.image('pride_symbol', './assets/images/pride/Pride_hbtq_symbol.png')
 
+	// Science corridor
+	this.load.spritesheet('science_main', './assets/images/science/Science_main.png', 45, 90)
 
 	// KKK corridor
 	this.load.spritesheet('kkk_cross', './assets/images/kkk/cross.png', 126, 208)
@@ -40,7 +42,6 @@ export default class extends Phaser.State {
 
 	this.load.spritesheet('trump', './assets/images/trump.png', 50, 100)
         this.load.spritesheet('trump_game_over', './assets/images/trump_death.png', 50, 150)
-	this.load.spritesheet('opponent', './assets/images/pride/vickan.png', 17, 32)
 
 	this.load.audio('suffer', './assets/sounds/i_just_want_them_to_suffer.mp3')
 	this.load.audio('noAction', './assets/sounds/too_much_talk_not_enough_action.mp3')
