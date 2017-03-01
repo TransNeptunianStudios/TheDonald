@@ -9,8 +9,8 @@ export default class Opponent extends Phaser.Sprite {
 	this.waitingForAnswer = new Phaser.Signal()
 
 	this.frame = 0
-	this.animations.add('talk', [0, 1, 2, 3], 10, true)
-	this.animations.add('collapse', [4, 5, 6, 7], 10, true)
+	this.animations.add('talk', [1, 2, 3, 4], 10, true)
+	this.animations.add('collapse', [5, 6, 7], 10, true)
 
 	this.sanity = 1
 

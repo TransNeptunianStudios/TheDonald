@@ -94,7 +94,7 @@ export default class Trump extends Phaser.Sprite {
     }
 
     incrementConfidence () {
-	//this.confidence += 10
+	this.confidence += 10
 	this.healthbar.setPercent(this.confidence);
     }
 
