@@ -24,6 +24,12 @@ export default class extends Phaser.State {
 	this.load.image('hanging_lamp', './assets/images/hanging_lamp.png')
 	this.load.image('plant', './assets/images/plant.png')
 
+	// Pride corridor
+	this.load.spritesheet('pride_main', './assets/images/pride/Pride_main.png', 50, 142)
+	this.load.image('pride_flag', './assets/images/pride/Pride_flag.png')
+	this.load.image('pride_symbol', './assets/images/pride/Pride_hbtq_symbol.png')
+
+
 	// KKK corridor
 	this.load.spritesheet('kkk_cross', './assets/images/kkk/cross.png', 126, 208)
 	this.load.spritesheet('kkk_ladder', './assets/images/kkk/ladder.png', 196, 261)

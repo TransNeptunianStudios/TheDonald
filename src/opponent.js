@@ -2,21 +2,19 @@ import Phaser from 'phaser'
 import Bubble from './bubble'
 
 export default class Opponent extends Phaser.Sprite {
-    constructor(game) {
-	super(game, 500, 445, 'opponent')
+    constructor(game, opponent) {
+	super(game, 500, 445, opponent)
 	this.anchor.setTo(0.5, 1);
 
 	this.waitingForAnswer = new Phaser.Signal()
 
-	// while we use vickan graphics
-	this.scale.setTo(2.5, 2.5)
 	this.frame = 0
-	this.animations.add('talk', [0, 1], 10, true)
-	this.animations.add('collapse', [2, 3], 10, true)
+	this.animations.add('talk', [0, 1, 2, 3], 10, true)
+	this.animations.add('collapse', [4, 5, 6, 7], 10, true)
 
 	this.sanity = 1
 
-	this.bubble = new Bubble(this.game, this.x, this.y, true)
+	this.bubble = new Bubble(this.game, this.x, this.y-40, true)
     }
 
     reset() {
