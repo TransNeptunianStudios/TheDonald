@@ -24,6 +24,9 @@ export default class extends Phaser.State {
 	this.load.image('hanging_lamp', './assets/images/hanging_lamp.png')
 	this.load.image('plant', './assets/images/plant.png')
 
+	// Eid party
+	this.load.image('eid_flag', './assets/images/eid/eid_flag.png')
+
 	// Pride corridor
 	this.load.spritesheet('pride_main', './assets/images/pride/Pride_main.png', 50, 142)
 	this.load.image('pride_flag', './assets/images/pride/Pride_flag.png')
@@ -31,6 +34,7 @@ export default class extends Phaser.State {
 
 	// Science corridor
 	this.load.spritesheet('science_main', './assets/images/science/Science_main.png', 45, 90)
+	this.load.spritesheet('science_ape', './assets/images/science/ape.png', 133, 56)
 
 	// KKK corridor
 	this.load.spritesheet('kkk_cross', './assets/images/kkk/cross.png', 126, 208)
