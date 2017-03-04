@@ -2,24 +2,17 @@ import Phaser from 'phaser'
 import Word from './word'
 
 export default class Quote {
-    constructor(game, asset) {
+    constructor(game, sentence, asset) {
 	this.game = game
-	this.sound = game.add.audio(asset)
 	this.onQuoteComplete = new Phaser.Signal()
 	this.words = []
 	this.words_said = []
 
-	// Word table
-	//
-	// nrOfRows =
-	// nrOfColumns =
-	// rowWidth =
-	// columnWidth =
-	//
-	// 1. Calculate center position for each cell in the table
-	// 2. Store these values in a list
-	// 3. "Scrabble" list
-	// 4. Pick a position for each word
+	if (sentence)
+	    this.addSimpleSentence(sentence)
+
+	if(asset)
+	    this.sound = game.add.audio(asset)
     }
 
     // size = nr of rows and columns
@@ -43,20 +36,26 @@ export default class Quote {
 	this.words.push(new Word(this.game, word))
     }
 
+    addSimpleSentence(sentence) {
+	sentence.forEach((word) => {
+	    this.words.push(new Word(this.game, word))
+	}, this)
+    }
+
     runQuote() {
 	let quoteDuration = 0.0
 
 	// Calculate total duration of quote
-	for (var key in this.sound.markers) {
-	    quoteDuration += this.sound.markers[key].duration
-	}
+	//for (var key in this.sound.markers) {
+	//    quoteDuration += this.sound.markers[key].duration
+	//}
 
 	this.numberOfWords = this.words.length
 
-	let wordTableSize = Math.floor(this.numberOfWords / 2.0 + 0.5)
+	let wordTableSize = Math.floor(this.numberOfWords / 2.0+ 0.5)
 
 	// TODO: Get column width and row height by inspecting word list
-	let cells = this.createWordTable(wordTableSize, 150, 50)
+	let cells = this.createWordTable(wordTableSize, 80, 30)
 
 	cells = Phaser.ArrayUtils.shuffle(cells)
 

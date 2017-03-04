@@ -61,23 +61,16 @@ export default class Trump extends Phaser.Sprite {
     createQuotes () {
 	this.quotes = []
 
-	let suffer = new Quote(game, 'suffer')
-	suffer.addWord('i', 0.0, 0.35)
-	suffer.addWord('just', 0.35, 0.30)
-	suffer.addWord('want', 0.65, 0.25)
-	suffer.addWord('them', 0.90, 0.20)
-	suffer.addWord('to', 1.10, 0.25)
-	suffer.addWord('suffer', 1.35, 0.65)
-	this.quotes.push(suffer)
+	this.quotes.push(new Quote(game, ["I", "just", "want", "them", "to", "suffer"], 'suffer'))
+	this.quotes.push(new Quote(game, ["Too", "much", "talk", "not", "enough", "action"], 'noAction'))
 
-	let noAction = new Quote(game, 'noAction')
-	noAction.addWord('to', 0.0, 0.25)
-	noAction.addWord('much', 0.20, 0.35)
-	noAction.addWord('talk', 0.6, 0.5)
-	noAction.addWord('not', 1.30, 0.22)
-	noAction.addWord('enough', 1.55, 0.20)
-	noAction.addWord('action', 1.75, 0.4)
-	this.quotes.push(noAction)
+	this.quotes.push(new Quote(game, ["Grab", "them", "by", "the", "pussy"]))
+	this.quotes.push(new Quote(game, ["that's", "fake", "news"]))
+	this.quotes.push(new Quote(game, ["My", "I.Q", "is", "one",  "of", "the", "highest"]))
+	//this.quotes.push(new Quote(game, ["if", "Ivanka", "weren’t", "my", "daughter", "perhaps", "I’d",  "be", "dating", "her."]))
+	this.quotes.push(new Quote(game, ["I", "love", "Neil Young", "and", "he", "loves", "me!"]))
+	//this.quotes.push(new Quote(game, ["Part", "of", "the", "beauty", "of", "me", "is", "that", "Im",  "very", "rich."]))
+	this.quotes.push(new Quote(game, ["I", "know", "words", "I", "have", "the", "best", "words."]))
     }
 
     show_thought_bubble(){
