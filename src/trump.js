@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import Quote from './quote'
 import HealthBar from './healthbar.js'
+import Bubble from './bubble'
 
 export default class Trump extends Phaser.Sprite {
     constructor(game) {
@@ -75,11 +76,20 @@ export default class Trump extends Phaser.Sprite {
     }
 
     show_thought_bubble(){
-	this.bubble = this.game.add.sprite(140, 120, 'thought_bubble')
+	this.thought_bubble = this.game.add.sprite(140, 120, 'thought_bubble')
     }
 
     remove_thought_bubble(){
-	this.bubble.destroy()
+	this.thought_bubble.destroy()
+    }
+    talk(text)
+    {
+	this.bubble = new Bubble(this.game, this.x, this.y, 'left')
+    	this.bubble.create_speach(text);
+    }
+
+    shut_up(){
+	this.bubble.remove()
     }
 
     getQuotes (difficulty) {

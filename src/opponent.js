@@ -14,11 +14,11 @@ export default class Opponent extends Phaser.Sprite {
 
 	this.sanity = 2
 
-	this.bubble = new Bubble(this.game, this.x, this.y-40, true)
+	this.bubble = new Bubble(this.game, this.x, this.y, 'right')
     }
 
     reset() {
-	this.bubble.reset()
+	this.bubble.remove()
 
 	if(this.sanity == 0)
 	    this.animations.play('collapse')

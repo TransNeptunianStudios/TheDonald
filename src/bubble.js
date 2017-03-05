@@ -2,10 +2,15 @@ import Phaser from 'phaser'
 
 export default class Bubble extends Phaser.Group {
 
-    constructor(game, x, y, flipped = false) {
+    constructor(game, x, y, orientation) {
 	super(game)
-	this.x = x + 60
-	this.y = y - 140
+	this.ori = orientation
+	this.y = y - 150
+	if(this.ori === 'left')
+	    this.x = x -180
+	else if(this.ori === 'right')
+	    this.x = x + 180
+
 	this.graphics = game.add.graphics(x, y)
 	this.displayText = this.game.add.text(
             this.x, this.y,"",
@@ -15,12 +20,17 @@ export default class Bubble extends Phaser.Group {
                 wordWrap: true,
                 wordWrapWidth: 250
             })
+	this.displayText.anchor.setTo(0.5)
     }
 
     reset(){
+	this.remove()
+	this.graphics = this.game.add.graphics(0, 0)
+    }
+
+    remove(){
 	if(this.graphics)
 	    this.graphics.clear()
-	this.graphics = this.game.add.graphics(0, 0)
 	this.displayText.text = ""
     }
 
@@ -28,16 +38,23 @@ export default class Bubble extends Phaser.Group {
 	this.reset()
 	this.displayText.text = text;
 	this.graphics.beginFill(0xFFFFFF)
-	this.graphics.drawRoundedRect( this.x - 10,
-				       this.y - 10,
-				       this.displayText.width+20,
-				       this.displayText.height+10)
+	var margin = 15
+	this.graphics.drawRoundedRect( this.x - this.displayText.width/2 - margin,
+				       this.y - this.displayText.height/2 - margin,
+				       this.displayText.width + 2*margin,
+				       this.displayText.height + 2*margin)
 	this.graphics.endFill();
 
+
 	this.graphics.beginFill(0xFFFFFF)
-	this.graphics.moveTo(this.x + 10, this.y + this.displayText.height)
-	this.graphics.lineTo(this.x - 15, this.y + this.displayText.height+50)
-	this.graphics.lineTo(this.x + 25, this.y + this.displayText.height)
+	this.graphics.moveTo(this.x-15, this.y + this.displayText.height/2)
+
+	if(this.ori === 'left')
+	    this.graphics.lineTo(this.x+this.displayText.width/2, this.y + this.displayText.height+40)
+	else if (this.ori === 'right')
+	    this.graphics.lineTo(this.x-this.displayText.width/2, this.y + this.displayText.height+40)
+
+	this.graphics.lineTo(this.x+15, this.y + this.displayText.height/2)
 	this.graphics.endFill();
 
 	this.game.world.bringToTop(this.displayText)

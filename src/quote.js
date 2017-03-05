@@ -67,18 +67,18 @@ export default class Quote {
 	this.words.forEach((word) => {
 
 	    word.onWordPressed.add(() => {
-		this.words_said.push(word)
+		this.words_said.push(word.word)
 		//this.sound.play(word.word)
 
 		let correctWord = this.words.pop()
-		if (!correctWord.word.includes(word.word)) {
+		if (correctWord.word != word.word) {
 		    wordsInOrder = false
 		}
 
 		this.numberOfWords -= 1
 
 		if (this.numberOfWords == 0) {
-		    this.onQuoteComplete.dispatch(wordsInOrder)
+		    this.onQuoteComplete.dispatch(wordsInOrder, this.words_said)
 		}
 	    }, this)
 

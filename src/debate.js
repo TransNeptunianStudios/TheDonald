@@ -29,21 +29,28 @@ export default class Debate {
 	    quote.runQuote()
 	}, this)
 
-	quote.onQuoteComplete.addOnce((wordsInOrder) => {
+	quote.onQuoteComplete.addOnce((wordsInOrder, actualwords) => {
+	    var sentence = actualwords.join(" ")
 	    this.trump.remove_thought_bubble()
+	    this.trump.talk(sentence)
+	    this.opponent.reset()
+	    this.game.time.events.add(Phaser.Timer.SECOND * 4, this.evaluate, this, wordsInOrder);
+	}, this)
+    }
 
-	    if (!wordsInOrder)
-	    {
-		this.trump.decrementConfidence()
-		if ( this.trump.confidence < 1){
-		    this.trump.game_over();
-		    return
-		}
+    evaluate(wordsInOrder){
+	this.trump.shut_up()
+	if (!wordsInOrder)
+	{
+	    this.trump.decrementConfidence()
+	    if ( this.trump.confidence < 1){
+		this.trump.game_over();
+		return
 	    }
-	    else
-		this.opponent.sanity -= 1
+	}
+	else
+	    this.opponent.sanity -= 1
 
-	    this.runDebate();
-	})
+	this.runDebate();
     }
 }
