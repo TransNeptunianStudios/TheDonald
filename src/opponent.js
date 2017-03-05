@@ -12,7 +12,7 @@ export default class Opponent extends Phaser.Sprite {
 	this.animations.add('talk', [1, 2, 3, 4], 10, true)
 	this.animations.add('collapse', [5, 6, 7], 10, true)
 
-	this.sanity = 1
+	this.sanity = 2
 
 	this.bubble = new Bubble(this.game, this.x, this.y-40, true)
     }
@@ -20,7 +20,7 @@ export default class Opponent extends Phaser.Sprite {
     reset() {
 	this.bubble.reset()
 
-	if(this.sanity < 1)
+	if(this.sanity == 0)
 	    this.animations.play('collapse')
     }
 
@@ -35,7 +35,8 @@ export default class Opponent extends Phaser.Sprite {
                              "Do you belive mexicans are rapists?!",
                              "How big are your hands?",
                              "Will you really jail Hillary?",
-                             "Do you like Putin?"]
+                             "Do you like Putin?",
+			     "Can you read?"]
 	allQuestions = Phaser.ArrayUtils.shuffle(allQuestions);
 
 	let question = "...what?"

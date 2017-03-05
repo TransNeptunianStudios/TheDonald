@@ -10,12 +10,16 @@ export default class Debate {
     }
 
     runDebate (difficulty) {
-	if (this.trumpQuotes.length == 0 || this.opponent.sanity < 1) {
+	if (this.opponent.sanity == 0) {
 	    this.opponent.reset()
 	    this.onDebateComplete.dispatch()
 	    return
 	}
-
+	else if(this.trumpQuotes.length == 0){
+	    this.trump.game_over()
+	    this.onDebateComplete.dispatch()
+	    return
+	}
 	this.opponent.askQuestion();
 
 	let quote = this.trumpQuotes.pop()
@@ -27,7 +31,6 @@ export default class Debate {
 
 	quote.onQuoteComplete.addOnce((wordsInOrder) => {
 	    this.trump.remove_thought_bubble()
-	    this.opponent.reset()
 
 	    if (!wordsInOrder)
 	    {
@@ -37,9 +40,9 @@ export default class Debate {
 		    return
 		}
 	    }
-	    else {
-		this.opponent.sanity =- 1
-	    }
+	    else
+		this.opponent.sanity -= 1
+
 	    this.runDebate();
 	})
     }

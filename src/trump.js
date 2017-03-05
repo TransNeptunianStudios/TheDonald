@@ -66,10 +66,11 @@ export default class Trump extends Phaser.Sprite {
 
 	this.quotes.push(new Quote(game, ["Grab", "them", "by", "the", "pussy"]))
 	this.quotes.push(new Quote(game, ["that's", "fake", "news"]))
+	this.quotes.push(new Quote(game, ["Build", "that", "wall!"]))
 	this.quotes.push(new Quote(game, ["My", "I.Q", "is", "one",  "of", "the", "highest"]))
-	//this.quotes.push(new Quote(game, ["if", "Ivanka", "weren’t", "my", "daughter", "perhaps", "I’d",  "be", "dating", "her."]))
+//	this.quotes.push(new Quote(game, ["if", "Ivanka", "weren’t", "my", "daughter", "perhaps", "I’d",  "be", "dating", "her."]))
 	this.quotes.push(new Quote(game, ["I", "love", "Neil Young", "and", "he", "loves", "me!"]))
-	//this.quotes.push(new Quote(game, ["Part", "of", "the", "beauty", "of", "me", "is", "that", "Im",  "very", "rich."]))
+//	this.quotes.push(new Quote(game, ["Part", "of", "the", "beauty", "of", "me", "is", "that", "Im",  "very", "rich."]))
 	this.quotes.push(new Quote(game, ["I", "know", "words", "I", "have", "the", "best", "words."]))
     }
 
@@ -87,12 +88,12 @@ export default class Trump extends Phaser.Sprite {
     }
 
     incrementConfidence () {
-	this.confidence += 10
+	this.confidence += 30
 	this.healthbar.setPercent(this.confidence);
     }
 
     decrementConfidence () {
-	this.confidence -= 50
+	this.confidence -= 30
 	this.healthbar.setPercent(this.confidence);
     }
 
