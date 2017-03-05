@@ -34,7 +34,7 @@ export default class Debate {
 	    this.trump.remove_thought_bubble()
 	    this.trump.talk(sentence)
 	    this.opponent.reset()
-	    this.game.time.events.add(Phaser.Timer.SECOND * 4, this.evaluate, this, wordsInOrder);
+	    this.game.time.events.add(Phaser.Timer.SECOND * 2, this.evaluate, this, wordsInOrder);
 	}, this)
     }
 

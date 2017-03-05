@@ -73,6 +73,7 @@ export default class Trump extends Phaser.Sprite {
 	this.quotes.push(new Quote(game, ["I", "love", "Neil Young", "and", "he", "loves", "me!"]))
 //	this.quotes.push(new Quote(game, ["Part", "of", "the", "beauty", "of", "me", "is", "that", "Im",  "very", "rich."]))
 	this.quotes.push(new Quote(game, ["I", "know", "words", "I", "have", "the", "best", "words."]))
+	Phaser.ArrayUtils.shuffle(this.quotes)
     }
 
     show_thought_bubble(){

@@ -45,6 +45,10 @@ export default class extends Phaser.State {
 	this.load.spritesheet('kkk_kids_and_dog', './assets/images/kkk/kids_and_dog.png', 133,73)
 	this.load.spritesheet('kkk_clansman_1', './assets/images/kkk/clansman_1.png', 61, 110)
 
+	// Church corridor
+	this.load.spritesheet('preacher_man', './assets/images/church/church_main48x117.png', 48, 117)
+	this.load.image('crusifix', './assets/images/church/church_crucifix.png')
+
 	this.load.spritesheet('trump', './assets/images/trump.png', 50, 100)
         this.load.spritesheet('trump_game_over', './assets/images/trump_death.png', 50, 150)
 

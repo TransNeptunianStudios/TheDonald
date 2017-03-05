@@ -5,6 +5,7 @@ import PrideParty from './prideparty'
 import kkkMeeting from './kkkmeeting'
 import Science from './science'
 import EidParty from './eidparty'
+import Church from './church'
 
 export default class extends Phaser.State {
     init () {}
@@ -28,6 +29,7 @@ export default class extends Phaser.State {
 	this.levels.push(new PrideParty(this.game, this.trump))
 	this.levels.push(new kkkMeeting(this.game, this.trump))
 	this.levels.push(new Science(this.game, this.trump))
+	this.levels.push(new Church(this.game, this.trump))
 	this.levels.push(new EidParty(this.game, this.trump))
 	//this.levels.push(new ChurchMeeting(this.game, this.trump))
 	this.nextLevel()
