@@ -15,6 +15,7 @@ export default class extends Phaser.State {
     create () {
 
 	this.trump = new Trump(this.game)
+	this.trump.onDead.addOnce(this.showRetryButton, this)
 
 	// 1. Create list with all corridors
 	// 2. Run lobby scene
@@ -31,7 +32,6 @@ export default class extends Phaser.State {
 	this.levels.push(new Science(this.game, this.trump))
 	this.levels.push(new Church(this.game, this.trump))
 	this.levels.push(new EidParty(this.game, this.trump))
-	//this.levels.push(new ChurchMeeting(this.game, this.trump))
 	this.nextLevel()
     }
 
@@ -50,13 +50,25 @@ export default class extends Phaser.State {
 	}
     }
 
+    showRetryButton() {
+	this.retryBtn = this.game.add.button(this.game.world.centerX,
+					     this.game.world.centerY,
+					     'retry_button',
+					     this.returnToMenu,
+					     this,
+					     0,
+					     1,
+					     2);
+	this.retryBtn.anchor.setTo(0.5)
+
+    }
+
+    returnToMenu() {
+	this.state.start('MainMenu');
+    }
+
     update () {
 	if(this.level)
 	    this.level.update();
-    }
-
-    render () {
-	//    if (__DEV__) {
-	//    }
     }
 }

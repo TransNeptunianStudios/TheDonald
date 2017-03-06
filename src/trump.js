@@ -16,6 +16,7 @@ export default class Trump extends Phaser.Sprite {
 
 	this.onCallingElevator = new Phaser.Signal()
 	this.onReadyForDebate = new Phaser.Signal()
+	this.onDead = new Phaser.Signal()
 	this.walkTween = this.game.add.tween(this);
 
 	this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX, y: 40, width: 182, height: 32, bgImage: 'health_frame'})
@@ -33,6 +34,7 @@ export default class Trump extends Phaser.Sprite {
 
 	this.events.onAnimationComplete.add(function(){
 	    this.play('fissle', 10, true)
+	    this.onDead.dispatch()
 	}, this);
     }
 
@@ -104,7 +106,7 @@ export default class Trump extends Phaser.Sprite {
     }
 
     decrementConfidence () {
-	this.confidence -= 30
+	this.confidence -= 50
 	this.healthbar.setPercent(this.confidence);
     }
 

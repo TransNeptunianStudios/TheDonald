@@ -26,7 +26,7 @@ export default class extends Phaser.State {
 	    this.trump.walkTween.onComplete.add(()=>{
 		this.trump.walkDirection(-450, 0);
 		this.trump.walkTween.onComplete.add(()=>{
-		    this.trump.game_over()
+		    this.showRetryButton();
 		}, this)
 	    }, this)
 	})
@@ -39,27 +39,7 @@ export default class extends Phaser.State {
 
 	this.title.anchor.setTo(0.5)
 
-	this.playBtn = new TextButton({
-	    game: this.game,
-	    x: this.game.world.centerX,
-	    y: this.game.world.centerY,
-	    asset: 'playBtn',
-	    overFrame: 2,
-	    outFrame: 1,
-	    downFrame: 0,
-	    upFrame: 1,
-	    label: 'Ok',
-	    style: {
-		font: '16px Verdana',
-		fill: 'white',
-		align: 'center'
-	    },
-	    callback: this.okPressed,
-	    callbackContext: this
-	})
-
 	this.menuGrp.add(this.title)
-	this.menuGrp.add(this.playBtn)
 
 	this.game.camera.onFlashComplete.addOnce(()=>{
             this.elevator.open();
@@ -67,8 +47,20 @@ export default class extends Phaser.State {
 	this.game.camera.flash('#000000')
     }
 
-    okPressed () {
-	this.state.start('MainMenu');
+    showRetryButton() {
+	this.retryBtn = this.game.add.button(this.game.world.centerX,
+					     this.game.world.centerY,
+					     'replay_button',
+					     this.gotoMainMenu,
+					     this,
+					     0,
+					     1,
+					     2);
+	this.retryBtn.anchor.setTo(0.5)
+    }
+
+    gotoMainMenu(){
+	this.state.start('MainMenu')
     }
 
     update() {
