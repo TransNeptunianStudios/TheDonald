@@ -8,21 +8,27 @@ export default class extends Phaser.State {
     preload () {
 	// Should these really be here?
 	this.load.image('tnsLogo', './assets/images/tns-logo.png')
-	this.load.image('playBtn', './assets/images/play-button.png')
-	this.load.image('menuBackground', './assets/images/menu-background.png')
-	this.load.image('health_frame', './assets/images/Confidence_meter_frame.png')
-	this.load.image('thought_bubble', './assets/images/thoughts.png')
-
-	this.load.image('baseCorridor', './assets/images/base-corridor.png')
 	this.load.image('office', './assets/images/office.png')
 
-	// Corridor stuff
-	this.load.image('elevator', './assets/images/elevator.png')
-	this.load.image('elevator-door', './assets/images/elevator-door.png')
-	this.load.image('elevator-button', './assets/images/elevator-button.png')
+	// Donaldstuff
+	this.load.image('health_frame', './assets/images/donald/Confidence_meter_frame.png')
+	this.load.image('thought_bubble', './assets/images/thoughts.png')
+	this.load.spritesheet('trump', './assets/images/donald/trump.png', 50, 100)
+        this.load.spritesheet('trump_game_over', './assets/images/donald/trump_death.png', 50, 150)
 
-	this.load.image('hanging_lamp', './assets/images/hanging_lamp.png')
-	this.load.image('plant', './assets/images/plant.png')
+	// Menu stuff
+	this.load.spritesheet('play_button', './assets/images/menu/play_button.png', 100, 50)
+	this.load.spritesheet('replay_button', './assets/images/menu/replay_button.png', 100, 50)
+	this.load.spritesheet('retry_button', './assets/images/menu/retry_button.png', 100, 50)
+	this.load.image('menuBackground', './assets/images/menu/start_menu.png')
+
+	// Base corridor stuff
+	this.load.image('baseCorridor', './assets/images/base_corridor/base-corridor.png')
+	this.load.image('elevator', './assets/images/base_corridor/elevator.png')
+	this.load.image('elevator-door', './assets/images/base_corridor/elevator-door.png')
+	this.load.image('elevator-button', './assets/images/base_corridor/elevator-button.png')
+	this.load.image('hanging_lamp', './assets/images/base_corridor/hanging_lamp.png')
+	this.load.image('plant', './assets/images/base_corridor/plant.png')
 
 	// Eid party
 	this.load.image('eid_flag', './assets/images/eid/eid_flag.png')
@@ -49,11 +55,8 @@ export default class extends Phaser.State {
 	this.load.spritesheet('preacher_man', './assets/images/church/church_main48x117.png', 48, 117)
 	this.load.image('crusifix', './assets/images/church/church_crucifix.png')
 
-	this.load.spritesheet('trump', './assets/images/trump.png', 50, 100)
-        this.load.spritesheet('trump_game_over', './assets/images/trump_death.png', 50, 150)
-
-	this.load.audio('suffer', './assets/sounds/i_just_want_them_to_suffer.mp3')
-	this.load.audio('noAction', './assets/sounds/too_much_talk_not_enough_action.mp3')
+	//this.load.audio('suffer', './assets/sounds/i_just_want_them_to_suffer.mp3')
+	//this.load.audio('noAction', './assets/sounds/too_much_talk_not_enough_action.mp3')
 	this.load.audio('elevatorBing', './assets/sounds/elevator_bing.mp3')
     }
 
