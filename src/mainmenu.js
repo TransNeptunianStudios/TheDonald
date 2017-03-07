@@ -9,17 +9,13 @@ export default class extends Phaser.State {
 
     create () {
 
-	this.background = this.game.add.sprite(0, 0, 'menuBackground');
+	this.background = this.game.add.sprite(0, 0, 'menuBackground')
 
-	this.title = new Phaser.Text(this.game, this.game.world.centerX, 40, 'The Donald', {
-	    font: '36px Tahoma',
-	    fill: 'black',
-	    align: 'center'
-	})
+	var title = this.game.add.sprite(-300, 50, 'title')
+	title.anchor.setTo(0.5)
+	this.game.add.tween(title).to({ x: 660}, 1000 + Math.random() * 3000, Phaser.Easing.Bounce.Out, true)
 
-	this.title.anchor.setTo(0.5)
-
-	this.playBtn = this.game.add.button(this.game.world.centerX - 20,
+	this.playBtn = this.game.add.button(game.world.centerX-20,
 					    this.game.world.centerY + 100,
 					    'play_button',
 					    this.playPressed,
@@ -30,7 +26,7 @@ export default class extends Phaser.State {
 	this.playBtn.anchor.setTo(0.5)
 
 	this.menuGrp = this.add.group()
-	this.menuGrp.add(this.title)
+	this.menuGrp.add(title)
 	this.menuGrp.add(this.playBtn)
     }
 

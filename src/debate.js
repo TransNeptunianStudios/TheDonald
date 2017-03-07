@@ -25,6 +25,7 @@ export default class Debate {
 	let quote = this.trumpQuotes.pop()
 
 	this.opponent.waitingForAnswer.addOnce((wordsInOrder) => {
+	    this.opponent.reset()
 	    this.trump.show_thought_bubble()
 	    quote.runQuote()
 	}, this)

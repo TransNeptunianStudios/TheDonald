@@ -26,17 +26,13 @@ export default class extends Phaser.State {
 	    this.trump.walkTween.onComplete.add(()=>{
 		this.trump.walkDirection(-450, 0);
 		this.trump.walkTween.onComplete.add(()=>{
+		    this.trump.frame = 2
 		    this.showRetryButton();
 		}, this)
 	    }, this)
 	})
 
-	this.title = new Phaser.Text(this.game, this.game.world.centerX, this.game.world.centerY-this.game.world.height/6, 'You WON', {
-	    font: '36px Tahoma',
-	    fill: 'white',
-	    align: 'center'
-	})
-
+	this.title = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'you_won_title');
 	this.title.anchor.setTo(0.5)
 
 	this.menuGrp.add(this.title)
@@ -49,7 +45,7 @@ export default class extends Phaser.State {
 
     showRetryButton() {
 	this.retryBtn = this.game.add.button(this.game.world.centerX,
-					     this.game.world.centerY,
+					     this.game.world.height-150,
 					     'replay_button',
 					     this.gotoMainMenu,
 					     this,
