@@ -21,6 +21,7 @@ export default class extends Phaser.State {
 	this.load.spritesheet('replay_button', './assets/images/menu/replay_button.png', 144, 50)
 	this.load.spritesheet('retry_button', './assets/images/menu/retry_button.png', 127, 50)
 	this.load.image('menuBackground', './assets/images/menu/start_menu.png')
+	this.load.image('title', './assets/images/menu/title.png')
 
 	// Base corridor stuff
 	this.load.image('baseCorridor', './assets/images/base_corridor/base-corridor.png')

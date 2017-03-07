@@ -20,7 +20,7 @@ export default class Bubble extends Phaser.Group {
                 wordWrap: true,
                 wordWrapWidth: 250
             })
-	this.displayText.anchor.setTo(0.5)
+	this.displayText.anchor.setTo(1.0)
     }
 
     reset(){
@@ -39,22 +39,22 @@ export default class Bubble extends Phaser.Group {
 	this.displayText.text = text;
 	this.graphics.beginFill(0xFFFFFF)
 	var margin = 15
-	this.graphics.drawRoundedRect( this.x - this.displayText.width/2 - margin,
-				       this.y - this.displayText.height/2 - margin,
+	this.graphics.drawRoundedRect( this.x - this.displayText.width - margin,
+				       this.y - this.displayText.height - margin,
 				       this.displayText.width + 2*margin,
 				       this.displayText.height + 2*margin)
 	this.graphics.endFill();
 
 
 	this.graphics.beginFill(0xFFFFFF)
-	this.graphics.moveTo(this.x-15, this.y + this.displayText.height/2)
+	this.graphics.moveTo(this.x-15, this.y )
 
 	if(this.ori === 'left')
-	    this.graphics.lineTo(this.x+this.displayText.width/2, this.y + this.displayText.height+40)
+	    this.graphics.lineTo(this.x+this.displayText.width/2, this.y + 40)
 	else if (this.ori === 'right')
-	    this.graphics.lineTo(this.x-this.displayText.width/2, this.y + this.displayText.height+40)
+	    this.graphics.lineTo(this.x-this.displayText.width/2, this.y + 40)
 
-	this.graphics.lineTo(this.x+15, this.y + this.displayText.height/2)
+	this.graphics.lineTo(this.x+15, this.y)
 	this.graphics.endFill();
 
 	this.game.world.bringToTop(this.displayText)

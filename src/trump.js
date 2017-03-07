@@ -13,6 +13,7 @@ export default class Trump extends Phaser.Sprite {
 	this.animations.add('west', [12, 13, 14, 15, 16, 17, 18, 19], 15, true);
 	this.animations.add('south', [20, 21, 22, 23, 24, 25, 26, 27], 15, true);
 	this.animations.add('east', [28, 29, 30, 31, 32, 33, 34, 35], 15, true);
+	//this.animations.add('failed', [, true);
 
 	this.onCallingElevator = new Phaser.Signal()
 	this.onReadyForDebate = new Phaser.Signal()
