@@ -13,7 +13,7 @@ export default class extends Phaser.State {
 
 	var title = this.game.add.sprite(-300, 50, 'title')
 	title.anchor.setTo(0.5)
-	this.game.add.tween(title).to({ x: 660}, 1000 + Math.random() * 3000, Phaser.Easing.Bounce.Out, true)
+	this.game.add.tween(title).to({ x: 660}, 1000 + 2000, Phaser.Easing.Bounce.Out, true)
 
 	this.playBtn = this.game.add.button(game.world.centerX-20,
 					    this.game.world.centerY + 100,

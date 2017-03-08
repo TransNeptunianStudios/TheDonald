@@ -38,6 +38,7 @@ export default class extends Phaser.State {
 
 	// Pride corridor
 	this.load.spritesheet('pride_main', './assets/images/pride/Pride_main.png', 50, 142)
+	this.load.spritesheet('pride_kaj', './assets/images/pride/Pride_kaj.png', 44, 93)
 	this.load.image('pride_flag', './assets/images/pride/Pride_flag.png')
 	this.load.image('pride_symbol', './assets/images/pride/Pride_hbtq_symbol.png')
 
