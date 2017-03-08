@@ -15,6 +15,7 @@ export default class extends Phaser.State {
 
 	console.log('Game complete!')
 	this.backGroup.create(0, 0, 'office')
+	this.midGroup.create(100, 30, 'end_paint')
 	this.elevator = new Elevator(game, this.game.width-100, 341, this.backGroup, this.midGroup)
 
 	this.trump = new Trump(this.game)

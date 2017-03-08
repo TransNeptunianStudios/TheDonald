@@ -9,6 +9,7 @@ export default class extends Phaser.State {
 	// Should these really be here?
 	this.load.image('tnsLogo', './assets/images/tns-logo.png')
 	this.load.image('office', './assets/images/office.png')
+	this.load.image('end_paint', './assets/images/end_paint.png')
 
 	// Donaldstuff
 	this.load.image('health_frame', './assets/images/donald/Confidence_meter_frame.png')
