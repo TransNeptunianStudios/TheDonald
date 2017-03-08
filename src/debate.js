@@ -22,15 +22,15 @@ export default class Debate {
 	}
 	this.opponent.askQuestion();
 
-	let quote = this.trumpQuotes.pop()
+	this.quote = this.trumpQuotes.pop()
 
 	this.opponent.waitingForAnswer.addOnce((wordsInOrder) => {
 	    this.opponent.reset()
 	    this.trump.show_thought_bubble()
-	    quote.runQuote()
+	    this.trump.thought_bubble.animations.currentAnim.onComplete.addOnce(() => { this.quote.runQuote()}, this)
 	}, this)
 
-	quote.onQuoteComplete.addOnce((wordsInOrder, actualwords) => {
+	this.quote.onQuoteComplete.addOnce((wordsInOrder, actualwords) => {
 	    var sentence = actualwords.join(" ")
 	    this.trump.remove_thought_bubble()
 	    this.opponent.reset()

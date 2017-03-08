@@ -7,7 +7,7 @@ export default class Bubble extends Phaser.Group {
 	this.ori = orientation
 	this.y = y - 150
 	if(this.ori === 'left')
-	    this.x = x -180
+	    this.x = x
 	else if(this.ori === 'right')
 	    this.x = x + 180
 
@@ -47,14 +47,19 @@ export default class Bubble extends Phaser.Group {
 
 
 	this.graphics.beginFill(0xFFFFFF)
-	this.graphics.moveTo(this.x-15, this.y )
 
-	if(this.ori === 'left')
-	    this.graphics.lineTo(this.x+this.displayText.width/2, this.y + 40)
-	else if (this.ori === 'right')
-	    this.graphics.lineTo(this.x-this.displayText.width/2, this.y + 40)
 
-	this.graphics.lineTo(this.x+15, this.y)
+	if(this.ori === 'left'){
+	    this.graphics.moveTo(this.x - this.displayText.width, this.y+10)
+	    this.graphics.lineTo(this.x - this.graphics.width/2 + 30,  this.y + 60)
+	    this.graphics.lineTo(this.x - this.displayText.width + 35, this.y+10)
+	}
+	else if (this.ori === 'right'){
+	    this.graphics.moveTo(this.x, this.y+10)
+	    this.graphics.lineTo(this.x-this.graphics.width/2-30, this.y + 60)
+	    this.graphics.lineTo(this.x - 35, this.y + 10)
+	}
+
 	this.graphics.endFill();
 
 	this.game.world.bringToTop(this.displayText)

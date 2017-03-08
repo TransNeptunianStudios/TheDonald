@@ -12,7 +12,7 @@ export default class extends Phaser.State {
 
 	// Donaldstuff
 	this.load.image('health_frame', './assets/images/donald/Confidence_meter_frame.png')
-	this.load.image('thought_bubble', './assets/images/thoughts.png')
+	this.load.spritesheet('thought_bubble', './assets/images/thoughts.png', 424, 237)
 	this.load.spritesheet('trump', './assets/images/donald/trump.png', 50, 100)
         this.load.spritesheet('trump_game_over', './assets/images/donald/trump_death.png', 50, 150)
 

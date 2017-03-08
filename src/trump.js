@@ -83,6 +83,8 @@ export default class Trump extends Phaser.Sprite {
 
     show_thought_bubble(){
 	this.thought_bubble = this.game.add.sprite(140, 120, 'thought_bubble')
+	this.thought_bubble.animations.add('start', [0, 1, 2], 5);
+	this.thought_bubble.animations.play('start')
     }
 
     remove_thought_bubble(){
