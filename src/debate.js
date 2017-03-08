@@ -33,9 +33,9 @@ export default class Debate {
 	quote.onQuoteComplete.addOnce((wordsInOrder, actualwords) => {
 	    var sentence = actualwords.join(" ")
 	    this.trump.remove_thought_bubble()
-	    this.trump.talk(sentence)
 	    this.opponent.reset()
-	    this.game.time.events.add(Phaser.Timer.SECOND * 2, this.evaluate, this, wordsInOrder);
+	    this.trump.talk(sentence)
+	    this.game.time.events.add(Phaser.Timer.SECOND * 4, this.evaluate, this, wordsInOrder);
 	}, this)
     }
 

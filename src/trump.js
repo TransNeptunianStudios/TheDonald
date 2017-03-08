@@ -13,7 +13,9 @@ export default class Trump extends Phaser.Sprite {
 	this.animations.add('west', [12, 13, 14, 15, 16, 17, 18, 19], 15, true);
 	this.animations.add('south', [20, 21, 22, 23, 24, 25, 26, 27], 15, true);
 	this.animations.add('east', [28, 29, 30, 31, 32, 33, 34, 35], 15, true);
-	//this.animations.add('failed', [, true);
+
+//	this.animations.add('failed', [], true);
+	this.animations.add('talk', [36, 37, 38, 39], 15, true);
 
 	this.onCallingElevator = new Phaser.Signal()
 	this.onReadyForDebate = new Phaser.Signal()
@@ -89,10 +91,13 @@ export default class Trump extends Phaser.Sprite {
     talk(text)
     {
 	this.bubble = new Bubble(this.game, this.x, this.y, 'left')
-    	this.bubble.create_speach(text);
+    	this.bubble.create_speach(text)
+	this.animations.play('talk')
     }
 
     shut_up(){
+	this.animations.stop()
+	this.frame = 3
 	this.bubble.remove()
     }
 

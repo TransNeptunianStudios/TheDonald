@@ -22,6 +22,7 @@ export default class EidParty extends Level {
 	// this.add_animated_loop('kkk_cross', this.game.width/2+45, 320)
 	this.add_sprite('eid_flag', 450, 220)
 	this.add_sprite('eid_food', 320, 320)
+
 	var t = this.add_sprite('eid_food', 570, 350)
 	t.scale.x *= -1
 
