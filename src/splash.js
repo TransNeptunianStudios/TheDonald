@@ -34,6 +34,7 @@ export default class extends Phaser.State {
 
 	// Eid party
 	this.load.image('eid_flag', './assets/images/eid/eid_flag.png')
+	this.load.image('eid_food', './assets/images/eid/eid_table.png')
 	this.load.spritesheet('eid_main', './assets/images/eid/eid_main.png', 30, 94)
 
 	// Pride corridor

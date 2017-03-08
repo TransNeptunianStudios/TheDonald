@@ -14,6 +14,7 @@ export default class Level {
     add_sprite(key, x, y) {
 	var s = this.midGroup.create(x, y, key)
 	s.anchor.setTo(0.5)
+	return s
     }
 
     add_animated_loop(key, x, y, f = 10, frames = []) {
@@ -26,7 +27,7 @@ export default class Level {
 	    s.animations.add('loop_animation', frames)
 
 	s.animations.play('loop_animation', f, true)
-
+	return s
     }
 
     start() {
