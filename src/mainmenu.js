@@ -5,10 +5,11 @@ import Trump from './trump'
 export default class extends Phaser.State {
     init () {
 	this.stage.backgroundColor = '#000000'
+	this.game.world.setBounds(0, 0, 854, 480);
     }
 
     create () {
-
+	this.game.world.setBounds(0, 0, 854, 480);
 	this.background = this.game.add.sprite(0, 0, 'menuBackground')
 
 	var title = this.game.add.sprite(-300, 50, 'title')

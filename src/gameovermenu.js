@@ -9,23 +9,28 @@ export default class extends Phaser.State {
     }
 
     create () {
+	this.game.world.setBounds(0, 0, 2000, 480);
+	this.farBackGroup = this.game.add.group()
 	this.backGroup = this.game.add.group()
 	this.midGroup = this.game.add.group()
 	this.menuGrp = this.add.group()
 
 	console.log('Game complete!')
+
+	this.para = game.add.tileSprite(0, 0, 2000, 480, "office_back");
+	this.farBackGroup.add(this.para)
 	this.backGroup.create(0, 0, 'office')
-	this.midGroup.create(100, 30, 'end_paint')
-	this.elevator = new Elevator(game, this.game.width-100, 341, this.backGroup, this.midGroup)
+	this.midGroup.create(240, 30, 'end_paint')
+	this.elevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
 
 	this.trump = new Trump(this.game)
 	this.midGroup.add(this.trump)
-	this.trump.position.setTo(this.game.width-100, 335);
+	this.trump.position.setTo(100, 335);
 
 	this.elevator.onDoorOpen.addOnce(()=>{
 	    this.trump.walkDirection(0, 50);
 	    this.trump.walkTween.onComplete.add(()=>{
-		this.trump.walkDirection(-450, 0);
+		this.trump.walkDirection(1400, 0);
 		this.trump.walkTween.onComplete.add(()=>{
 		    this.trump.frame = 2
 		    this.showRetryButton();
@@ -33,7 +38,7 @@ export default class extends Phaser.State {
 	    }, this)
 	})
 
-	this.title = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'you_won_title');
+	this.title = this.game.add.sprite(1500, 100, 'you_won_title');
 	this.title.anchor.setTo(0.5)
 
 	this.menuGrp.add(this.title)
@@ -42,10 +47,11 @@ export default class extends Phaser.State {
             this.elevator.open();
 	}, this)
 	this.game.camera.flash('#000000')
+	this.game.camera.follow(this.trump)
     }
 
     showRetryButton() {
-	this.retryBtn = this.game.add.button(this.game.world.centerX,
+	this.retryBtn = this.game.add.button(1700,
 					     this.game.world.height-150,
 					     'replay_button',
 					     this.gotoMainMenu,
@@ -62,5 +68,6 @@ export default class extends Phaser.State {
 
     update() {
 	this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
+	this.para.tilePosition.x = -this.trump.position.x *0.2
     }
 }
