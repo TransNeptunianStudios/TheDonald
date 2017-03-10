@@ -12,7 +12,22 @@ export default class Opponent extends Phaser.Sprite {
 	this.animations.add('talk', [1, 2, 3, 4], 10, true)
 	this.animations.add('collapse', [5, 6, 7], 10, true)
 
-	this.sanity = 2
+	this.sanity = 3
+	this.questions = [ "What do you think about the midle-east?",
+                           "Are you a feminist?",
+                           "Do you approve of torture?!",
+                           "What will you do about global waming?",
+                           "Did you support the war in iraq?",
+                           "Was Obama born in America?",
+                           "How will America be great again?",
+                           "Do you belive mexicans are rapists?!",
+                           "How big are your hands?",
+                           "Will you really jail Hillary?",
+                           "Do you like Putin?",
+			   "Can you read?",
+			   "What will you do about hate-crimes?",
+			   "How will you replace the affordable health care act?"]
+	Phaser.ArrayUtils.shuffle(this.questions);
 
 	this.bubble = new Bubble(this.game, this.x, this.y, 'right')
     }
@@ -25,23 +40,9 @@ export default class Opponent extends Phaser.Sprite {
     }
 
     askQuestion(){
-	let allQuestions = [ "What do you think about the midle-east?",
-                             "Are you a feminist?",
-                             "Do you approve of torture?!",
-                             "What will you do about global waming?",
-                             "Did you support the war in iraq?",
-                             "Was Obama born in America?",
-                             "How will America be great again?",
-                             "Do you belive mexicans are rapists?!",
-                             "How big are your hands?",
-                             "Will you really jail Hillary?",
-                             "Do you like Putin?",
-			     "Can you read?"]
-	allQuestions = Phaser.ArrayUtils.shuffle(allQuestions);
-
 	let question = "...what?"
-	if(allQuestions.length > 0)
-	    question = allQuestions.pop()
+	if(this.questions.length > 0)
+	    question = this.questions.pop()
 
 	this.animations.play('talk')
 

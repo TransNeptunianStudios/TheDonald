@@ -51,7 +51,7 @@ export default class Bubble extends Phaser.Group {
 
 	if(this.ori === 'left'){
 	    this.graphics.moveTo(this.x - this.displayText.width, this.y+10)
-	    this.graphics.lineTo(this.x - this.graphics.width/2 + 30,  this.y + 60)
+	    this.graphics.lineTo(this.x - this.graphics.width/2 + 40,  this.y + 60)
 	    this.graphics.lineTo(this.x - this.displayText.width + 35, this.y+10)
 	}
 	else if (this.ori === 'right'){
