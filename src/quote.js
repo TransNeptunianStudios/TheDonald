@@ -71,7 +71,8 @@ export default class Quote {
 		//this.sound.play(word.word)
 
 		let correctWord = this.words.pop()
-		if (correctWord.word !== word.word) {
+		console.log(correctWord.word + " =? " + word.word)
+		if (correctWord.word != word.word) {
 		    wordsInOrder = false
 		}
 

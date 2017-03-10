@@ -68,16 +68,19 @@ export default class Trump extends Phaser.Sprite {
 	this.quotes = []
 
 	this.quotes.push(new Quote(game, ["I", "just", "want", "them", "to", "suffer"], 'suffer'))
-	this.quotes.push(new Quote(game, ["Too", "much", "talk", "not", "enough", "action"], 'noAction'))
-
 	this.quotes.push(new Quote(game, ["Grab", "them", "by", "the", "pussy"]))
 	this.quotes.push(new Quote(game, ["that's", "fake", "news"]))
 	this.quotes.push(new Quote(game, ["Build", "that", "wall!"]))
 	this.quotes.push(new Quote(game, ["My", "I.Q", "is", "one",  "of", "the", "highest"]))
-//	this.quotes.push(new Quote(game, ["if", "Ivanka", "weren’t", "my", "daughter", "perhaps", "I’d",  "be", "dating", "her."]))
+	this.quotes.push(new Quote(game, ["if", "Ivanka", "weren’t", "my", "daughter", "perhaps", "I’d",  "be", "dating", "her."]))
 	this.quotes.push(new Quote(game, ["I", "love", "Neil Young", "and", "he", "loves", "me!"]))
-//	this.quotes.push(new Quote(game, ["Part", "of", "the", "beauty", "of", "me", "is", "that", "Im",  "very", "rich."]))
+	this.quotes.push(new Quote(game, ["Part", "of", "the", "beauty", "of", "me", "is", "that", "Im",  "very", "rich."]))
 	this.quotes.push(new Quote(game, ["I", "know", "words", "I", "have", "the", "best", "words."]))
+	this.quotes.push(new Quote(game, ["Robert Pattinson", "should", "not", "take", "back", "Kristen Stewart"]))
+	this.quotes.push(new Quote(game, ["All", "of", "the", "women", "on", "The Apprentice", "flirted", "with", "me,", "consciously", "or", "unconsciously."]))
+	this.quotes.push(new Quote(game, ["It’s", "freezing", "and", "snowing", "in", "New York,", "we", "need", "global", "warming!"]))
+	this.quotes.push(new Quote(game, ["Thanks", "sweetie.", "That’s", "nice"]))
+	this.quotes.push(new Quote(game, ["Be",  "careful", "or",  "I", "will", "spill",  "the",  "beans",  "on", "your",  "wife!"]))
 	Phaser.ArrayUtils.shuffle(this.quotes)
     }
 
