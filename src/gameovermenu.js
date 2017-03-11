@@ -22,9 +22,9 @@ export default class extends Phaser.State {
 	this.backGroup.create(0, 0, 'office')
 	this.midGroup.create(240, 30, 'end_paint')
 
-	this.midGroup.create(400, 320, 'plant')
-	this.midGroup.create(800, 320, 'plant')
-	this.midGroup.create(1400, 320, 'plant')
+	this.midGroup.create(400, 260, 'plant')
+	this.midGroup.create(800, 260, 'plant')
+	this.midGroup.create(1400, 260, 'plant')
 
 	this.elevator = new Elevator(game, 100, 320, this.backGroup, this.midGroup)
 
@@ -73,6 +73,6 @@ export default class extends Phaser.State {
 
     update() {
 	this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
-	this.para.tilePosition.x = -this.trump.position.x *0.2
+	this.para.tilePosition.x = -this.trump.position.x *0.3
     }
 }
