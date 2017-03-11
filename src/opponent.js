@@ -46,7 +46,7 @@ export default class Opponent extends Phaser.Sprite {
 
 	this.animations.play('talk')
 
-	this.bubble.create_speach(question)
+	this.bubble.create_speach(this.x, this.y, question)
 
 	// Ask question for 2 seconds
 	this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {

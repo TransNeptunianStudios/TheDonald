@@ -23,7 +23,7 @@ export default class Trump extends Phaser.Sprite {
 	this.walkTween = this.game.add.tween(this);
 
 	this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX, y: 40, width: 182, height: 32, bgImage: 'health_frame'})
-
+	this.bubble = new Bubble(this.game, this.x, this.y, 'left')
 	this.confidence = 100
 
 	this.createQuotes()
@@ -84,10 +84,11 @@ export default class Trump extends Phaser.Sprite {
 	Phaser.ArrayUtils.shuffle(this.quotes)
     }
 
-    show_thought_bubble(){
-	this.thought_bubble = this.game.add.sprite(140, 120, 'thought_bubble')
-	this.thought_bubble.animations.add('start', [0, 1, 2], 5);
-	this.thought_bubble.animations.play('start')
+    show_thought_bubble(words){
+	this.bubble.create_thought(this.x, this.ywords)
+	// this.thought_bubble = this.game.add.sprite(140, 120, 'thought_bubble')
+	// this.thought_bubble.animations.add('start', [0, 1, 2], 5);
+	// this.thought_bubble.animations.play('start')
     }
 
     remove_thought_bubble(){
@@ -95,8 +96,7 @@ export default class Trump extends Phaser.Sprite {
     }
     talk(text)
     {
-	this.bubble = new Bubble(this.game, this.x, this.y, 'left')
-    	this.bubble.create_speach(text)
+    	this.bubble.create_speach(this.x, this.y, text)
 	this.animations.play('talk')
     }
 

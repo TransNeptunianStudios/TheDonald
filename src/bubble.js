@@ -5,11 +5,6 @@ export default class Bubble extends Phaser.Group {
     constructor(game, x, y, orientation) {
 	super(game)
 	this.ori = orientation
-	this.y = y - 150
-	if(this.ori === 'left')
-	    this.x = x
-	else if(this.ori === 'right')
-	    this.x = x + 180
 
 	this.graphics = game.add.graphics(x, y)
 	this.displayText = this.game.add.text(
@@ -34,8 +29,20 @@ export default class Bubble extends Phaser.Group {
 	this.displayText.text = ""
     }
 
-    create_speach(text) {
+    set_position(x, y){
+	this.y = y - 150
+	if(this.ori === 'left')
+	    this.x = x
+	else if(this.ori === 'right')
+	    this.x = x + 180
+	this.displayText.x = this.x
+	this.displayText.y = this.y
+    }
+
+    create_speach(x, y, text) {
 	this.reset()
+	this.set_position(x, y)
+
 	this.displayText.text = text;
 	this.graphics.beginFill(0xFFFFFF)
 	var margin = 15
@@ -65,8 +72,16 @@ export default class Bubble extends Phaser.Group {
 	this.game.world.bringToTop(this.displayText)
     }
 
-    create_thought(text) {
+    create_thought(x, y, words) {
 	this.reset()
+	this.set_position(x, y)
+
+	this.y = y - 150
+	if(this.ori === 'left')
+	    this.x = x
+	else if(this.ori === 'right')
+	    this.x = x + 180
+
 	var sprite = this.create(this.x, this.y, 'thought_bubble');
     }
 }

@@ -26,8 +26,7 @@ export default class Debate {
 
 	this.opponent.waitingForAnswer.addOnce((wordsInOrder) => {
 	    this.opponent.reset()
-	    this.trump.show_thought_bubble()
-	    this.trump.thought_bubble.animations.currentAnim.onComplete.addOnce(() => { this.quote.runQuote()}, this)
+	    this.trump.show_thought_bubble(this.quote.runQuote())
 	}, this)
 
 	this.quote.onQuoteComplete.addOnce((wordsInOrder, actualwords) => {

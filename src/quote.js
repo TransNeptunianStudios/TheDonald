@@ -45,20 +45,6 @@ export default class Quote {
     runQuote() {
 	let quoteDuration = 0.0
 
-	// Calculate total duration of quote
-	//for (var key in this.sound.markers) {
-	//    quoteDuration += this.sound.markers[key].duration
-	//}
-
-	this.numberOfWords = this.words.length
-
-	let wordTableSize = Math.floor(this.numberOfWords / 2.0+ 0.5)
-
-	// TODO: Get column width and row height by inspecting word list
-	let cells = this.createWordTable(wordTableSize, 80, 30)
-
-	cells = Phaser.ArrayUtils.shuffle(cells)
-
 	// Reverse the array so that we can pop the first word of the quote
 	this.words.reverse()
 
@@ -68,7 +54,6 @@ export default class Quote {
 
 	    word.onWordPressed.add(() => {
 		this.words_said.push(word.word)
-		//this.sound.play(word.word)
 
 		let correctWord = this.words.pop()
 		console.log(correctWord.word + " =? " + word.word)
@@ -82,10 +67,7 @@ export default class Quote {
 		    this.onQuoteComplete.dispatch(wordsInOrder, this.words_said)
 		}
 	    }, this)
-
-	    let position = cells.pop()
-
-	    word.runWord(position.x, position.y)
 	})
+	return this.words
     }
 }
