@@ -82,6 +82,8 @@ export default class Bubble extends Phaser.Group {
 	else if(this.ori === 'right')
 	    this.x = x + 180
 
-	var sprite = this.create(this.x, this.y, 'thought_bubble');
+	var sprite = this.game.add.sprite(this.x-270, 130, 'thought_bubble');
+	sprite.animations.add('start', [0, 1, 2], 5);
+	sprite.animations.play('start')
     }
 }
