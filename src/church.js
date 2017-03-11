@@ -15,5 +15,8 @@ export default class Church extends Level {
 	this.add_sprite('hanging_lamp', this.game.width*0.3, 50)
 	this.add_sprite('hanging_lamp', this.game.width*0.5, 50)
 	this.add_sprite('hanging_lamp', this.game.width*0.7, 50)
+
+	this.add_sprite('plant', this.game.width*0.2, 320)
+	this.add_sprite('plant', this.game.width*0.8, 320)
     }
 }

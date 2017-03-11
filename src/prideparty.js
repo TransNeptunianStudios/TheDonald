@@ -24,6 +24,9 @@ export default class PrideParty extends Level {
 	this.add_sprite('pride_flag', 350, 200)
 	this.add_sprite('pride_symbol', 200, 200)
 	this.add_sprite('pride_kaj', 250, 350)
+
+	this.add_sprite('plant', this.game.width*0.2, 320)
+
 	//this.add_interval_animation('pride_kaj', 400, 300, 2, 5)
     }
 }

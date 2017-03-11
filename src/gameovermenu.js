@@ -21,7 +21,12 @@ export default class extends Phaser.State {
 	this.farBackGroup.add(this.para)
 	this.backGroup.create(0, 0, 'office')
 	this.midGroup.create(240, 30, 'end_paint')
-	this.elevator = new Elevator(game, 100, 341, this.backGroup, this.midGroup)
+
+	this.midGroup.create(400, 320, 'plant')
+	this.midGroup.create(800, 320, 'plant')
+	this.midGroup.create(1400, 320, 'plant')
+
+	this.elevator = new Elevator(game, 100, 320, this.backGroup, this.midGroup)
 
 	this.trump = new Trump(this.game)
 	this.midGroup.add(this.trump)
