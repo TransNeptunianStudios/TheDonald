@@ -17,14 +17,20 @@ export default class extends Phaser.State {
 
 	console.log('Game complete!')
 
-	this.para = game.add.tileSprite(0, 0, 2000, 480, "office_back");
-	this.farBackGroup.add(this.para)
-	this.backGroup.create(0, 0, 'office')
-	this.midGroup.create(240, 30, 'end_paint')
+	//this.para = game.add.tileSprite(0, 0, 2000, 480, "office_back");
 
-	this.midGroup.create(400, 260, 'plant')
-	this.midGroup.create(800, 260, 'plant')
-	this.midGroup.create(1400, 260, 'plant')
+	//this.farBackGroup.add(this.para)
+	this.backGroup.create(0, 0, 'office_sky')
+	this.backGroup.create(0, 0, 'office_b1')
+	this.backGroup.create(0, 0, 'office_b2')
+	this.backGroup.create(0, 0, 'office_f1')
+	this.backGroup.create(0, 0, 'office_f2')
+	this.backGroup.create(0, 0, 'office_corridor')
+//	this.midGroup.create(240, 30, 'end_paint')
+
+	// this.midGroup.create(400, 260, 'plant')
+	// this.midGroup.create(800, 260, 'plant')
+	// this.midGroup.create(1400, 260, 'plant')
 
 	this.elevator = new Elevator(game, 100, 320, this.backGroup, this.midGroup)
 
@@ -73,6 +79,6 @@ export default class extends Phaser.State {
 
     update() {
 	this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
-	this.para.tilePosition.x = -this.trump.position.x *0.3
+	//this.para.tilePosition.x = -this.trump.position.x *0.3
     }
 }

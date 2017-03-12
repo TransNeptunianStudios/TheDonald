@@ -8,9 +8,14 @@ export default class extends Phaser.State {
     preload () {
 	// Should these really be here?
 	this.load.image('tnsLogo', './assets/images/tns-logo.png')
-	this.load.image('office', './assets/images/office.png')
-	this.load.image('office_back', './assets/images/office_back.png')
-	this.load.image('end_paint', './assets/images/end_paint.png')
+
+	// Office
+	this.load.image('office_corridor', './assets/images/office/office_corridor.png')
+	this.load.image('office_f1', './assets/images/office/office_buildings_foreground2.png')
+	this.load.image('office_f2', './assets/images/office/office_buildings_foreground1.png')
+	this.load.image('office_b1', './assets/images/office/office_buildings_background2.png')
+	this.load.image('office_b2', './assets/images/office/office_buildings_background1.png')
+	this.load.image('office_sky', './assets/images/office/office_sky.png')
 
 	// Donaldstuff
 	this.load.image('health_frame', './assets/images/donald/Confidence_meter_frame.png')
