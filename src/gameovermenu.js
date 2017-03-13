@@ -18,25 +18,25 @@ export default class extends Phaser.State {
 	console.log('Game complete!')
 
 	this.farBackGroup.create(0, 0, 'office_sky')
-	this.nuke = this.farBackGroup.create(1370, 200, 'office_nuke')
+	this.nuke = this.farBackGroup.create(1370, 190, 'office_nuke')
 	this.nuke.animations.add('loop_animation')
-	this.nuke.animations.play('loop_animation', 3, true)
+	this.nuke.animations.play('loop_animation', 10, true)
 
 
-	this.b1 = game.add.tileSprite(279, 252, 2000, 55, "office_b1")
-	this.b2 = game.add.tileSprite(279, 252, 2000, 55, "office_b2")
-	this.f1 = game.add.tileSprite(279, 252, 2000, 55, "office_f1")
-	this.f2 = game.add.tileSprite(279, 252, 2000, 55, "office_f2")
+	this.b1 = game.add.tileSprite(200, 252, 2000, 55, "office_b1")
+	this.b2 = game.add.tileSprite(300, 252, 2000, 55, "office_b2")
+	this.f1 = game.add.tileSprite(400, 252, 2000, 55, "office_f1")
+	this.f2 = game.add.tileSprite(500, 252, 2000, 55, "office_f2")
 
 	this.backGroup.add(this.b1)
 	this.backGroup.add(this.b2)
 	this.backGroup.add(this.f1)
 	this.backGroup.add(this.f2)
 
-	this.godzilla = this.backGroup.create(830, 220, 'office_godzilla')
+	this.godzilla = this.backGroup.create(650, 220, 'office_godzilla')
 	this.godzilla.animations.add('loop_animation')
 	this.godzilla.animations.play('loop_animation', 3, true)
-
+	this.game.add.tween(this.godzilla).to( { x: 1300 }, 45000, Phaser.Easing.Linear.None, true);
 
 	//this.farBackGroup.add(this.para)
 	this.backGroup.create(0, 0, 'office_corridor')
@@ -45,10 +45,12 @@ export default class extends Phaser.State {
 	this.midGroup.create(200, 260, 'plant')
 	this.midGroup.create(600, 260, 'plant')
 	this.midGroup.create(1200, 260, 'plant')
+	this.midGroup.create(1900, 260, 'plant')
 
 	this.midGroup.create(400, 0, 'hanging_lamp')
 	this.midGroup.create(700, 0, 'hanging_lamp')
 	this.midGroup.create(1000, 0, 'hanging_lamp')
+	this.midGroup.create(1300, 0, 'hanging_lamp')
 
 	this.elevator = new Elevator(game, 100, 330, this.backGroup, this.midGroup)
 
@@ -67,7 +69,7 @@ export default class extends Phaser.State {
 	    }, this)
 	})
 
-	this.title = this.game.add.sprite(1500, 100, 'you_won_title');
+	this.title = this.game.add.sprite(1600, 100, 'you_won_title');
 	this.title.anchor.setTo(0.5)
 
 	this.menuGrp.add(this.title)
