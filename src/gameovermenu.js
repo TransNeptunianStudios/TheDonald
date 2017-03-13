@@ -18,6 +18,11 @@ export default class extends Phaser.State {
 	console.log('Game complete!')
 
 	this.farBackGroup.create(0, 0, 'office_sky')
+	this.nuke = this.farBackGroup.create(1370, 200, 'office_nuke')
+	this.nuke.animations.add('loop_animation')
+	this.nuke.animations.play('loop_animation', 3, true)
+
+
 	this.b1 = game.add.tileSprite(279, 252, 2000, 55, "office_b1")
 	this.b2 = game.add.tileSprite(279, 252, 2000, 55, "office_b2")
 	this.f1 = game.add.tileSprite(279, 252, 2000, 55, "office_f1")
@@ -28,13 +33,22 @@ export default class extends Phaser.State {
 	this.backGroup.add(this.f1)
 	this.backGroup.add(this.f2)
 
+	this.godzilla = this.backGroup.create(830, 220, 'office_godzilla')
+	this.godzilla.animations.add('loop_animation')
+	this.godzilla.animations.play('loop_animation', 3, true)
+
+
 	//this.farBackGroup.add(this.para)
 	this.backGroup.create(0, 0, 'office_corridor')
 //	this.midGroup.create(240, 30, 'end_paint')
 
-	// this.midGroup.create(400, 260, 'plant')
-	// this.midGroup.create(800, 260, 'plant')
-	// this.midGroup.create(1400, 260, 'plant')
+	this.midGroup.create(200, 260, 'plant')
+	this.midGroup.create(600, 260, 'plant')
+	this.midGroup.create(1200, 260, 'plant')
+
+	this.midGroup.create(400, 0, 'hanging_lamp')
+	this.midGroup.create(700, 0, 'hanging_lamp')
+	this.midGroup.create(1000, 0, 'hanging_lamp')
 
 	this.elevator = new Elevator(game, 100, 330, this.backGroup, this.midGroup)
 
@@ -84,9 +98,9 @@ export default class extends Phaser.State {
     update() {
 	this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
 
-	this.b1.tilePosition.x = -this.trump.position.x *0.1
-	this.b2.tilePosition.x = -this.trump.position.x *0.2
-	this.f1.tilePosition.x = -this.trump.position.x *0.3
-	this.f2.tilePosition.x = -this.trump.position.x *0.4
+	this.b1.tilePosition.x = -this.camera.x *0.05
+	this.b2.tilePosition.x = -this.camera.x *0.075
+	this.f1.tilePosition.x = -this.camera.x *0.1
+	this.f2.tilePosition.x = -this.camera.x *0.15
     }
 }
