@@ -17,14 +17,18 @@ export default class extends Phaser.State {
 
 	console.log('Game complete!')
 
-	//this.para = game.add.tileSprite(0, 0, 2000, 480, "office_back");
+	this.farBackGroup.create(0, 0, 'office_sky')
+	this.b1 = game.add.tileSprite(279, 252, 2000, 55, "office_b1")
+	this.b2 = game.add.tileSprite(279, 252, 2000, 55, "office_b2")
+	this.f1 = game.add.tileSprite(279, 252, 2000, 55, "office_f1")
+	this.f2 = game.add.tileSprite(279, 252, 2000, 55, "office_f2")
+
+	this.backGroup.add(this.b1)
+	this.backGroup.add(this.b2)
+	this.backGroup.add(this.f1)
+	this.backGroup.add(this.f2)
 
 	//this.farBackGroup.add(this.para)
-	this.backGroup.create(0, 0, 'office_sky')
-	this.backGroup.create(0, 0, 'office_b1')
-	this.backGroup.create(0, 0, 'office_b2')
-	this.backGroup.create(0, 0, 'office_f1')
-	this.backGroup.create(0, 0, 'office_f2')
 	this.backGroup.create(0, 0, 'office_corridor')
 //	this.midGroup.create(240, 30, 'end_paint')
 
@@ -32,7 +36,7 @@ export default class extends Phaser.State {
 	// this.midGroup.create(800, 260, 'plant')
 	// this.midGroup.create(1400, 260, 'plant')
 
-	this.elevator = new Elevator(game, 100, 320, this.backGroup, this.midGroup)
+	this.elevator = new Elevator(game, 100, 330, this.backGroup, this.midGroup)
 
 	this.trump = new Trump(this.game)
 	this.midGroup.add(this.trump)
@@ -62,8 +66,8 @@ export default class extends Phaser.State {
     }
 
     showRetryButton() {
-	this.retryBtn = this.game.add.button(1700,
-					     this.game.world.height-150,
+	this.retryBtn = this.game.add.button(1750,
+					     250,
 					     'replay_button',
 					     this.gotoMainMenu,
 					     this,
@@ -79,6 +83,10 @@ export default class extends Phaser.State {
 
     update() {
 	this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
-	//this.para.tilePosition.x = -this.trump.position.x *0.3
+
+	this.b1.tilePosition.x = -this.trump.position.x *0.1
+	this.b2.tilePosition.x = -this.trump.position.x *0.2
+	this.f1.tilePosition.x = -this.trump.position.x *0.3
+	this.f2.tilePosition.x = -this.trump.position.x *0.4
     }
 }
