@@ -35,8 +35,12 @@ export default class extends Phaser.State {
 
 	this.godzilla = this.backGroup.create(650, 220, 'office_godzilla')
 	this.godzilla.animations.add('loop_animation')
-	this.game.add.tween(this.godzilla).to( { x: 1300 }, 45000, Phaser.Easing.Linear.None, true);
 	this.game.time.events.loop(Phaser.Timer.SECOND*3, this.updateGodzilla, this)
+
+	this.game.add.tween(this.godzilla).to( { x: 1900 }, 80000, Phaser.Easing.Linear.None, true);
+
+	this.game.add.tween(this.godzilla).to( { y: '-10' }, 1000, Phaser.Easing.Bounce.Out, true, 0, -1, true);
+
 
 	//this.farBackGroup.add(this.para)
 	this.backGroup.create(0, 0, 'office_corridor')
@@ -46,6 +50,8 @@ export default class extends Phaser.State {
 	this.midGroup.create(600, 260, 'plant')
 	this.midGroup.create(1200, 260, 'plant')
 	this.midGroup.create(1900, 260, 'plant')
+
+	this.midGroup.create(1700, 270, 'office_throne')
 
 	this.midGroup.create(400, 0, 'hanging_lamp')
 	this.midGroup.create(700, 0, 'hanging_lamp')
@@ -61,7 +67,7 @@ export default class extends Phaser.State {
 	this.elevator.onDoorOpen.addOnce(()=>{
 	    this.trump.walkDirection(0, 50);
 	    this.trump.walkTween.onComplete.add(()=>{
-		this.trump.walkDirection(1400, 0);
+		this.trump.walkDirection(1500, 0);
 		this.trump.walkTween.onComplete.add(()=>{
 		    this.trump.frame = 2
 		    this.showRetryButton();
@@ -86,8 +92,8 @@ export default class extends Phaser.State {
     }
 
     showRetryButton() {
-	this.retryBtn = this.game.add.button(1750,
-					     250,
+	this.retryBtn = this.game.add.button(1760,
+					     220,
 					     'replay_button',
 					     this.gotoMainMenu,
 					     this,
@@ -104,9 +110,8 @@ export default class extends Phaser.State {
     update() {
 	this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
 
-	this.b1.tilePosition.x = -this.camera.x *0.05
-	this.b2.tilePosition.x = -this.camera.x *0.075
-	this.f1.tilePosition.x = -this.camera.x *0.1
-	this.f2.tilePosition.x = -this.camera.x *0.15
+	this.b2.tilePosition.x = -this.camera.x *0.0075
+	this.f1.tilePosition.x = -this.camera.x *0.05
+	this.f2.tilePosition.x = -this.camera.x *0.1
     }
 }

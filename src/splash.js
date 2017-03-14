@@ -16,6 +16,7 @@ export default class extends Phaser.State {
 	this.load.image('office_b1', './assets/images/office/office_buildings_background2.png')
 	this.load.image('office_b2', './assets/images/office/office_buildings_background1.png')
 	this.load.image('office_sky', './assets/images/office/office_sky.png')
+	this.load.image('office_throne', './assets/images/office/office_throne.png')
 
 	this.load.spritesheet('office_nuke', './assets/images/office/office_nuke.png', 145, 124)
 	this.load.spritesheet('office_godzilla', './assets/images/office/office_godzilla.png', 194, 99)

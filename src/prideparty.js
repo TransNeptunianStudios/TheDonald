@@ -23,7 +23,9 @@ export default class PrideParty extends Level {
 
 	this.add_sprite('pride_flag', 350, 200)
 	this.add_sprite('pride_symbol', 200, 200)
+
 	this.add_sprite('pride_kaj', 250, 350)
+	this.game.time.events.loop(Phaser.Timer.SECOND*3, this.updateGodzilla, this)
 
 	this.add_sprite('plant', this.game.width*0.2, 320)
 
