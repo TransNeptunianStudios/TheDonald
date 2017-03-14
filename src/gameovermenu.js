@@ -35,8 +35,8 @@ export default class extends Phaser.State {
 
 	this.godzilla = this.backGroup.create(650, 220, 'office_godzilla')
 	this.godzilla.animations.add('loop_animation')
-	this.godzilla.animations.play('loop_animation', 3, true)
 	this.game.add.tween(this.godzilla).to( { x: 1300 }, 45000, Phaser.Easing.Linear.None, true);
+	this.game.time.events.loop(Phaser.Timer.SECOND*3, this.updateGodzilla, this)
 
 	//this.farBackGroup.add(this.para)
 	this.backGroup.create(0, 0, 'office_corridor')
@@ -79,6 +79,10 @@ export default class extends Phaser.State {
 	}, this)
 	this.game.camera.flash('#000000')
 	this.game.camera.follow(this.trump)
+    }
+
+    updateGodzilla(){
+	this.godzilla.animations.play('loop_animation', 20)
     }
 
     showRetryButton() {
