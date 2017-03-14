@@ -53,8 +53,6 @@ export default class Bubble extends Phaser.Group {
 				       this.displayText.width + 2*margin,
 				       this.displayText.height + 2*margin)
 	this.graphics.endFill();
-
-
 	this.graphics.beginFill(0xFFFFFF)
 
 
@@ -88,8 +86,33 @@ export default class Bubble extends Phaser.Group {
 	this.sprite.animations.add('start', [0, 1, 2], 5);
 	this.sprite.animations.play('start')
 
-	words.forEach((word) => {
-	    word.runWord(game.rnd.integerInRange(0, 300), game.rnd.integerInRange(0, 200))
-	}, this)
+	var wordsOut = []
+	this.sprite.animations.currentAnim.onComplete.add(function () {
+	    words.forEach((word) => {
+		word.runWord(0, 0)
+		do{
+		    var possiblePos = {x: game.rnd.integerInRange(this.sprite.left+50, this.sprite.right-50),
+				       y: game.rnd.integerInRange(this.sprite.top+50, this.sprite.bottom-75)}
+
+		    word.text.x = possiblePos.x
+		    word.text.y = possiblePos.y
+
+		    var occupied = false
+		    wordsOut.forEach((other_word) => {
+			var b1 = word.text.getBounds()
+			var b2 = other_word.text.getBounds()
+			b1.x += word.text.x
+			b1.y += word.text.y
+			b2.x += other_word.text.x
+			b2.y += other_word.text.y
+			var test = b1.intersects(b2)
+			if(word != other_word && test)
+			    occupied = true
+		    }, this)
+		}while( occupied )
+		wordsOut.push(word)
+	    }, this)
+
+	}, this);
     }
 }
