@@ -23,10 +23,10 @@ export default class extends Phaser.State {
 	this.nuke.animations.play('loop_animation', 10, true)
 
 
-	this.b1 = game.add.tileSprite(200, 252, 2000, 55, "office_b1")
-	this.b2 = game.add.tileSprite(300, 252, 2000, 55, "office_b2")
-	this.f1 = game.add.tileSprite(400, 252, 2000, 55, "office_f1")
-	this.f2 = game.add.tileSprite(500, 252, 2000, 55, "office_f2")
+	this.b1 = game.add.tileSprite(200, 252, 800, 55, "office_b1")
+	this.b2 = game.add.tileSprite(300, 252, 800, 55, "office_b2")
+	this.f1 = game.add.tileSprite(400, 252, 800, 55, "office_f1")
+	this.f2 = game.add.tileSprite(500, 252, 800, 55, "office_f2")
 
 	this.backGroup.add(this.b1)
 	this.backGroup.add(this.b2)
@@ -52,7 +52,7 @@ export default class extends Phaser.State {
 	this.midGroup.create(1000, 0, 'hanging_lamp')
 	this.midGroup.create(1300, 0, 'hanging_lamp')
 
-	this.elevator = new Elevator(game, 100, 330, this.backGroup, this.midGroup)
+	this.elevator = new Elevator(game, 100, 340, this.backGroup, this.midGroup)
 
 	this.trump = new Trump(this.game)
 	this.midGroup.add(this.trump)
