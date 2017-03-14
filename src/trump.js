@@ -92,7 +92,7 @@ export default class Trump extends Phaser.Sprite {
     }
 
     remove_thought_bubble(){
-	this.thought_bubble.destroy()
+	this.bubble.remove()
     }
     talk(text)
     {

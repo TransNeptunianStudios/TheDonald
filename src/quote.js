@@ -49,7 +49,7 @@ export default class Quote {
 	this.words.reverse()
 
 	let wordsInOrder = true
-
+	this.numberOfWords = this.words.length
 	this.words.forEach((word) => {
 
 	    word.onWordPressed.add(() => {

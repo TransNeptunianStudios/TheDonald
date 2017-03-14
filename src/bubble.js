@@ -27,6 +27,8 @@ export default class Bubble extends Phaser.Group {
 	if(this.graphics)
 	    this.graphics.clear()
 	this.displayText.text = ""
+	if(this.sprite)
+	    this.sprite.destroy()
     }
 
     set_position(x, y){
@@ -82,8 +84,12 @@ export default class Bubble extends Phaser.Group {
 	else if(this.ori === 'right')
 	    this.x = x + 180
 
-	var sprite = this.game.add.sprite(this.x-270, 130, 'thought_bubble');
-	sprite.animations.add('start', [0, 1, 2], 5);
-	sprite.animations.play('start')
+	this.sprite = this.game.add.sprite(this.x-270, 130, 'thought_bubble');
+	this.sprite.animations.add('start', [0, 1, 2], 5);
+	this.sprite.animations.play('start')
+
+	words.forEach((word) => {
+	    word.runWord(game.rnd.integerInRange(0, 300), game.rnd.integerInRange(0, 200))
+	}, this)
     }
 }
