@@ -11,8 +11,8 @@ import GameOverState from './gameovermenu'
 class Game extends Phaser.Game {
 
   constructor () {
-    let width = document.documentElement.clientWidth > 854 ? 854 : document.documentElement.clientWidth
-    let height = document.documentElement.clientHeight > 480 ? 480 : document.documentElement.clientHeight
+    let width = 854
+    let height = 480
 
     super(width, height, Phaser.AUTO, 'content', null)
 
