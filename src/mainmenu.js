@@ -25,10 +25,23 @@ export default class extends Phaser.State {
 					    1,
 					    2);
 	this.playBtn.anchor.setTo(0.5)
+	var credit = new Phaser.Text(game, game.world.width-20, game.world.height-60, "By:\nDavid Levi\nMikael Larsson\nRobin Reicher",
+	    {
+		font: '10px Arial'
+	    })
+	credit.anchor.set(1, 1)
+	var version = new Phaser.Text(game, game.world.width-10, game.world.height, "version 0.1",
+	    {
+		font: '10px Arial'
+	    })
+	version.anchor.set(1, 1)
+
 
 	this.menuGrp = this.add.group()
 	this.menuGrp.add(title)
 	this.menuGrp.add(this.playBtn)
+	this.menuGrp.add(version)
+	this.menuGrp.add(credit)
     }
 
     playPressed () {
