@@ -69,6 +69,8 @@ export default class extends Phaser.State {
 	// Church corridor
 	this.load.spritesheet('preacher_man', './assets/images/church/church_main48x117.png', 48, 117)
 	this.load.image('crusifix', './assets/images/church/church_crucifix.png')
+	this.load.spritesheet('podium', './assets/images/church/church_preacher100x100.png', 100, 100)
+	this.load.image('church_guests', './assets/images/church/church_goers.png')
 
 	//this.load.audio('suffer', './assets/sounds/i_just_want_them_to_suffer.mp3')
 	//this.load.audio('noAction', './assets/sounds/too_much_talk_not_enough_action.mp3')
