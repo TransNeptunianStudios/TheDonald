@@ -14,7 +14,7 @@ export default class extends Phaser.State {
 
 	var title = this.game.add.sprite(-300, 50, 'title')
 	title.anchor.setTo(0.5)
-	this.game.add.tween(title).to({ x: 660}, 1000 + 2000, Phaser.Easing.Bounce.Out, true)
+	this.game.add.tween(title).to({ x: 660}, 1000 + 2000, Phaser.Easing.Sinusoidal.In, true)
 
 	this.playBtn = this.game.add.button(game.world.centerX-20,
 					    this.game.world.centerY + 100,
@@ -27,12 +27,14 @@ export default class extends Phaser.State {
 	this.playBtn.anchor.setTo(0.5)
 	var credit = new Phaser.Text(game, game.world.width-20, game.world.height-60, "By:\nDavid Levi\nMikael Larsson\nRobin Reicher",
 	    {
-		font: '10px Arial'
+		font: '12px Arial',
+		fill: 'gold'
 	    })
 	credit.anchor.set(1, 1)
 	var version = new Phaser.Text(game, game.world.width-10, game.world.height, "version 0.1",
 	    {
-		font: '10px Arial'
+		font: '12px Arial',
+		fill: 'gold'
 	    })
 	version.anchor.set(1, 1)
 

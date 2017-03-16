@@ -39,7 +39,7 @@ export default class extends Phaser.State {
 
 	this.game.add.tween(this.godzilla).to( { x: 1900 }, 80000, Phaser.Easing.Linear.None, true);
 
-	this.game.add.tween(this.godzilla).to( { y: '-10' }, 1000, Phaser.Easing.Bounce.Out, true, 0, -1, true);
+	this.game.add.tween(this.godzilla).to( { y: '-10' }, 1000, Phaser.Easing.Circular.InOut, true, 0, -1, true);
 
 
 	//this.farBackGroup.add(this.para)
