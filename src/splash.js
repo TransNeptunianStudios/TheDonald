@@ -60,6 +60,7 @@ export default class extends Phaser.State {
 	// Science corridor
 	this.load.spritesheet('science_main', './assets/images/science/Science_main.png', 45, 90)
 	this.load.spritesheet('science_ape', './assets/images/science/ape.png', 133, 56)
+	this.load.spritesheet('science_table', './assets/images/science/science_table155x91.png', 155, 91)
 
 	// KKK corridor
 	this.load.spritesheet('kkk_cross', './assets/images/kkk/cross.png', 126, 208)
