@@ -21,8 +21,9 @@ export default class PrideParty extends Level {
 	this.add_sprite('hanging_lamp', this.game.width*0.5, 50)
 	this.add_sprite('hanging_lamp', this.game.width*0.7, 50)
 
-	this.add_sprite('pride_flag', 350, 200)
+	this.add_sprite('pride_flag', this.game.width*0.5, 200)
 	this.add_sprite('pride_symbol', 200, 200)
+	this.add_sprite('pride_heart', this.game.width*0.5, 250)
 
 	this.kaj = this.backGroup.create(250, 350, 'pride_kaj')
 	this.kaj.animations.add('loop_animation')

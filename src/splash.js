@@ -56,11 +56,13 @@ export default class extends Phaser.State {
 	this.load.spritesheet('pride_kaj', './assets/images/pride/Pride_kaj.png', 44, 93)
 	this.load.image('pride_flag', './assets/images/pride/Pride_flag.png')
 	this.load.image('pride_symbol', './assets/images/pride/Pride_hbtq_symbol.png')
+	this.load.image('pride_heart', './assets/images/pride/pride_heart_string.png')
 
 	// Science corridor
 	this.load.spritesheet('science_main', './assets/images/science/Science_main.png', 45, 90)
 	this.load.spritesheet('science_ape', './assets/images/science/ape.png', 133, 56)
 	this.load.spritesheet('science_table', './assets/images/science/science_table155x91.png', 155, 91)
+	this.load.spritesheet('science_guy', './assets/images/science/science_tube_guy63x102.png', 63, 102)
 
 	// KKK corridor
 	this.load.spritesheet('kkk_cross', './assets/images/kkk/cross.png', 126, 208)
