@@ -97,9 +97,9 @@ export default class extends Phaser.State {
 					     'replay_button',
 					     this.gotoMainMenu,
 					     this,
-					     0,
+					     2,
 					     1,
-					     2);
+					     0);
 	this.retryBtn.anchor.setTo(0.5)
     }
 

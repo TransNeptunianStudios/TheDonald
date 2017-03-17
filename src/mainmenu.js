@@ -21,9 +21,9 @@ export default class extends Phaser.State {
 					    'play_button',
 					    this.playPressed,
 					    this,
-					    0,
+					    2,
 					    1,
-					    2);
+					    0);
 	this.playBtn.anchor.setTo(0.5)
 	var credit = new Phaser.Text(game, game.world.width-20, game.world.height-60, "By:\nDavid Levi\nMikael Larsson\nRobin Reicher",
 	    {

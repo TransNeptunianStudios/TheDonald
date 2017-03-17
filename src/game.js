@@ -31,7 +31,7 @@ export default class extends Phaser.State {
 //	// this.levels.push(new kkkMeeting(this.game, this.trump))
 	// this.levels.push(new Science(this.game, this.trump))
 	// this.levels.push(new Church(this.game, this.trump))
-	// this.levels.push(new EidParty(this.game, this.trump))
+	this.levels.push(new EidParty(this.game, this.trump))
 	this.nextLevel()
     }
 
@@ -56,9 +56,9 @@ export default class extends Phaser.State {
 					     'retry_button',
 					     this.returnToMenu,
 					     this,
-					     0,
+					     2,
 					     1,
-					     2);
+					     0);
 	this.retryBtn.anchor.setTo(0.5)
 
     }

@@ -12,7 +12,7 @@ export default class Opponent extends Phaser.Sprite {
 	this.animations.add('talk', [1, 2, 3, 4], 10, true)
 	this.animations.add('collapse', [5, 6, 7], 10, true)
 
-	this.sanity = 1
+	this.sanity = 2
 	this.questions = [ "What do you think about the midle-east?",
                            "Are you a feminist?",
                            "Do you approve of torture?!",
@@ -37,6 +37,11 @@ export default class Opponent extends Phaser.Sprite {
 
 	if(this.sanity == 0)
 	    this.animations.play('collapse')
+    }
+
+    confuse() {
+	var hurttween = this.game.add.tween(this).to({y: '-5'}, 20, Phaser.Easing.Linear.None, true, 0, 3, true);
+	this.sanity -= 1
     }
 
     askQuestion(){

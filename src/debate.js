@@ -35,11 +35,11 @@ export default class Debate {
 	    this.trump.remove_thought_bubble()
 	    this.opponent.reset()
 	    this.trump.talk(sentence)
-	    this.game.time.events.add(Phaser.Timer.SECOND * 4, this.evaluate, this, wordsInOrder);
+	    this.game.time.events.add(Phaser.Timer.SECOND * 3, this.evaluate, this, wordsInOrder, actualwords);
 	}, this)
     }
 
-    evaluate(wordsInOrder){
+    evaluate(wordsInOrder, actualwords){
 	this.trump.shut_up()
 	if (!wordsInOrder)
 	{
@@ -50,8 +50,8 @@ export default class Debate {
 	    }
 	}
 	else
-	    this.opponent.sanity -= 1
+	    this.opponent.confuse()
 
-	this.runDebate();
+	this.game.time.events.add(Phaser.Timer.SECOND * 2, this.runDebate, this);
     }
 }
