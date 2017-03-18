@@ -12,7 +12,7 @@ export default class Opponent extends Phaser.Sprite {
 	this.animations.add('talk', [1, 2, 3, 4], 10, true)
 	this.animations.add('collapse', [5, 6, 7], 10, true)
 
-	this.sanity = 2
+	this.sanity = 1
 	this.questions = [ "What do you think about the midle-east?",
                            "Are you a feminist?",
                            "Do you approve of torture?!",

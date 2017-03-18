@@ -34,6 +34,7 @@ export default class extends Phaser.State {
 	this.load.image('menuBackground', './assets/images/menu/start_menu.png')
 	this.load.image('title', './assets/images/menu/title.png')
 	this.load.image('you_won_title', './assets/images/menu/you_won_title.png')
+	this.load.spritesheet('timer', './assets/images/Timer86x93.png', 86, 93)
 
 	// Base corridor stuff
 	this.load.image('baseCorridor', './assets/images/base_corridor/base-corridor.png')
@@ -104,6 +105,11 @@ export default class extends Phaser.State {
 		}, this)
 	    }, this)
 	})
+
+
+	var music = game.add.audio('music');
+
+	music.play();
 
 	this.game.input.onDown.add(()=>{
             this.state.start('MainMenu')

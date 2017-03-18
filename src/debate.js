@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import Timer from './timer.js'
 
 export default class Debate {
     constructor (game, trump, opponent, difficulty) {
@@ -28,9 +29,19 @@ export default class Debate {
 	    this.opponent.reset()
 	    var words = this.quote.runQuote()
 	    this.trump.show_thought_bubble(words)
+	    this.timer = new Timer(this.game)
+	    this.game.add.existing(this.timer)
+	    this.timer.onTimeOut.addOnce(() => {
+		this.trump.remove_thought_bubble()
+		this.opponent.reset()
+		this.quote.remove()
+		this.timer.destroy()
+		this.evaluate(false)
+	    }, this)
 	}, this)
 
 	this.quote.onQuoteComplete.addOnce((wordsInOrder, actualwords, targetWords) => {
+	    this.timer.onTimeOut.dispose()
 	    var sentence = actualwords.join(" ")
 	    var target = targetWords.join(" ")
 	    this.trump.remove_thought_bubble()

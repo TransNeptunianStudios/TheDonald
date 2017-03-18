@@ -42,6 +42,12 @@ export default class Quote {
 	}, this)
     }
 
+    remove() {
+	this.words.forEach((word) => {
+	    word.text.destroy()
+	}, this)
+    }
+
     runQuote() {
 	let quoteDuration = 0.0
 
