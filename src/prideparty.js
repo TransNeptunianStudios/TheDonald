@@ -25,12 +25,15 @@ export default class PrideParty extends Level {
 	this.add_sprite('pride_symbol', 200, 200)
 	this.add_sprite('pride_heart', this.game.width*0.5, 250)
 
+	this.add_animated_loop('pride_kids', 650, 350)
+	this.add_animated_loop('pride_dancer', 350, 310, 5)
+
 	this.kaj = this.backGroup.create(250, 350, 'pride_kaj')
 	this.kaj.animations.add('loop_animation')
 	this.game.time.events.loop(Phaser.Timer.SECOND*3, this.updateKaj, this)
     }
 
     updateKaj(){
-	this.kaj.animations.play('loop_animation', 20)
+	this.kaj.animations.play('loop_animation', 20).onComplete.add(()=>{this.kaj.frame= 0}, this)
     }
 }

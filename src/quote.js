@@ -64,7 +64,7 @@ export default class Quote {
 		this.numberOfWords -= 1
 
 		if (this.numberOfWords == 0) {
-		    this.onQuoteComplete.dispatch(wordsInOrder, this.words_said)
+		    this.onQuoteComplete.dispatch(wordsInOrder, this.words_said, this.words)
 		}
 	    }, this)
 	})

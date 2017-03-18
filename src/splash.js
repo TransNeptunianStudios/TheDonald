@@ -57,6 +57,8 @@ export default class extends Phaser.State {
 	this.load.image('pride_flag', './assets/images/pride/Pride_flag.png')
 	this.load.image('pride_symbol', './assets/images/pride/Pride_hbtq_symbol.png')
 	this.load.image('pride_heart', './assets/images/pride/pride_heart_string.png')
+	this.load.spritesheet('pride_kids', './assets/images/pride/Pride_baloon_kids103x73.png', 103, 73)
+	this.load.spritesheet('pride_dancer', './assets/images/pride/pride_dancer53x113.png', 53, 113)
 
 	// Science corridor
 	this.load.spritesheet('science_main', './assets/images/science/Science_main.png', 45, 90)
@@ -78,9 +80,11 @@ export default class extends Phaser.State {
 	this.load.spritesheet('podium', './assets/images/church/church_preacher100x100.png', 100, 100)
 	this.load.image('church_guests', './assets/images/church/church_goers.png')
 
-	//this.load.audio('suffer', './assets/sounds/i_just_want_them_to_suffer.mp3')
-	//this.load.audio('noAction', './assets/sounds/too_much_talk_not_enough_action.mp3')
 	this.load.audio('elevatorBing', './assets/sounds/elevator_bing.mp3')
+	this.load.audio('music', './assets/sounds/trump_elevator.mp3')
+	this.load.audio('timer', './assets/sounds/trump_timer.mp3')
+
+	this.load.audio('disco_music', './assets/sounds/trump_disco.mp3')
     }
 
     create () {
