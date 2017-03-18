@@ -42,6 +42,7 @@ export default class Debate {
 
 	this.quote.onQuoteComplete.addOnce((wordsInOrder, actualwords, targetWords) => {
 	    this.timer.onTimeOut.dispose()
+	    this.timer.destroy()
 	    var sentence = actualwords.join(" ")
 	    var target = targetWords.join(" ")
 	    this.trump.remove_thought_bubble()

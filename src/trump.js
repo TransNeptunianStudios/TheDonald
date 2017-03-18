@@ -20,7 +20,7 @@ export default class Trump extends Phaser.Sprite {
 	this.onDead = new Phaser.Signal()
 	this.walkTween = this.game.add.tween(this);
 
-	this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX, y: 40, width: 182, height: 32, bgImage: 'health_frame'})
+	this.healthbar = new HealthBar(this.game, {x: this.game.world.centerX+10, y: 40, width: 182, height: 32, bgImage: 'health_frame'})
 	this.bubble = new Bubble(this.game, this.x, this.y, 'left')
 	this.confidence = 100
 
