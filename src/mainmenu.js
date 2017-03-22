@@ -6,6 +6,7 @@ export default class extends Phaser.State {
     init () {
 	this.stage.backgroundColor = '#000000'
 	this.game.world.setBounds(0, 0, 854, 480);
+	this.game.muteMusic = false
     }
 
     create () {
@@ -44,9 +45,33 @@ export default class extends Phaser.State {
 	this.menuGrp.add(this.playBtn)
 	this.menuGrp.add(version)
 	this.menuGrp.add(credit)
+
+	this.music = game.add.audio('march_music');
+	this.music.play()
+
+	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
+	this.mute.scale.setTo(0.3)
+	if (this.game.muteMusic ){
+	    this.music.pause()
+	    this.mute.frame = 1
+	}
     }
 
     playPressed () {
+	this.music.stop()
 	this.state.start('Game');
+    }
+
+    mutePressed() {
+	this.game.muteMusic = !this.game.muteMusic;
+
+	if(!this.game.muteMusic){
+	    this.mute.frame = 0
+	    this.music.resume()
+	}
+	else{
+	    this.mute.frame = 1
+	    this.music.pause()
+	}
     }
 }

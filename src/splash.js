@@ -35,6 +35,7 @@ export default class extends Phaser.State {
 	this.load.image('title', './assets/images/menu/title.png')
 	this.load.image('you_won_title', './assets/images/menu/you_won_title.png')
 	this.load.spritesheet('timer', './assets/images/Timer86x93.png', 86, 93)
+	this.load.spritesheet('mute', './assets/images/menu/note96x96.png', 94, 96)
 
 	// Base corridor stuff
 	this.load.image('baseCorridor', './assets/images/base_corridor/base-corridor.png')
@@ -82,10 +83,11 @@ export default class extends Phaser.State {
 	this.load.image('church_guests', './assets/images/church/church_goers.png')
 
 	this.load.audio('elevatorBing', './assets/sounds/elevator_bing.mp3')
-	this.load.audio('music', './assets/sounds/trump_elevator.mp3')
 	this.load.audio('timer', './assets/sounds/trump_timer.mp3')
 
-	this.load.audio('disco_music', './assets/sounds/trump_disco.mp3')
+	this.load.audio('music', './assets/sounds/trump_elevator_loud.mp3') // game
+	this.load.audio('disco_music', './assets/sounds/trump_disco_loud.mp3') // game complete
+	this.load.audio('march_music', './assets/sounds/trump_march_loud.mp3') // menu
     }
 
     create () {
@@ -105,11 +107,6 @@ export default class extends Phaser.State {
 		}, this)
 	    }, this)
 	})
-
-
-	var music = game.add.audio('music');
-
-	music.play();
 
 	this.game.input.onDown.add(()=>{
             this.state.start('MainMenu')

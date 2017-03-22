@@ -44,7 +44,7 @@ export default class extends Phaser.State {
 
 	//this.farBackGroup.add(this.para)
 	this.backGroup.create(0, 0, 'office_corridor')
-//	this.midGroup.create(240, 30, 'end_paint')
+	//	this.midGroup.create(240, 30, 'end_paint')
 
 	this.midGroup.create(200, 260, 'plant')
 	this.midGroup.create(600, 260, 'plant')
@@ -85,6 +85,16 @@ export default class extends Phaser.State {
 	}, this)
 	this.game.camera.flash('#000000')
 	this.game.camera.follow(this.trump)
+
+	this.music = game.add.audio('disco_music');
+	this.music.play()
+
+	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
+	this.mute.scale.setTo(0.3)
+	if (this.game.muteMusic ){
+	    this.music.pause()
+	    this.mute.frame = 1
+	}
     }
 
     updateGodzilla(){
@@ -104,6 +114,7 @@ export default class extends Phaser.State {
     }
 
     gotoMainMenu(){
+	this.music.stop()
 	this.state.start('MainMenu')
     }
 
@@ -113,5 +124,18 @@ export default class extends Phaser.State {
 	this.b2.tilePosition.x = -this.camera.x *0.0075
 	this.f1.tilePosition.x = -this.camera.x *0.05
 	this.f2.tilePosition.x = -this.camera.x *0.1
+    }
+
+    mutePressed() {
+	this.game.muteMusic = !this.game.muteMusic;
+
+	if(!this.game.muteMusic){
+	    this.mute.frame = 0
+	    this.music.resume()
+	}
+	else{
+	    this.mute.frame = 1
+	    this.music.pause()
+	}
     }
 }

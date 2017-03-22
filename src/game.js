@@ -8,7 +8,8 @@ import EidParty from './eidparty'
 import Church from './church'
 
 export default class extends Phaser.State {
-    init () {}
+    init () {
+    }
 
     preload () {}
 
@@ -16,6 +17,16 @@ export default class extends Phaser.State {
 
 	this.trump = new Trump(this.game)
 	this.trump.onDead.addOnce(this.showRetryButton, this)
+
+	this.music = this.game.add.audio('music');
+	this.music.play()
+
+	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
+	this.mute.scale.setTo(0.3)
+	if (this.game.muteMusic ){
+	    this.mute.frame = 1
+	    this.music.pause()
+	}
 
 	// 1. Create list with all corridors
 	// 2. Run lobby scene
@@ -27,11 +38,11 @@ export default class extends Phaser.State {
 	// 8. Run final scene
 
 	this.levels = []
-	this.levels.push(new PrideParty(this.game, this.trump))
-	this.levels.push(new kkkMeeting(this.game, this.trump))
-	this.levels.push(new Science(this.game, this.trump))
+//	this.levels.push(new PrideParty(this.game, this.trump))
+//	this.levels.push(new kkkMeeting(this.game, this.trump))
+//	this.levels.push(new Science(this.game, this.trump))
 	this.levels.push(new Church(this.game, this.trump))
-	this.levels.push(new EidParty(this.game, this.trump))
+//	this.levels.push(new EidParty(this.game, this.trump))
 	this.nextLevel()
     }
 
@@ -46,8 +57,10 @@ export default class extends Phaser.State {
 	    this.level.start()
 	}
 	else {
+	    this.music.stop()
             this.state.start('GameOverMenu')
 	}
+	this.game.world.bringToTop(this.mute);
     }
 
     showRetryButton() {
@@ -64,11 +77,25 @@ export default class extends Phaser.State {
     }
 
     returnToMenu() {
+	this.music.stop()
 	this.state.start('MainMenu');
     }
 
     update () {
 	if(this.level)
 	    this.level.update();
+    }
+
+    mutePressed() {
+	this.game.muteMusic = !this.game.muteMusic;
+
+	if(!this.game.muteMusic){
+	    this.mute.frame = 0
+	    this.music.resume()
+	}
+	else{
+	    this.mute.frame = 1
+	    this.music.pause()
+	}
     }
 }
