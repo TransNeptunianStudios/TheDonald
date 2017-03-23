@@ -20,9 +20,8 @@ export default class extends Phaser.State {
 	var bigDTween = this.game.add.tween(this.bigD).to({ y: 55}, 1200, Phaser.Easing.Bounce.Out, true, 2000)
 	bigDTween.onComplete.addOnce(this.showShit, this)
 	
-	this.title = this.game.add.sprite(660, 45, 'title')
+	this.title = this.game.add.sprite(-200, 45, 'title')
 	this.title.anchor.setTo(0.5)
-	this.title.alpha = 0
 
 	this.playBtn = this.game.add.button(game.world.centerX,
 					    this.game.world.centerY + 110,
@@ -39,7 +38,7 @@ export default class extends Phaser.State {
 	    {
 		font: 'bold 12px Arial',
 		fill: 'white'
-	    })
+	     })
 	this.credit.anchor.set(1, 1)
 	this.credit.visible = false
 	this.version = new Phaser.Text(game, game.world.width-10, game.world.height, "version 0.2",
@@ -77,7 +76,7 @@ export default class extends Phaser.State {
     }
 
     showShit() {
-	this.game.add.tween(this.title).to({ alpha: 1}, 1000 + 2000, Phaser.Easing.Sinusoidal.In, true)
+	this.game.add.tween(this.title).to({ x: 660}, 1000, Phaser.Easing.Sinusoidal.In, true)
 	//this.title.alpha = 1
 	this.playBtn.visible = true
 	this.version.visible = true;
