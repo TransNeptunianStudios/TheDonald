@@ -77,23 +77,23 @@ export default class extends Phaser.State {
     }
 
     showShit() {
-	//this.game.add.tween(this.title).to({ alpha: 1}, 1000 + 2000, Phaser.Easing.Sinusoidal.In, true)
-	this.title.alpha = 1
+	this.game.add.tween(this.title).to({ alpha: 1}, 1000 + 2000, Phaser.Easing.Sinusoidal.In, true)
+	//this.title.alpha = 1
 	this.playBtn.visible = true
 	this.version.visible = true;
 	this.credit.visible = true
     }
 
     mutePressed() {
-	this.game.muteMusic = !this.game.muteMusic;
-
 	if(!this.game.muteMusic){
 	    this.mute.frame = 0
 	    this.music.resume()
+	    this.game.muteMusic = false
 	}
 	else{
 	    this.mute.frame = 1
 	    this.music.pause()
+	    this.game.muteMusic = true
 	}
     }
 }

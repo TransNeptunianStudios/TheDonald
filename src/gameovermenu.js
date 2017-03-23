@@ -22,7 +22,6 @@ export default class extends Phaser.State {
 	this.nuke.animations.add('loop_animation')
 	this.nuke.animations.play('loop_animation', 10, true)
 
-
 	this.b1 = game.add.tileSprite(200, 252, 800, 55, "office_b1")
 	this.b2 = game.add.tileSprite(300, 252, 800, 55, "office_b2")
 	this.f1 = game.add.tileSprite(400, 252, 800, 55, "office_f1")
@@ -58,6 +57,11 @@ export default class extends Phaser.State {
 	this.midGroup.create(1000, 0, 'hanging_lamp')
 	this.midGroup.create(1300, 0, 'hanging_lamp')
 
+	this.discoBall = this.midGroup.create(1500, -100, 'office_discoball')
+	this.discoBall.anchor.setTo(0.5, 0)
+	this.discoBall.animations.add('loop_animation')
+	this.discoBall.animations.play('loop_animation', 20, true)
+
 	this.elevator = new Elevator(game, 100, 340, this.backGroup, this.midGroup)
 
 	this.trump = new Trump(this.game)
@@ -69,8 +73,9 @@ export default class extends Phaser.State {
 	    this.trump.walkTween.onComplete.add(()=>{
 		this.trump.walkDirection(1500, 0);
 		this.trump.walkTween.onComplete.add(()=>{
+		    this.game.add.tween(this.discoBall).to({ y: 0}, 2000, Phaser.Easing.Sinusoidal.In, true)
 		    this.trump.frame = 2
-		    this.showRetryButton();
+		    this.discoNightmare()
 		}, this)
 	    }, this)
 	})
@@ -97,12 +102,23 @@ export default class extends Phaser.State {
 	}
     }
 
+    discoNightmare(){
+	game.time.events.add(Phaser.Timer.SECOND * 4, this.fadeToBlack, this);
+    }
+
+    fadeToBlack() {
+	this.camera.fade('#FFFFFF');
+        this.camera.onFadeComplete.add(this.showRetryButton,this)
+    }
+
     updateGodzilla(){
 	this.godzilla.animations.play('loop_animation', 20)
     }
 
     showRetryButton() {
-	this.retryBtn = this.game.add.button(1760,
+	game.world.removeAll()
+	this.camera.reset()
+	this.retryBtn = this.game.add.button(400,
 					     220,
 					     'replay_button',
 					     this.gotoMainMenu,
