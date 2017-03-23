@@ -20,7 +20,10 @@ export default class Science extends Level {
 
 	this.add_animated_loop('science_ape', 270, 330, 3)
 	this.add_animated_loop('science_table', 550, 330)
-	this.add_animated_loop('science_guy', 420, 370)
+	this.add_animated_loop('science_guy', 410, 340, 2)
+
+	this.add_sprite('planet', this.game.width*0.35, 220)
+	this.add_sprite('whiteBoard', this.game.width*0.65, 250)
 
 	this.add_sprite('hanging_lamp', this.game.width*0.3, 50)
 	this.add_sprite('hanging_lamp', this.game.width*0.5, 50)
