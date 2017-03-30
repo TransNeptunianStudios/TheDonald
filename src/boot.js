@@ -13,6 +13,7 @@ export default class extends Phaser.State {
 	this.scale.pageAlignVertically = true;
 	this.scale.forceLandscape = true
 	this.scale.refresh()
+	this.game.stage.smoothed = false;
 
 	this.game.scale.setResizeCallback(this.gameResized, this);
 

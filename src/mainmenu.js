@@ -59,7 +59,7 @@ export default class extends Phaser.State {
 	this.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
-	this.mute.scale.setTo(0.3)
+	this.mute.scale.setTo(0.7)
 	if (this.game.muteMusic ){
 	    this.music.pause()
 	    this.mute.frame = 1
@@ -84,15 +84,14 @@ export default class extends Phaser.State {
     }
 
     mutePressed() {
+	this.game.muteMusic = !this.game.muteMusic
 	if(!this.game.muteMusic){
 	    this.mute.frame = 0
 	    this.music.resume()
-	    this.game.muteMusic = false
 	}
 	else{
 	    this.mute.frame = 1
 	    this.music.pause()
-	    this.game.muteMusic = true
 	}
     }
 }
