@@ -10,21 +10,29 @@ export default class extends Phaser.State {
     }
 
     create () {
-	this.game.world.setBounds(0, 0, 854, 480);
+	this.game.world.setBounds(0, 0, 854, 1920);
+	this.game.camera.setPosition(0, 0);
+	this.game.add.tween(this.camera).to({ y: 1920}, 5000, Phaser.Easing.Linear.None, true).onComplete.add(()=>{
+	    this.bigD.visible = true;
+	    var bigDTween = this.game.add.tween(this.bigD).to({ y: 1920}, 1200, Phaser.Easing.Bounce.Out, true)
+	    bigDTween.onComplete.addOnce(this.showShit, this)
+	}, this)
 	
-	this.sky = game.add.tileSprite(0, 0, 854, 480, 'sky')
-	this.skyline = game.add.sprite(0, 480, 'skyline')
-	this.game.add.tween(this.skyline).to({ y: 0}, 2000, Phaser.Easing.Sinusoidal.In, true)
-	this.bigD = game.add.sprite(427, -480, 'bigDonald')
-	this.bigD.anchor.setTo(0.5, 0)
-	var bigDTween = this.game.add.tween(this.bigD).to({ y: 55}, 1200, Phaser.Easing.Bounce.Out, true, 2000)
-	bigDTween.onComplete.addOnce(this.showShit, this)
+	this.sky = game.add.tileSprite(0, 0, 854, 1920, 'sky')
+	var credits = this.game.add.sprite(this.game.world.centerX, 480, 'credits')
+	credits.anchor.setTo(0.5, 0)
+	credits.scale.setTo(2)
+	this.skyline = game.add.sprite(0, 1440, 'skyline')
 	
-	this.title = this.game.add.sprite(-200, 45, 'title')
+	this.title = this.game.add.sprite(-200, 1500, 'title')
 	this.title.anchor.setTo(0.5)
 
+	this.bigD = this.game.add.sprite(427, 1440, 'bigDonald')
+	this.bigD.anchor.setTo(0.5, 1)
+	this.bigD.visible = false
+
 	this.playBtn = this.game.add.button(game.world.centerX,
-					    this.game.world.centerY + 110,
+					    1780,
 					    'play_button',
 					    this.playPressed,
 					    this,
@@ -33,19 +41,11 @@ export default class extends Phaser.State {
 					    0);
 	this.playBtn.anchor.setTo(0.5)
 	this.playBtn.visible = false
-	
-	this.credit = new Phaser.Text(game, game.world.width-20, game.world.height-50, "By:\nDavid Levi\nMikael Larsson\nRobin Reicher",
-	    {
-		font: 'bold 12px Arial',
-		fill: 'white'
-	     })
-	this.credit.anchor.set(1, 1)
-	this.credit.visible = false
-	this.version = new Phaser.Text(game, game.world.width-10, game.world.height, "version 0.2",
-	    {
-		font: 'bold 12px Arial',
-		fill: 'white'
-	    })
+	this.version = new Phaser.Text(game, game.world.width-10, game.world.height, "version 0.3",
+				       {
+					   font: 'bold 10px Arial',
+					   fill: 'white'
+				       })
 	this.version.anchor.set(1, 1)
 	this.version.visible = false
 	
@@ -53,12 +53,12 @@ export default class extends Phaser.State {
 	this.menuGrp.add(this.title)
 	this.menuGrp.add(this.playBtn)
 	this.menuGrp.add(this.version)
-	this.menuGrp.add(this.credit)
 
 	this.music = game.add.audio('march_music');
 	this.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
+	this.mute.fixedToCamera = true
 	this.mute.scale.setTo(0.7)
 	if (this.game.muteMusic ){
 	    this.music.pause()
@@ -77,10 +77,8 @@ export default class extends Phaser.State {
 
     showShit() {
 	this.game.add.tween(this.title).to({ x: 660}, 1000, Phaser.Easing.Sinusoidal.In, true)
-	//this.title.alpha = 1
 	this.playBtn.visible = true
 	this.version.visible = true;
-	this.credit.visible = true
     }
 
     mutePressed() {

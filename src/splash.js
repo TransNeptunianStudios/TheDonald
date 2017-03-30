@@ -37,6 +37,7 @@ export default class extends Phaser.State {
 	this.load.image('you_won_title', './assets/images/menu/you_won_title.png')
 	this.load.spritesheet('timer', './assets/images/Timer86x93.png', 86, 93)
 	this.load.spritesheet('mute', './assets/images/menu/menu_volume_mute43x51.png', 43, 51)
+	this.load.image('credits', './assets/images/menu/menu_gold_credtis.png')
 	this.load.image('sky', './assets/images/menu/sky_complete.png')
 	this.load.image('bigDonald', './assets/images/menu/Big_Donald.png')
 	this.load.image('skyline', './assets/images/menu/menu_skyline.png')
