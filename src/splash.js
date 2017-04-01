@@ -117,7 +117,7 @@ export default class extends Phaser.State {
 	})
 
 	this.game.input.onDown.add(()=>{
-            this.state.start('GameOverMenu')
+            this.state.start('Game')
 	}, this)
     }
 }

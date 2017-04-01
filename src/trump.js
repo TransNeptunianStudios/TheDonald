@@ -62,31 +62,38 @@ export default class Trump extends Phaser.Sprite {
 	return this.walkTween;
     }
 
+    addQuote(quote){
+	this.quotes.push(new Quote(game, quote.split(" ")))
+    }
+
     createQuotes () {
 	this.quotes = []
-
-	this.quotes.push(new Quote(game, ["I", "just", "want", "them", "to", "suffer"], 'suffer'))
-	this.quotes.push(new Quote(game, ["Grab", "them", "by", "the", "pussy"]))
-	this.quotes.push(new Quote(game, ["that's", "fake", "news"]))
-	this.quotes.push(new Quote(game, ["Build", "that", "wall!"]))
-	this.quotes.push(new Quote(game, ["My", "I.Q", "is", "one",  "of", "the", "highest"]))
-	this.quotes.push(new Quote(game, ["if", "Ivanka", "weren’t", "my", "daughter", "perhaps", "I’d",  "be", "dating", "her."]))
-	this.quotes.push(new Quote(game, ["I", "love", "Neil Young", "and", "he", "loves", "me!"]))
-	this.quotes.push(new Quote(game, ["Part", "of", "the", "beauty", "of", "me", "is", "that", "Im",  "very", "rich."]))
-	this.quotes.push(new Quote(game, ["I", "know", "words", "I", "have", "the", "best", "words."]))
-	this.quotes.push(new Quote(game, ["Robert Pattinson", "should", "not", "take", "back", "Kristen Stewart"]))
-	this.quotes.push(new Quote(game, ["All", "of", "the", "women", "on", "The Apprentice", "flirted", "with", "me,", "consciously", "or", "unconsciously."]))
-	this.quotes.push(new Quote(game, ["It’s", "freezing", "and", "snowing", "in", "New York,", "we", "need", "global", "warming!"]))
-	this.quotes.push(new Quote(game, ["Thanks", "sweetie.", "That’s", "nice"]))
-	this.quotes.push(new Quote(game, ["Be",  "careful", "or",  "I", "will", "spill",  "the",  "beans",  "on", "your",  "wife!"]))
+	this.addQuote("You have to take out their families")
+	this.addQuote("Grab them by the pussy")
+	this.addQuote("That's fake news")
+	this.addQuote("Build that wall!")
+	this.addQuote("My IQ is one of the highest")
+	this.addQuote("I love Neil Young and he loves me!")
+	this.addQuote("I know words, I have the best words")
+	this.addQuote("If Ivanka weren't my daughter, perhaps I'd be dating her")
+	this.addQuote("All of the women on the Apprentice flirted with me")
+	this.addQuote("I have a great relationship with the blacks")
+	this.addQuote("I will be so good at the military your head will spin")
+	this.addQuote("No, I’m not into anal")
+	this.addQuote("Well, someone’s doing the raping, Don!")
+	this.addQuote("With the proper woman you don't need Viagra")
+	this.addQuote("I will be the greatest jobs president God ever created")
+	this.addQuote("Bing bing, bong bong, bing bing bing")
+	this.addQuote("Listen, you motherfuckers, we're going to tax you 25 percent!")
+	this.addQuote("The concept of global warming was created by and for the Chinese")
+	this.addQuote("A person who is very flat-chested is very hard to be a 10")
+	this.addQuote("Do you mind if I sit back a little? Because your breath is very bad")
+	
 	Phaser.ArrayUtils.shuffle(this.quotes)
     }
 
     show_thought_bubble(words){
 	this.bubble.create_thought(this.x, this.y, words)
-	// this.thought_bubble = this.game.add.sprite(140, 120, 'thought_bubble')
-	// this.thought_bubble.animations.add('start', [0, 1, 2], 5);
-	// this.thought_bubble.animations.play('start')
     }
 
     remove_thought_bubble(){

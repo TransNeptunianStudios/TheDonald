@@ -19,7 +19,7 @@ export default class extends Phaser.State {
 	this.trump.onDead.addOnce(this.showRetryButton, this)
 
 	this.music = this.game.add.audio('music');
-	this.music.play()
+	//this.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.scale.setTo(0.7)
@@ -38,11 +38,11 @@ export default class extends Phaser.State {
 	// 8. Run final scene
 
 	this.levels = []
-//	this.levels.push(new PrideParty(this.game, this.trump))
-//	this.levels.push(new kkkMeeting(this.game, this.trump))
-//	this.levels.push(new Science(this.game, this.trump))
-//	this.levels.push(new Church(this.game, this.trump))
-//	this.levels.push(new EidParty(this.game, this.trump))
+ 	this.levels.push(new PrideParty(this.game, this.trump))
+	this.levels.push(new kkkMeeting(this.game, this.trump))
+	this.levels.push(new Science(this.game, this.trump))
+	this.levels.push(new Church(this.game, this.trump))
+	this.levels.push(new EidParty(this.game, this.trump))
 	this.nextLevel()
     }
 
