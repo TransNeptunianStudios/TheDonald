@@ -26,6 +26,7 @@ export default class extends Phaser.State {
 	this.load.image('health_frame', './assets/images/donald/Confidence_meter_frame.png')
 	this.load.spritesheet('thought_bubble', './assets/images/thoughts.png', 424, 237)
 	this.load.spritesheet('trump', './assets/images/donald/trump.png', 50, 100)
+	this.load.spritesheet('minitrump', './assets/images/donald/Donald_mini17x32.png', 17,32)
         this.load.spritesheet('trump_game_over', './assets/images/donald/trump_death.png', 50, 150)
 
 	// Menu stuff
@@ -116,7 +117,7 @@ export default class extends Phaser.State {
 	})
 
 	this.game.input.onDown.add(()=>{
-            this.state.start('MainMenu')
+            this.state.start('GameOverMenu')
 	}, this)
     }
 }

@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import TextButton from './textbutton'
 import Trump from './trump'
 import Elevator from './elevator'
+import MiniTrump from './minitrump'
 
 export default class extends Phaser.State {
     init () {
@@ -92,7 +93,7 @@ export default class extends Phaser.State {
 	this.game.camera.follow(this.trump)
 
 	this.music = game.add.audio('disco_music');
-	this.music.play()
+	//this.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.fixedToCamera = true
@@ -104,7 +105,16 @@ export default class extends Phaser.State {
     }
 
     discoNightmare(){
-	game.time.events.add(Phaser.Timer.SECOND * 4, this.fadeToBlack, this);
+	var duration = Phaser.Timer.SECOND * 4
+	this.trump.visible = false
+	game.time.events.add(duration, this.fadeToBlack, this);
+	for(var n = 0; n < 50; n++){
+	    var test = new MiniTrump(game, this.trump.x, this.trump.y)
+	    this.midGroup.add(test)
+	    var x = this.game.rnd.integerInRange(1200, 2000);
+	    var y = this.game.rnd.integerInRange(330, 480);
+	    test.runTo(x, y, duration)
+	}
     }
 
     fadeToBlack() {

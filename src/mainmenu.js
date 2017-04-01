@@ -10,29 +10,30 @@ export default class extends Phaser.State {
     }
 
     create () {
-	this.game.world.setBounds(0, 0, 854, 1920);
+	this.game.camera.flash('#000000')
+	this.game.world.setBounds(0, 0, 854, 1440);
 	this.game.camera.setPosition(0, 0);
-	this.game.add.tween(this.camera).to({ y: 1920}, 5000, Phaser.Easing.Linear.None, true).onComplete.add(()=>{
+	this.game.add.tween(this.camera).to({ y: 960}, 5000, Phaser.Easing.Linear.None, true).onComplete.add(()=>{
 	    this.bigD.visible = true;
-	    var bigDTween = this.game.add.tween(this.bigD).to({ y: 1920}, 1200, Phaser.Easing.Bounce.Out, true)
+	    var bigDTween = this.game.add.tween(this.bigD).to({ y: 1450}, 1200, Phaser.Easing.Bounce.Out, true)
 	    bigDTween.onComplete.addOnce(this.showShit, this)
 	}, this)
 	
-	this.sky = game.add.tileSprite(0, 0, 854, 1920, 'sky')
+	this.sky = game.add.tileSprite(0, 0, 854, 1440, 'sky')
 	var credits = this.game.add.sprite(this.game.world.centerX, 480, 'credits')
 	credits.anchor.setTo(0.5, 0)
 	credits.scale.setTo(2)
-	this.skyline = game.add.sprite(0, 1440, 'skyline')
+	this.skyline = game.add.sprite(0, 960, 'skyline')
 	
-	this.title = this.game.add.sprite(-200, 1500, 'title')
+	this.title = this.game.add.sprite(-200, 1020, 'title')
 	this.title.anchor.setTo(0.5)
 
-	this.bigD = this.game.add.sprite(427, 1440, 'bigDonald')
+	this.bigD = this.game.add.sprite(427, 960, 'bigDonald')
 	this.bigD.anchor.setTo(0.5, 1)
 	this.bigD.visible = false
 
 	this.playBtn = this.game.add.button(game.world.centerX,
-					    1780,
+					    1300,
 					    'play_button',
 					    this.playPressed,
 					    this,
@@ -55,7 +56,7 @@ export default class extends Phaser.State {
 	this.menuGrp.add(this.version)
 
 	this.music = game.add.audio('march_music');
-	this.music.play()
+	//this.music.play() // for my own sanity
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.fixedToCamera = true
