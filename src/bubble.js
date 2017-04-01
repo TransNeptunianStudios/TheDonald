@@ -41,7 +41,7 @@ export default class Bubble extends Phaser.Group {
 	this.displayText.y = this.y
     }
 
-    create_speach(x, y, text) {
+    create_speach(x, y, text, target) {
 	this.reset()
 	this.set_position(x, y)
 
@@ -69,7 +69,26 @@ export default class Bubble extends Phaser.Group {
 
 	this.graphics.endFill();
 
+	if(target)
+	    this.colorText(this.displayText, target)
+
 	this.game.world.bringToTop(this.displayText)
+    }
+
+    colorText(text, target)
+    {
+	console.log(target)
+	var saidWords = text.text.split(" ")
+	var targetWords = target.split(" ")
+	var wordPos = 0
+	for (var word in saidWords) {
+	    if( saidWords[word] == targetWords[word])
+		text.addColor('#336600', wordPos);
+	    else
+		text.addColor('#FF0000', wordPos);
+	    
+	    wordPos += saidWords[word].length+1
+	}
     }
 
     create_thought(x, y, words) {

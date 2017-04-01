@@ -16,8 +16,6 @@ export default class extends Phaser.State {
 	this.midGroup = this.game.add.group()
 	this.menuGrp = this.add.group()
 
-	console.log('Game complete!')
-
 	this.farBackGroup.create(0, 0, 'office_sky')
 	this.nuke = this.farBackGroup.create(1370, 190, 'office_nuke')
 	this.nuke.animations.add('loop_animation')

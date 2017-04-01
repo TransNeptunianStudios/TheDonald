@@ -53,16 +53,16 @@ export default class Quote {
 
 	// Reverse the array so that we can pop the first word of the quote
 	this.words.reverse()
+	this.actual = []
 
 	let wordsInOrder = true
 	this.numberOfWords = this.words.length
 	this.words.forEach((word) => {
-
+	    this.actual.unshift(word.word)
 	    word.onWordPressed.add(() => {
 		this.words_said.push(word.word)
 
 		let correctWord = this.words.pop()
-		console.log(correctWord.word + " =? " + word.word)
 		if (correctWord.word != word.word) {
 		    wordsInOrder = false
 		}
@@ -70,7 +70,7 @@ export default class Quote {
 		this.numberOfWords -= 1
 
 		if (this.numberOfWords == 0) {
-		    this.onQuoteComplete.dispatch(wordsInOrder, this.words_said, this.words)
+		    this.onQuoteComplete.dispatch(wordsInOrder, this.words_said, this.actual)
 		}
 	    }, this)
 	})

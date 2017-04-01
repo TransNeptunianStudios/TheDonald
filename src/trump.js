@@ -76,18 +76,15 @@ export default class Trump extends Phaser.Sprite {
 	this.addQuote("I love Neil Young and he loves me!")
 	this.addQuote("I know words, I have the best words")
 	this.addQuote("If Ivanka weren't my daughter, perhaps I'd be dating her")
-	this.addQuote("All of the women on the Apprentice flirted with me")
+	this.addQuote("All women on the Apprentice flirted with me")
 	this.addQuote("I have a great relationship with the blacks")
-	this.addQuote("I will be so good at the military your head will spin")
 	this.addQuote("No, I’m not into anal")
 	this.addQuote("Well, someone’s doing the raping, Don!")
 	this.addQuote("With the proper woman you don't need Viagra")
 	this.addQuote("I will be the greatest jobs president God ever created")
 	this.addQuote("Bing bing, bong bong, bing bing bing")
-	this.addQuote("Listen, you motherfuckers, we're going to tax you 25 percent!")
-	this.addQuote("The concept of global warming was created by and for the Chinese")
-	this.addQuote("A person who is very flat-chested is very hard to be a 10")
-	this.addQuote("Do you mind if I sit back a little? Because your breath is very bad")
+	this.addQuote("Listen, you motherfuckers, we're going to tax you 25%!")
+	this.addQuote("Global warming was created by and for the Chinese")
 	
 	Phaser.ArrayUtils.shuffle(this.quotes)
     }
@@ -99,9 +96,10 @@ export default class Trump extends Phaser.Sprite {
     remove_thought_bubble(){
 	this.bubble.remove()
     }
-    talk(text)
+    talk(text, target)
     {
-    	this.bubble.create_speach(this.x, this.y, text)
+	//console.log("REALLY: " + target)
+    	this.bubble.create_speach(this.x, this.y, text, target)
 	this.animations.play('talk')
     }
 
