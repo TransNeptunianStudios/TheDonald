@@ -10,12 +10,13 @@ export default class Trump extends Phaser.Sprite {
 	this.animations.add('west', [12, 13, 14, 15, 16, 17, 18, 19], 15, true);
 	this.animations.add('south', [20, 21, 22, 23, 24, 25, 26, 27], 15, true);
 	this.animations.add('east', [28, 29, 30, 31, 32, 33, 34, 35], 15, true);
+	this.animations.add('dance', [36, 37], 15, true);
     }
     
     // walks trump in a direction with the animation running
     runTo(x, y, time){	
 	var runTween = this.game.add.tween(this).to({x: x, y: y}, time, Phaser.Easing.Linear.None, true);
-	runTween.onComplete.add(()=>{this.animations.stop()}, this)
+	runTween.onComplete.add(()=>{this.animations.play('dance')}, this)
 
 	var dx = x - this.x
 	var dy = y - this.y

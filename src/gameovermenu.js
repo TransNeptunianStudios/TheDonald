@@ -41,17 +41,14 @@ export default class extends Phaser.State {
 
 	this.game.add.tween(this.godzilla).to( { y: '-10' }, 1000, Phaser.Easing.Circular.InOut, true, 0, -1, true);
 
-
-	//this.farBackGroup.add(this.para)
 	this.backGroup.create(0, 0, 'office_corridor')
-	//	this.midGroup.create(240, 30, 'end_paint')
 
 	this.midGroup.create(200, 260, 'plant')
-	this.midGroup.create(600, 260, 'plant')
-	this.midGroup.create(1200, 260, 'plant')
+	this.midGroup.create(740, 260, 'plant')
+	this.midGroup.create(1290, 260, 'plant')
 	this.midGroup.create(1900, 260, 'plant')
 
-	this.midGroup.create(1700, 270, 'office_throne')
+	this.midGroup.create(1700, 220, 'office_throne')
 
 	this.midGroup.create(400, 0, 'hanging_lamp')
 	this.midGroup.create(700, 0, 'hanging_lamp')
@@ -70,7 +67,7 @@ export default class extends Phaser.State {
 	this.trump.position.setTo(100, 335);
 
 	this.elevator.onDoorOpen.addOnce(()=>{
-	    this.trump.walkDirection(0, 50);
+	    this.trump.walkDirection(0, 70);
 	    this.trump.walkTween.onComplete.add(()=>{
 		this.trump.walkDirection(1500, 0);
 		this.trump.walkTween.onComplete.add(()=>{
@@ -80,11 +77,6 @@ export default class extends Phaser.State {
 		}, this)
 	    }, this)
 	})
-
-	this.title = this.game.add.sprite(1600, 100, 'you_won_title');
-	this.title.anchor.setTo(0.5)
-
-	this.menuGrp.add(this.title)
 
 	this.game.camera.onFlashComplete.addOnce(()=>{
             this.elevator.open();
@@ -105,20 +97,21 @@ export default class extends Phaser.State {
     }
 
     discoNightmare(){
-	var duration = Phaser.Timer.SECOND * 4
+	var duration = Phaser.Timer.SECOND * 3
 	this.trump.visible = false
 	game.time.events.add(duration, this.fadeToBlack, this);
 	for(var n = 0; n < 50; n++){
-	    var test = new MiniTrump(game, this.trump.x, this.trump.y)
-	    this.midGroup.add(test)
-	    var x = this.game.rnd.integerInRange(1200, 2000);
-	    var y = this.game.rnd.integerInRange(330, 480);
-	    test.runTo(x, y, duration)
+	    var miniD = new MiniTrump(game, this.trump.x, this.trump.y)
+	    var x = this.game.rnd.integerInRange(this.camera.position.x, this.camera.position.x + this.camera.width);
+	    var y = this.game.rnd.integerInRange(340, this.game.height);
+	    miniD.runTo(x, y, duration)
+
+	    this.midGroup.add(miniD)
 	}
     }
 
     fadeToBlack() {
-	this.camera.fade('#FFFFFF');
+	this.camera.fade('#FFFFFF', 2000);
         this.camera.onFadeComplete.add(this.showRetryButton,this)
     }
 
@@ -129,8 +122,13 @@ export default class extends Phaser.State {
     showRetryButton() {
 	game.world.removeAll()
 	this.camera.reset()
-	this.retryBtn = this.game.add.button(400,
-					     220,
+	var title = this.game.add.sprite(this.camera.position.x + this.game.width/2,
+			     150,
+			     'you_won_title');
+	title.anchor.setTo(0.5)
+	
+	this.retryBtn = this.game.add.button(this.camera.position.x + this.game.width/2,
+					     300,
 					     'replay_button',
 					     this.gotoMainMenu,
 					     this,
@@ -146,7 +144,7 @@ export default class extends Phaser.State {
     }
 
     update() {
-	this.midGroup.sort('y', Phaser.Group.SORT_DECENDING)
+	this.midGroup.sort('y', Phaser.Group.SORT_ACENDING)
 
 	this.b2.tilePosition.x = -this.camera.x *0.0075
 	this.f1.tilePosition.x = -this.camera.x *0.05
