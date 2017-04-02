@@ -44,7 +44,16 @@ export default class Bubble extends Phaser.Group {
     create_speach(x, y, text, target) {
 	this.reset()
 	this.set_position(x, y)
-
+	this.displayText.destroy()
+	this.displayText = this.game.add.text(
+            this.x, this.y,"",
+            {
+                font: '18px Verdana',
+                backgroundColor: 'rgba(255,255,255,0)',
+                wordWrap: true,
+                wordWrapWidth: 250
+            })
+	this.displayText.anchor.setTo(1.0)
 	this.displayText.text = text;
 	this.graphics.beginFill(0xFFFFFF)
 	var margin = 15
@@ -77,10 +86,10 @@ export default class Bubble extends Phaser.Group {
 
     colorText(text, target)
     {
-	console.log(target)
 	var saidWords = text.text.split(" ")
 	var targetWords = target.split(" ")
 	var wordPos = 0
+
 	for (var word in saidWords) {
 	    if( saidWords[word] == targetWords[word])
 		text.addColor('#336600', wordPos);

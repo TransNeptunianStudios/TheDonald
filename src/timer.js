@@ -9,7 +9,7 @@ export default class Timer extends Phaser.Sprite {
 	this.frame = 0;
 	this.game.time.events.loop(Phaser.Timer.SECOND, this.tick, this)
 
-	this.tickSound = game.add.audio('timer').play()
+	//this.tickSound = game.add.audio('timer').play()
 
 	this.onTimeOut = new Phaser.Signal()
     }
@@ -22,7 +22,7 @@ export default class Timer extends Phaser.Sprite {
     }
 
     timeUp() {
-	this.tickSound.stop()
+	//this.tickSound.stop()
 	this.onTimeOut.dispatch()
     }
 }
