@@ -96,6 +96,11 @@ export default class extends Phaser.State {
 	this.load.audio('music', './assets/sounds/trump_elevator_loud.mp3') // game
 	this.load.audio('disco_music', './assets/sounds/trump_disco_loud.mp3') // game complete
 	this.load.audio('march_music', './assets/sounds/trump_march_loud.mp3') // menu
+
+	this.load.audio('blip', './assets/sounds/blip.wav') // menu
+	this.load.audio('blip2', './assets/sounds/blip2.wav') // menu
+	this.load.audio('hurt', './assets/sounds/hurt.wav') // menu
+
     }
 
     create () {

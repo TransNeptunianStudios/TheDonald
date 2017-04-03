@@ -34,4 +34,8 @@ export default class Word {
 	    this.text.destroy()
 	})
     }
+
+    remove(){
+	this.text.destroy()
+    }
 }

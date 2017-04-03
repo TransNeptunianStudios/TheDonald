@@ -18,13 +18,13 @@ export default class extends Phaser.State {
 	    var bigDTween = this.game.add.tween(this.bigD).to({ y: 1450}, 1200, Phaser.Easing.Bounce.Out, true)
 	    bigDTween.onComplete.addOnce(this.showShit, this)
 	}, this)
-	
+
 	this.sky = game.add.tileSprite(0, 0, 854, 1440, 'sky')
 	var credits = this.game.add.sprite(this.game.world.centerX, 480, 'credits')
 	credits.anchor.setTo(0.5, 0)
 	credits.scale.setTo(2)
 	this.skyline = game.add.sprite(0, 960, 'skyline')
-	
+
 	this.title = this.game.add.sprite(-200, 1020, 'title')
 	this.title.anchor.setTo(0.5)
 
@@ -49,7 +49,7 @@ export default class extends Phaser.State {
 				       })
 	this.version.anchor.set(1, 1)
 	this.version.visible = false
-	
+
 	this.menuGrp = this.add.group()
 	this.menuGrp.add(this.title)
 	this.menuGrp.add(this.playBtn)
@@ -73,6 +73,7 @@ export default class extends Phaser.State {
 
     playPressed () {
 	this.music.stop()
+	game.add.audio('blip').play()
 	this.state.start('Game');
     }
 

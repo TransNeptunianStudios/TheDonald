@@ -44,7 +44,7 @@ export default class Quote {
 
     remove() {
 	this.words.forEach((word) => {
-	    word.text.destroy()
+	    word.remove()
 	}, this)
     }
 
