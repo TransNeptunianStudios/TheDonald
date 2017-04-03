@@ -15,27 +15,6 @@ export default class Quote {
 	    this.sound = game.add.audio(asset)
     }
 
-    // size = nr of rows and columns
-    createWordTable(size, columnWidth, rowHeight) {
-	let cx = this.game.world.centerX - (size * columnWidth / 2.0)
-	let cy = this.game.world.centerY - (size * rowHeight / 2.0)
-
-	let cells = []
-
-	for (let i = 0; i < size; i++) {
-	    for (let j = 0; j < size; j++) {
-		cells.push({x: cx + (i * columnWidth),
-			    y: cy + (j * rowHeight)})
-	    }
-	}
-	return cells
-    }
-
-    addWord(word, start, duration) {
-	this.sound.addMarker(word, start, duration)
-	this.words.push(new Word(this.game, word))
-    }
-
     addSimpleSentence(sentence) {
 	sentence.forEach((word) => {
 	    this.words.push(new Word(this.game, word))

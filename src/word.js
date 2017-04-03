@@ -6,6 +6,7 @@ export default class Word {
 	this.game = game
 	this.word = word
 	this.onWordPressed = new Phaser.Signal()
+	this.clicked_sound = game.add.audio('blip2')
 
 	this.text = new Phaser.Text(
 	    game,
@@ -13,7 +14,7 @@ export default class Word {
 	    0,
 	    '   ' + this.word + '   ',
 	    {
-		font: '16px Verdana',
+		font: '18px Verdana',
 		//fill: '#000000',
 		//backgroundColor: 'rgba(0,255,0,0.25)'
 	    })
@@ -32,6 +33,7 @@ export default class Word {
 	this.text.events.onInputDown.addOnce(() => {
 	    this.onWordPressed.dispatch()
 	    this.text.destroy()
+	    this.clicked_sound.play()
 	})
     }
 

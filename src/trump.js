@@ -15,6 +15,8 @@ export default class Trump extends Phaser.Sprite {
 	this.animations.add('east', [28, 29, 30, 31, 32, 33, 34, 35], 15, true);
 	this.animations.add('talk', [36, 37, 38, 39], 15, true);
 
+	this.hurt_sound = game.add.audio('hurt')
+
 	this.onCallingElevator = new Phaser.Signal()
 	this.onReadyForDebate = new Phaser.Signal()
 	this.onDead = new Phaser.Signal()
@@ -85,7 +87,7 @@ export default class Trump extends Phaser.Sprite {
 	this.addQuote("Bing bing, bong bong, bing bing bing")
 	this.addQuote("Listen, you motherfuckers, we're going to tax you 25%!")
 	this.addQuote("Global warming was created by and for the Chinese")
-	
+
 	Phaser.ArrayUtils.shuffle(this.quotes)
     }
 
@@ -123,6 +125,7 @@ export default class Trump extends Phaser.Sprite {
 	this.confidence -= 50
 	this.healthbar.setPercent(this.confidence);
 	var hurttween = this.game.add.tween(this).to({y: '-5'}, 20, Phaser.Easing.Linear.None, true, 0, 3, true);
+	this.hurt_sound.play()
     }
 
     // walks from elevator to elevator

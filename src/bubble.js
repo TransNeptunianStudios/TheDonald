@@ -95,7 +95,7 @@ export default class Bubble extends Phaser.Group {
 		text.addColor('#336600', wordPos);
 	    else
 		text.addColor('#FF0000', wordPos);
-	    
+
 	    wordPos += saidWords[word].length+1
 	}
     }
@@ -119,7 +119,7 @@ export default class Bubble extends Phaser.Group {
 	    words.forEach((word) => {
 		word.runWord(0, 0)
 		do{
-		    var possiblePos = {x: game.rnd.integerInRange(this.sprite.left+50, this.sprite.right-50),
+		    var possiblePos = {x: game.rnd.integerInRange(this.sprite.left+60, this.sprite.right-50),
 				       y: game.rnd.integerInRange(this.sprite.top+50, this.sprite.bottom-75)}
 
 		    word.text.x = possiblePos.x
