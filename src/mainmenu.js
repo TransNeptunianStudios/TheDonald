@@ -74,7 +74,7 @@ export default class extends Phaser.State {
     playPressed () {
 	this.music.stop()
 	game.add.audio('blip').play()
-	this.state.start('Game');
+	this.state.start('Intro');
     }
 
     showShit() {

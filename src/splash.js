@@ -18,9 +18,12 @@ export default class extends Phaser.State {
 	this.load.image('office_sky', './assets/images/office/office_sky.png')
 	this.load.image('office_throne', './assets/images/office/office_throne.png')
 	this.load.spritesheet('office_discoball', './assets/images/office/office_disco_ball.png', 50, 100)
-
 	this.load.spritesheet('office_nuke', './assets/images/office/office_nuke.png', 145, 124)
 	this.load.spritesheet('office_godzilla', './assets/images/office/office_godzilla.png', 194, 99)
+
+	// IntroStuff
+	this.load.image('street', './assets/images/street/street_base.png')
+	this.load.image('lobby', './assets/images/lobby/lobby_base.png')
 
 	// Donaldstuff
 	this.load.image('health_frame', './assets/images/donald/Confidence_meter_frame.png')
@@ -122,7 +125,7 @@ export default class extends Phaser.State {
 	})
 
 	this.game.input.onDown.add(()=>{
-            this.state.start('Game')
+            this.state.start('Intro')
 	}, this)
     }
 }

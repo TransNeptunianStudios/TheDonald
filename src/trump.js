@@ -4,8 +4,8 @@ import HealthBar from './healthbar.js'
 import Bubble from './bubble'
 
 export default class Trump extends Phaser.Sprite {
-    constructor(game) {
-	super(game, 0, 0, 'trump')
+    constructor(game, x = 0, y = 0) {
+	super(game, x, y, 'trump')
 	this.anchor.setTo(0.5, 1);
 
 	this.frame = 2;
