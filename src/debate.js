@@ -40,7 +40,7 @@ export default class Debate {
 	    }, this)
 	}, this)
 
-	this.quote.onQuoteComplete.addOnce((wordsInOrder, actualwords, targetWords) => {
+	this.quote.onQuoteComplete.addOnce((actualwords, targetWords) => {
 	    this.timer.onTimeOut.dispose()
 	    this.timer.destroy()
 	    var sentence = actualwords.join(" ")
@@ -48,13 +48,19 @@ export default class Debate {
 	    this.trump.remove_thought_bubble()
 	    this.opponent.reset()
 	    this.trump.talk(sentence, target)
-	    this.game.time.events.add(Phaser.Timer.SECOND * 5, this.evaluate, this, wordsInOrder, actualwords);
+	    this.game.time.events.add(Phaser.Timer.SECOND * 5, this.evaluate, this, actualwords, targetWords);
 	}, this)
     }
 
-    evaluate(wordsInOrder, actualwords){
+    evaluate(actualwords, targetWords){
+	if( actual ){
+	    var actual = actualwords.join(" ")
+	    var target = targetWords.join(" ")
+	}
+
 	this.trump.shut_up()
-	if (!wordsInOrder)
+
+	if (!actual || actual != target)
 	{
 	    this.trump.decrementConfidence()
 	    if ( this.trump.confidence < 1){

@@ -40,16 +40,9 @@ export default class Quote {
 	    this.actual.unshift(word.word)
 	    word.onWordPressed.add(() => {
 		this.words_said.push(word.word)
-
-		let correctWord = this.words.pop()
-		if (correctWord.word != word.word) {
-		    wordsInOrder = false
-		}
-
 		this.numberOfWords -= 1
-
 		if (this.numberOfWords == 0) {
-		    this.onQuoteComplete.dispatch(wordsInOrder, this.words_said, this.actual)
+		    this.onQuoteComplete.dispatch(this.words_said, this.actual)
 		}
 	    }, this)
 	})
