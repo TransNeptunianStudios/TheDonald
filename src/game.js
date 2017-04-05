@@ -16,7 +16,7 @@ export default class extends Phaser.State {
     create () {
 
 	this.trump = new Trump(this.game)
-	this.trump.onDead.addOnce(this.showRetryButton, this)
+	this.trump.onDead.add(this.showRetryButton, this)
 
 	this.music = this.game.add.audio('music');
 	//this.music.play()

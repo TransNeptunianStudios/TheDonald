@@ -24,6 +24,9 @@ export default class extends Phaser.State {
 	// IntroStuff
 	this.load.image('street', './assets/images/street/street_base.png')
 	this.load.image('lobby', './assets/images/lobby/lobby_base.png')
+	this.load.image('skip_button', './assets/images/menu/intro_skip.png')
+	this.load.image('street_gubbe', './assets/images/street/street_door_man.png')
+	this.load.spritesheet('pam', './assets/images/lobby/lobby_receptionist30x95.png', 30, 95)
 
 	// Donaldstuff
 	this.load.image('health_frame', './assets/images/donald/Confidence_meter_frame.png')
@@ -103,6 +106,8 @@ export default class extends Phaser.State {
 	this.load.audio('blip', './assets/sounds/blip.wav') // menu
 	this.load.audio('blip2', './assets/sounds/blip2.wav') // menu
 	this.load.audio('hurt', './assets/sounds/hurt.wav') // menu
+
+	this.load.audio('door_open', './assets/sounds/door_open.wav') // menu
 
     }
 
