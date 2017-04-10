@@ -16,13 +16,8 @@ export default class Debate {
 	    this.onDebateComplete.dispatch()
 	    return
 	}
-	else if(this.trumpQuotes.length == 0){
-	    this.trump.game_over()
-	    this.onDebateComplete.dispatch()
-	    return
-	}
-	this.opponent.askQuestion();
 
+	this.opponent.askQuestion();
 	this.quote = this.trumpQuotes.pop()
 
 	this.opponent.waitingForAnswer.addOnce((wordsInOrder) => {
@@ -63,16 +58,11 @@ export default class Debate {
 	this.trump.shut_up()
 
 	if (!actual || actual != target)
-	{
 	    this.trump.decrementConfidence()
-	    if ( this.trump.confidence < 1){
-		this.trump.game_over();
-		return
-	    }
-	}
 	else
 	    this.opponent.confuse()
 
-	this.game.time.events.add(Phaser.Timer.SECOND * 2, this.runDebate, this);
+	if(this.trump.confidence > 0)
+	    this.game.time.events.add(Phaser.Timer.SECOND * 2, this.runDebate, this);
     }
 }

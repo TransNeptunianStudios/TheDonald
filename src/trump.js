@@ -142,6 +142,9 @@ export default class Trump extends Phaser.Sprite {
 	this.healthbar.setPercent(this.confidence);
 	var hurttween = this.game.add.tween(this).to({y: '-5'}, 20, Phaser.Easing.Linear.None, true, 0, 3, true);
 	this.hurt_sound.play()
+
+	if( this.confidence <= 0)
+	    this.game_over()
     }
 
     // walks from elevator to elevator
