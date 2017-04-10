@@ -53,7 +53,23 @@ export default class Trump extends Phaser.Sprite {
 	let time = Math.max(Math.abs(dx), Math.abs(dy))*7.5;
 
 	this.walkTween = this.game.add.tween(this).to({x: this.x+dx,y: this.y+dy}, time, Phaser.Easing.Linear.None, true);
-	this.walkTween.onComplete.add(()=>{this.animations.stop()}, this)
+	this.walkTween.onComplete.add(()=>{
+	    switch( this.animations.name ){
+	    case 'north':
+		this.frame = 0
+		break;
+	    case 'east':
+		this.frame = 3
+		break;
+	    case 'south':
+		this.frame = 2
+		break;
+	    case 'west':
+		this.frame = 1
+		break;
+	    }
+	    this.animations.stop()
+	}, this)
 
 	if( dx == 0 && dy == 0 ) this.animations.stop()
 	else if( dx > 0 ) this.animations.play('east')
@@ -70,23 +86,23 @@ export default class Trump extends Phaser.Sprite {
 
     createQuotes () {
 	this.quotes = []
-	this.addQuote("You have to take out their families")
-	this.addQuote("Grab them by the pussy")
-	this.addQuote("That's fake news")
+	this.addQuote("You have to take out their families.")
+	this.addQuote("Grab them by the pussy.")
+	this.addQuote("That's fake news!")
 	this.addQuote("Build that wall!")
-	this.addQuote("My IQ is one of the highest")
+	this.addQuote("My IQ is one of the highest.")
 	this.addQuote("I love Neil Young and he loves me!")
-	this.addQuote("I know words, I have the best words")
-	this.addQuote("If Ivanka weren't my daughter, perhaps I'd be dating her")
-	this.addQuote("All women on the Apprentice flirted with me")
-	this.addQuote("I have a great relationship with the blacks")
-	this.addQuote("No, I’m not into anal")
+	this.addQuote("I know words, I have the best words.")
+	this.addQuote("If Ivanka weren't my daughter, perhaps I'd be dating her.")
+	this.addQuote("All women on the Apprentice flirted with me.")
+	this.addQuote("I have a great relationship with the blacks.")
+	this.addQuote("No, I’m not into anal.")
 	this.addQuote("Well, someone’s doing the raping, Don!")
-	this.addQuote("With the proper woman you don't need Viagra")
-	this.addQuote("I will be the greatest jobs president God ever created")
-	this.addQuote("Bing bing, bong bong, bing bing bing")
+	this.addQuote("With the proper woman you don't need Viagra.")
+	this.addQuote("I will be the greatest jobs president God ever created!")
+	this.addQuote("Bing bing, bong bong, bing bing bing.")
 	this.addQuote("Listen, you motherfuckers, we're going to tax you 25%!")
-	this.addQuote("Global warming was created by and for the Chinese")
+	this.addQuote("Global warming was created by and for the Chinese.")
 
 	Phaser.ArrayUtils.shuffle(this.quotes)
     }
