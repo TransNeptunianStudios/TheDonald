@@ -7,6 +7,7 @@ export default class Word {
 	this.word = word
 	this.onWordPressed = new Phaser.Signal()
 	this.clicked_sound = game.add.audio('blip2')
+	this.clicked_sound.volume = 0.5
 
 	this.text = new Phaser.Text(
 	    game,

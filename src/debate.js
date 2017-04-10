@@ -24,6 +24,7 @@ export default class Debate {
 	    this.opponent.reset()
 	    var words = this.quote.runQuote()
 	    this.trump.show_thought_bubble(words)
+
 	    this.timer = new Timer(this.game)
 	    this.game.add.existing(this.timer)
 	    this.timer.onTimeOut.addOnce(() => {
