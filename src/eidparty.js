@@ -24,7 +24,7 @@ export default class EidParty extends Level {
 	this.add_sprite('eid_food2', 570, 350)
 
 	this.add_sprite('eid_guest1', 300, 375)
-	this.add_animated_loop('eid_guest2', 360, 370, 20)
+	this.add_animated_loop('eid_guest2', 360, 370, 5)
 
 	this.add_sprite('hanging_lamp', this.game.width*0.3, 50)
 	this.add_sprite('hanging_lamp', this.game.width*0.5, 50)
