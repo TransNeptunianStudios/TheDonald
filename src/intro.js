@@ -70,7 +70,7 @@ export default class extends Phaser.State {
 	this.trump.walkDirection(0, 70).onComplete.add(()=>{
 	    this.trump.walkDirection(210, 0).onComplete.add(()=>{
 		this.pam.animations.play('talk')
-		this.pamBubble.create_speach(this.pam.x+30, this.pam.y+90, 'How are we feeling today Donald?')
+		this.pamBubble.create_speach(this.pam.x+30, this.pam.y+90, 'How are you, mr Trump?')
 		this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
 		    this.pam.animations.stop();
 		    this.pam.frame = 0
@@ -82,7 +82,7 @@ export default class extends Phaser.State {
     }
 
     tryAnswer(){
-	var q = new Quote(this.game, "My life has not been about losing".split(' '))
+	var q = new Quote(this.game, "I am fine".split(' '))
 	q.runQuote()
 	this.trump.show_thought_bubble(q.words)
 
@@ -108,7 +108,7 @@ export default class extends Phaser.State {
 	if (!actual || actual != target)
 	{
 	    this.pam.animations.play('talk')
-	    this.pamBubble.create_speach(this.pam.x+30, this.pam.y+90, 'Try harder Donald, your my little winner!')
+	    this.pamBubble.create_speach(this.pam.x+30, this.pam.y+90, 'Sorry, I don\'t understand, I said, how are you, mr Trump?')
 	    this.game.time.events.add(Phaser.Timer.SECOND * 3, () => {
 		this.pam.animations.stop();
 		this.pam.frame = 0
