@@ -42,6 +42,7 @@ export default class Debate {
 	    var target = targetWords.join(" ")
 	    this.trump.remove_thought_bubble()
 	    this.opponent.reset()
+	    this.quote.remove()
 	    this.trump.talk(sentence, target)
 	    this.game.time.events.add(Phaser.Timer.SECOND * 5, this.evaluate, this, actualwords, targetWords);
 	}, this)

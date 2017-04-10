@@ -32,7 +32,7 @@ export default class Word {
 
 	this.text.events.onInputDown.addOnce(() => {
 	    this.onWordPressed.dispatch()
-	    this.text.destroy()
+	    this.text.alpha = 0.3
 	    this.clicked_sound.play()
 	})
     }
