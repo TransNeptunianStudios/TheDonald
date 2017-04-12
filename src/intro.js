@@ -94,6 +94,7 @@ export default class extends Phaser.State {
 	    var sentence = actualwords.join(" ")
 	    var target = targetWords.join(" ")
 	    this.trump.remove_thought_bubble()
+	    q.remove()
 	    this.trump.talk(sentence, target)
 	    this.game.time.events.add(Phaser.Timer.SECOND * 4, this.evaluate, this, actualwords, targetWords);
 	}, this)
