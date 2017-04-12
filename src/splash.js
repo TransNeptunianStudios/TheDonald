@@ -27,6 +27,7 @@ export default class extends Phaser.State {
 	this.load.image('skip_button', './assets/images/menu/intro_skip.png')
 	this.load.image('street_gubbe', './assets/images/street/street_door_man.png')
 	this.load.spritesheet('pam', './assets/images/lobby/lobby_receptionist30x95.png', 30, 95)
+	this.load.image('street_cab', './assets/images/street/street_cab.png')
 
 	// Donaldstuff
 	this.load.image('health_frame', './assets/images/donald/Confidence_meter_frame.png')

@@ -41,6 +41,9 @@ export default class extends Phaser.State {
 
     runStreet () {
 	this.streetGubbe = this.midGroup.create(680, 250, 'street_gubbe')
+	this.street_cab = this.midGroup.create(this.game.width, 360, 'street_cab')
+	this.game.add.tween(this.street_cab).to({ x: -this.street_cab.width}, 5000, Phaser.Easing.Linear.None, true)
+
 	this.trump.walkDirection(640, 0).onComplete.add(()=>{
 	    this.trump.walkDirection(0, -20).onComplete.add(()=>{
 		game.add.audio('door_open').play()
@@ -55,6 +58,7 @@ export default class extends Phaser.State {
     }
 
     runLobby() {
+	this.street_cab.destroy()
 	this.backGroup.create(0, 0, 'lobby')
 	this.elevator = new Elevator(game, this.game.width-80, 341, this.backGroup, this.midGroup)
 
@@ -139,7 +143,7 @@ callElevator(){
 }
 
 update () {
-    this.midGroup.sort('y', Phaser.Group.SORT_ASCENDING);
+    this.midGroup.sort('y', Phaser.Group.SORTASCENDING);
 }
 
 startGame () {
