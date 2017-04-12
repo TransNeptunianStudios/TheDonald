@@ -61,6 +61,8 @@ export default class extends Phaser.State {
 	this.street_cab.destroy()
 	this.backGroup.create(0, 0, 'lobby')
 	this.elevator = new Elevator(game, this.game.width-80, 341, this.backGroup, this.midGroup)
+	this.midGroup.create(this.game.width*0.35, 260, 'plant')
+	this.midGroup.create(this.game.width*0.75, 260, 'plant')
 
 	this.pam = this.midGroup.create(460, 330, 'pam')
 	this.pam.animations.add('talk', [1, 2, 3, 4, 5], 10, true)
