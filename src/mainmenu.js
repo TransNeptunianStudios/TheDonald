@@ -13,10 +13,11 @@ export default class extends Phaser.State {
 	this.game.camera.flash('#000000')
 	this.game.world.setBounds(0, 0, 854, 1440);
 	this.game.camera.setPosition(0, 0);
-	this.game.add.tween(this.camera).to({ y: 960}, 5000, Phaser.Easing.Linear.None, true).onComplete.add(()=>{
+	this.cameraTween = this.game.add.tween(this.camera).to({ y: 960}, 5000, Phaser.Easing.Linear.None, true)
+	this.cameraTween.onComplete.add(()=>{
 	    this.bigD.visible = true;
-	    var bigDTween = this.game.add.tween(this.bigD).to({ y: 1450}, 1200, Phaser.Easing.Bounce.Out, true)
-	    bigDTween.onComplete.addOnce(this.showShit, this)
+	    this.bigDTween = this.game.add.tween(this.bigD).to({ y: 1450}, 1200, Phaser.Easing.Bounce.Out, true)
+	    this.bigDTween.onComplete.addOnce(this.showShit, this)
 	}, this)
 
 	this.sky = game.add.tileSprite(0, 0, 854, 1440, 'sky')
@@ -65,6 +66,14 @@ export default class extends Phaser.State {
 	    this.music.pause()
 	    this.mute.frame = 1
 	}
+
+	// to be able to fastforward mainmenu intro
+	this.game.input.onDown.add(()=>{
+	    this.cameraTween.stop(true)
+            this.camera.y = 960
+	    this.bigDTween.stop(true)
+	    this.bigD.position.y = 1450
+	}, this)
     }
 
     update() {
@@ -79,6 +88,7 @@ export default class extends Phaser.State {
 
     showShit() {
 	this.game.add.tween(this.title).to({ x: 660}, 1000, Phaser.Easing.Sinusoidal.In, true)
+	this.bigD.visible = true
 	this.playBtn.visible = true
 	this.version.visible = true;
     }
