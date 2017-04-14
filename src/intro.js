@@ -106,8 +106,6 @@ export default class extends Phaser.State {
 	if( actualwords ){
 	    var actual = actualwords.join(" ")
 	    var target = targetWords.join(" ")
-	    console.log("Actual: " + actual)
-	    console.log("Target: " + target)
 	}
 
 	this.trump.shut_up()
