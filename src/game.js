@@ -66,7 +66,7 @@ export default class extends Phaser.State {
     showRetryButton() {
 	console.log("Retrybutton was created, it's just lost :(")
 	this.retryBtn = this.game.add.button(this.game.world.centerX,
-					     this.game.world.centerY,
+					     250,
 					     'retry_button',
 					     this.returnToMenu,
 					     this,
