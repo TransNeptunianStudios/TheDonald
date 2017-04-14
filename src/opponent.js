@@ -25,9 +25,10 @@ export default class Opponent extends Phaser.Sprite {
                            "How big are your hands?",
                            "Will you really jail Hillary?",
                            "Do you like Putin?",
-			   "Can you read?",
 			   "What will you do about hate-crimes?",
-			   "How will you replace the affordable health care act?"]
+			   "How will you replace the affordable health care act?",
+			   "Will you release your tax repports?",
+			   "Should we use more nukes?"]
 	Phaser.ArrayUtils.shuffle(this.questions);
 
 	this.bubble = new Bubble(this.game, this.x, this.y, 'right')
