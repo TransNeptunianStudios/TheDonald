@@ -140,7 +140,7 @@ export default class Trump extends Phaser.Sprite {
     }
 
     decrementConfidence () {
-	this.confidence -= 50
+	this.confidence -= 34
 	this.healthbar.setPercent(this.confidence);
 	var hurttween = this.game.add.tween(this).to({y: '-5'}, 20, Phaser.Easing.Linear.None, true, 0, 3, true);
 	this.hurt_sound.play()
