@@ -104,6 +104,7 @@ export default class Trump extends Phaser.Sprite {
 	this.addQuote("Listen, you motherfuckers, we're going to tax you 25%!")
 	this.addQuote("Global warming was created by and for the Chinese.")
 	this.addQuote("We’ve just launched 59 missiles, heading to Iraq.")
+	// this.addQuote("AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA")
 
 	Phaser.ArrayUtils.shuffle(this.quotes)
     }

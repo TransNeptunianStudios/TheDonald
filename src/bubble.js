@@ -118,6 +118,7 @@ export default class Bubble extends Phaser.Group {
 	this.sprite.animations.currentAnim.onComplete.add(function () {
 	    words.forEach((word) => {
 		word.runWord(0, 0)
+		var tries = 0
 		do{
 		    var possiblePos = {x: game.rnd.integerInRange(this.sprite.left+60, this.sprite.right-50),
 				       y: game.rnd.integerInRange(this.sprite.top+50, this.sprite.bottom-75)}
@@ -137,7 +138,8 @@ export default class Bubble extends Phaser.Group {
 			if(word != other_word && test)
 			    occupied = true
 		    }, this)
-		}while( occupied )
+		    tries += 1
+		}while( occupied && tries < 100 )
 		wordsOut.push(word)
 	    }, this)
 
