@@ -74,6 +74,7 @@ export default class extends Phaser.State {
 	this.load.image('pride_heart', './assets/images/pride/pride_heart_string.png')
 	this.load.spritesheet('pride_kids', './assets/images/pride/Pride_baloon_kids103x73.png', 103, 73)
 	this.load.spritesheet('pride_dancer', './assets/images/pride/pride_dancer53x113.png', 53, 113)
+	this.load.image('pride_table', './assets/images/pride/pride_table.png')
 
 	// Science corridor
 	this.load.spritesheet('science_main', './assets/images/science/Science_main.png', 45, 90)
