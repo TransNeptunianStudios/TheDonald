@@ -66,7 +66,7 @@ export default class extends Phaser.State {
 	this.load.spritesheet('eid_main', './assets/images/eid/eid_main.png', 30, 94)
 	this.load.image('eid_guest1', './assets/images/eid/Eid_guest1.png')
 	this.load.image('eid_food2', './assets/images/eid/eid_table2.png')
-	this.load.spritesheet('eid_guest2', './assets/images/eid/Eid_fat_guest35x86.png', 35, 86)
+	this.load.spritesheet('eid_guest2', './assets/images/eid/Eid_fat_guest35x86.png', 37, 88)
 
 	// Pride corridor
 	this.load.spritesheet('pride_main', './assets/images/pride/Pride_main.png', 50, 142)
