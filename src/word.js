@@ -15,7 +15,7 @@ export default class Word {
 	    0,
 	    '   ' + this.word + '   ',
 	    {
-		font: '18px Verdana',
+		font: '17px Verdana',
 		//fill: '#000000',
 		//backgroundColor: 'rgba(0,255,0,0.25)'
 	    })
