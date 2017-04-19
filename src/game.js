@@ -47,6 +47,12 @@ export default class extends Phaser.State {
     }
 
     nextLevel () {
+	ga('send', {
+	    hitType: 'event',
+	    eventCategory: 'InGame',
+	    eventAction: 'newLevel',
+	});
+
 	if (this.levels.length > 0) {
 	    this.level = this.levels.pop()
 

@@ -10,8 +10,15 @@ export default class extends Phaser.State {
     }
 
     create () {
+	ga('send', {
+	    hitType: 'event',
+	    eventCategory: 'InGame',
+	    eventAction: 'completed',
+	});
+
 	this.game.world.setBounds(0, 0, 2000, 480);
 	this.farBackGroup = this.game.add.group()
+
 	this.backGroup = this.game.add.group()
 	this.midGroup = this.game.add.group()
 	this.menuGrp = this.add.group()
@@ -124,7 +131,7 @@ export default class extends Phaser.State {
 			     150,
 			     'you_won_title');
 	title.anchor.setTo(0.5)
-	
+
 	this.retryBtn = this.game.add.button(this.camera.position.x + this.game.width/2,
 					     300,
 					     'replay_button',
