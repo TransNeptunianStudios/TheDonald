@@ -3,6 +3,7 @@ import 'p2'
 import Phaser from 'phaser'
 
 import BootState from './boot'
+import LoadState from './load'
 import SplashState from './splash'
 import MainMenuState from './mainmenu'
 import IntroState from './intro'
@@ -18,6 +19,7 @@ class Game extends Phaser.Game {
 	super(width, height, Phaser.AUTO, 'content', null)
 
 	this.state.add('Boot', BootState, false)
+	this.state.add('Load', LoadState, false)
 	this.state.add('Splash', SplashState, false)
 	this.state.add('MainMenu', MainMenuState, false)
 	this.state.add('Intro', IntroState, false)
