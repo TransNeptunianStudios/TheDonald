@@ -41,6 +41,13 @@ export default class Trump extends Phaser.Sprite {
 	}, this);
     }
 
+    desolve(){
+	this.loadTexture('trump_desolves', 0);
+	this.animations.add('desolve');
+
+	this.animations.play('desolve', 5);
+    }
+
     // Initialize Trump for a new level
     initLevel(point) {
 	this.frame = 2

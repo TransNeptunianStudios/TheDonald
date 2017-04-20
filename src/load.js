@@ -38,6 +38,7 @@ export default class extends Phaser.State {
 	this.load.spritesheet('trump', './assets/images/donald/trump.png', 50, 100)
 	this.load.spritesheet('minitrump', './assets/images/donald/Donald_mini17x32.png', 17,32)
         this.load.spritesheet('trump_game_over', './assets/images/donald/trump_death.png', 50, 150)
+	this.load.spritesheet('trump_desolves', './assets/images/donald/Donald_disolves89x100.png', 89, 100)
 
 	// Menu stuff
 	this.load.spritesheet('play_button', './assets/images/menu/play_button.png', 100, 50)

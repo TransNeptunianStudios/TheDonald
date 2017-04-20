@@ -85,8 +85,10 @@ export default class extends Phaser.State {
 		    this.game.add.tween(this.discoLights).to({ alpha: 1}, 1000, Phaser.Easing.Sinusoidal.In, true)
 		    this.game.add.tween(this.discoLights).to({ y: this.discoBall.height/2}, 2000, Phaser.Easing.Sinusoidal.In, true)
 		    this.game.add.tween(this.discoLights).to({angle: 359}, 8000, null, true, 0, Infinity)
-		    this.trump.frame = 2
-		    this.discoNightmare()
+		    this.trump.desolve()
+		    this.trump.events.onAnimationComplete.add(function(){
+			this.discoNightmare()
+		    }, this);
 		}, this)
 	    }, this)
 	})
@@ -113,7 +115,7 @@ export default class extends Phaser.State {
     discoNightmare(){
 	var duration = Phaser.Timer.SECOND * 3
 	this.trump.visible = false
-	game.time.events.add(duration, this.fadeToBlack, this);
+	game.time.events.add(Phaser.Timer.SECOND * 5, this.fadeToBlack, this);
 	for(var n = 0; n < 50; n++){
 	    var miniD = new MiniTrump(game, this.trump.x, this.trump.y)
 	    var x = this.game.rnd.integerInRange(this.camera.position.x, this.camera.position.x + this.camera.width);
