@@ -60,8 +60,8 @@ export default class extends Phaser.State {
 	this.midGroup.create(1000, 0, 'hanging_lamp')
 	this.midGroup.create(1300, 0, 'hanging_lamp')
 
-	this.discoBall = this.midGroup.create(1500, -100, 'office_discoball')
-	this.discoBall.anchor.setTo(0.5, 0)
+	this.discoBall = this.midGroup.create(1600, -100, 'office_discoball')
+	this.discoBall.anchor.setTo(0.5, 0.5)
 	this.discoBall.animations.add('loop_animation')
 	this.discoBall.animations.play('loop_animation', 20, true)
 
@@ -71,12 +71,20 @@ export default class extends Phaser.State {
 	this.midGroup.add(this.trump)
 	this.trump.position.setTo(100, 335);
 
+	this.discoLights = this.midGroup.create(this.discoBall.x, this.discoBall.y, 'disco_lights')
+	this.discoLights.anchor.setTo(0.5)
+	this.discoLights.scale.setTo(1.7)
+	this.discoLights.alpha = 0
+
 	this.elevator.onDoorOpen.addOnce(()=>{
 	    this.trump.walkDirection(0, 70);
 	    this.trump.walkTween.onComplete.add(()=>{
 		this.trump.walkDirection(1500, 0);
 		this.trump.walkTween.onComplete.add(()=>{
-		    this.game.add.tween(this.discoBall).to({ y: 0}, 2000, Phaser.Easing.Sinusoidal.In, true)
+		    this.game.add.tween(this.discoBall).to({ y: this.discoBall.height/2}, 2000, Phaser.Easing.Sinusoidal.In, true)
+		    this.game.add.tween(this.discoLights).to({ alpha: 1}, 1000, Phaser.Easing.Sinusoidal.In, true)
+		    this.game.add.tween(this.discoLights).to({ y: this.discoBall.height/2}, 2000, Phaser.Easing.Sinusoidal.In, true)
+		    this.game.add.tween(this.discoLights).to({angle: 359}, 8000, null, true, 0, Infinity)
 		    this.trump.frame = 2
 		    this.discoNightmare()
 		}, this)

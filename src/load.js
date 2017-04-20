@@ -18,6 +18,7 @@ export default class extends Phaser.State {
 	this.load.image('office_b1', './assets/images/office/office_buildings_background2.png')
 	this.load.image('office_b2', './assets/images/office/office_buildings_background1.png')
 	this.load.image('office_sky', './assets/images/office/office_sky.png')
+	this.load.image('disco_lights', './assets/images/office/disco_lights.png')
 	this.load.image('office_throne', './assets/images/office/office_throne.png')
 	this.load.spritesheet('office_discoball', './assets/images/office/office_disco_ball.png', 50, 100)
 	this.load.spritesheet('office_nuke', './assets/images/office/office_nuke.png', 145, 124)
@@ -101,9 +102,9 @@ export default class extends Phaser.State {
 	this.load.image('church_guests', './assets/images/church/church_goers.png')
 
 	this.load.audio('elevatorBing', './assets/sounds/elevator_bing.mp3')
-	this.load.audio('music', './assets/sounds/trump_elevator_loud.mp3') // game
-	this.load.audio('disco_music', './assets/sounds/trump_disco_loud.mp3') // game complete
-	this.load.audio('march_music', './assets/sounds/trump_march_loud.mp3') // menu
+	this.load.audio('music', './assets/sounds/trump_elevator_new.mp3') // game
+	this.load.audio('disco_music', './assets/sounds/trump_disco_new.mp3') // game complete
+	this.load.audio('march_music', './assets/sounds/trump_march_new.mp3') // menu
 
 	this.load.audio('blip', './assets/sounds/blip.wav') // menu
 	this.load.audio('blip2', './assets/sounds/blip2.wav') // menu
