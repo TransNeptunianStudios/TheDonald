@@ -57,7 +57,8 @@ export default class extends Phaser.State {
 	this.menuGrp.add(this.version)
 
 	this.music = game.add.audio('march_music');
-	//this.music.play() // for my own sanity
+	this.music.loop = true
+	this.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.fixedToCamera = true

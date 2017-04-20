@@ -98,7 +98,8 @@ export default class extends Phaser.State {
 	this.game.camera.follow(this.trump)
 
 	this.music = game.add.audio('disco_music');
-	//this.music.play()
+	this.music.loop = true
+	this.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.fixedToCamera = true

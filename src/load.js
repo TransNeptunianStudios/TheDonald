@@ -75,7 +75,7 @@ export default class extends Phaser.State {
 	this.load.image('pride_flag', './assets/images/pride/Pride_flag.png')
 	this.load.image('pride_symbol', './assets/images/pride/Pride_hbtq_symbol.png')
 	this.load.image('pride_heart', './assets/images/pride/pride_heart_string.png')
-	this.load.spritesheet('pride_kids', './assets/images/pride/Pride_baloon_kids103x73.png', 103, 73)
+	this.load.spritesheet('pride_kids', './assets/images/pride/Pride_baloon_kids103x73.png', 104, 73)
 	this.load.spritesheet('pride_dancer', './assets/images/pride/pride_dancer53x113.png', 53, 113)
 	this.load.image('pride_table', './assets/images/pride/pride_table.png')
 
@@ -92,8 +92,8 @@ export default class extends Phaser.State {
 	this.load.spritesheet('kkk_ladder', './assets/images/kkk/ladder.png', 196, 261)
 	this.load.image('kkk_seller', './assets/images/kkk/seller.png')
 	this.load.spritesheet('kkk_clansman_2', './assets/images/kkk/clansman_2.png', 80, 123)
-	this.load.spritesheet('kkk_kids_and_dog', './assets/images/kkk/kids_and_dog.png', 133,73)
-	this.load.spritesheet('kkk_clansman_1', './assets/images/kkk/clansman_1.png', 61, 110)
+	this.load.spritesheet('kkk_kids_and_dog', './assets/images/kkk/kids_and_dog.png', 135,73)
+	this.load.spritesheet('kkk_clansman_1', './assets/images/kkk/clansman_1.png', 63, 110)
 
 	// Church corridor
 	this.load.spritesheet('preacher_man', './assets/images/church/church_main48x117.png', 48, 117)

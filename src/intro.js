@@ -36,7 +36,18 @@ export default class extends Phaser.State {
 					      this);
 	this.midGroup.add(skipButton)
 	this.runStreet()
-	//this.runLobby()
+
+	this.music = this.game.add.audio('music');
+	this.music.loop = true
+	this.music.play()
+
+	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
+	this.mute.fixedToCamera = true
+	this.mute.scale.setTo(0.7)
+	if (this.game.muteMusic ){
+	    this.music.pause()
+	    this.mute.frame = 1
+	}
     }
 
     runStreet () {
