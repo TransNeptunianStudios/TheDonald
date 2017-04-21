@@ -76,7 +76,7 @@ export default class extends Phaser.State {
 	this.midGroup.create(this.game.width*0.75, 260, 'plant')
 
 	this.pam = this.midGroup.create(460, 330, 'pam')
-	this.pam.animations.add('talk', [1, 2, 3, 4, 5], 10, true)
+	this.pam.animations.add('talk', [1, 2, 3, 4], 10, true)
 	this.pam.frame = 0
 	this.pamBubble = new Bubble(this.game, this.x, this.y, 'right')
 
@@ -131,49 +131,50 @@ export default class extends Phaser.State {
 		this.pamBubble.remove()
 		this.tryAnswer()
 	    }, this)
-}
-else
-    this.byePam()
-}
+	}
+	else
+	    this.byePam()
+    }
 
-byePam(){
-    this.trump.walkDirection(360, 0).onComplete.add(()=>{
-	this.trump.walkDirection(0, -65).onComplete.add(()=>{
-	    this.callElevator()
+    byePam(){
+	this.pam.frame = 5
+	this.trump.walkDirection(360, 0).onComplete.add(()=>{
+	    this.trump.walkDirection(0, -65).onComplete.add(()=>{
+		this.callElevator()
+	    }, this)
 	}, this)
-    }, this)
-}
-
-callElevator(){
-    // When trump is calling an elevator, open it and walk trump
-    // into it. When door closed, start fade, then lvl complete
-    this.elevator.open();
-    this.elevator.onDoorOpen.addOnce(()=>{
-	this.trump.walkDirection(0, -30);
-    }, this)
-    this.elevator.onDoorClose.addOnce(this.startGame, this)
-}
-
-update () {
-    this.midGroup.sort('y', Phaser.Group.SORTASCENDING);
-}
-
-startGame () {
-    this.game.camera.fade('#000000');
-    this.game.camera.onFadeComplete.addOnce(()=>{
-	this.state.start('Game');
-    }, this)
-}
-
-mutePressed() {
-    this.game.muteMusic = !this.game.muteMusic
-    if(!this.game.muteMusic){
-	this.mute.frame = 0
-	this.music.resume()
     }
-    else{
-	this.mute.frame = 1
-	this.music.pause()
+
+    callElevator(){
+	// When trump is calling an elevator, open it and walk trump
+	// into it. When door closed, start fade, then lvl complete
+	this.elevator.open();
+	this.elevator.onDoorOpen.addOnce(()=>{
+	    this.trump.walkDirection(0, -30);
+	}, this)
+	this.elevator.onDoorClose.addOnce(this.startGame, this)
     }
-}
+
+    update () {
+	this.midGroup.sort('y', Phaser.Group.SORTASCENDING);
+    }
+
+    startGame () {
+	this.game.camera.fade('#000000');
+	this.game.camera.onFadeComplete.addOnce(()=>{
+	    this.state.start('Game');
+	}, this)
+    }
+
+    mutePressed() {
+	this.game.muteMusic = !this.game.muteMusic
+	if(!this.game.muteMusic){
+	    this.mute.frame = 0
+	    this.music.resume()
+	}
+	else{
+	    this.mute.frame = 1
+	    this.music.pause()
+	}
+    }
 }
