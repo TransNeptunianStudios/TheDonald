@@ -18,15 +18,11 @@ export default class extends Phaser.State {
 	this.trump = new Trump(this.game)
 	this.trump.onDead.add(this.showRetryButton, this)
 
-	this.music = this.game.add.audio('music');
-	this.music.loop = true
-	this.music.play()
-
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.scale.setTo(0.7)
 	if (this.game.muteMusic ){
 	    this.mute.frame = 1
-	    this.music.pause()
+	    this.game.music.pause()
 	}
 
 	// 1. Create list with all corridors
@@ -64,7 +60,7 @@ export default class extends Phaser.State {
 	    this.level.start()
 	}
 	else {
-	    this.music.stop()
+	    this.game.music.stop()
             this.state.start('GameOverMenu')
 	}
 	this.game.world.bringToTop(this.mute);
@@ -85,7 +81,7 @@ export default class extends Phaser.State {
     }
 
     returnToMenu() {
-	this.music.stop()
+	this.game.music.stop()
 	this.state.start('MainMenu');
     }
 
@@ -98,11 +94,11 @@ export default class extends Phaser.State {
 	this.game.muteMusic = !this.game.muteMusic
 	if(!this.game.muteMusic){
 	    this.mute.frame = 0
-	    this.music.resume()
+	    this.game.music.resume()
 	}
 	else{
 	    this.mute.frame = 1
-	    this.music.pause()
+	    this.game.music.pause()
 	}
     }
 }

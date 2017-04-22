@@ -12,14 +12,14 @@ export default class extends Phaser.State {
     preload () {}
 
     create () {
-	this.music = this.game.add.audio('music');
-	//this.music.play()
+	this.game.music = this.game.add.audio('music');
+	//this.game.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.scale.setTo(0.7)
 	if (this.game.muteMusic ){
 	    this.mute.frame = 1
-	    this.music.pause()
+	    this.game.music.pause()
 	}
 	this.game.camera.flash('#000000')
 	this.backGroup = this.game.add.group()
@@ -37,15 +37,15 @@ export default class extends Phaser.State {
 	this.midGroup.add(skipButton)
 	this.runStreet()
 
-	this.music = this.game.add.audio('music');
-	this.music.loop = true
-	this.music.play()
+	this.game.music = this.game.add.audio('music');
+	this.game.music.loop = true
+	this.game.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.fixedToCamera = true
 	this.mute.scale.setTo(0.7)
 	if (this.game.muteMusic ){
-	    this.music.pause()
+	    this.game.music.pause()
 	    this.mute.frame = 1
 	}
     }
@@ -170,11 +170,11 @@ export default class extends Phaser.State {
 	this.game.muteMusic = !this.game.muteMusic
 	if(!this.game.muteMusic){
 	    this.mute.frame = 0
-	    this.music.resume()
+	    this.game.music.resume()
 	}
 	else{
 	    this.mute.frame = 1
-	    this.music.pause()
+	    this.game.music.pause()
 	}
     }
 }

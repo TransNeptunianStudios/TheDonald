@@ -99,15 +99,15 @@ export default class extends Phaser.State {
 	this.game.camera.flash('#000000')
 	this.game.camera.follow(this.trump)
 
-	this.music = game.add.audio('disco_music');
-	this.music.loop = true
-	this.music.play()
+	this.game.music = game.add.audio('disco_music');
+	this.game.music.loop = true
+	this.game.music.play()
 
 	this.mute = this.game.add.button(0, 0, 'mute', this.mutePressed, this)
 	this.mute.fixedToCamera = true
 	this.mute.scale.setTo(0.7)
 	if (this.game.muteMusic ){
-	    this.music.pause()
+	    this.game.music.pause()
 	    this.mute.frame = 1
 	}
     }
@@ -155,7 +155,7 @@ export default class extends Phaser.State {
     }
 
     gotoMainMenu(){
-	this.music.stop()
+	this.game.music.stop()
 	this.state.start('MainMenu')
     }
 
@@ -171,11 +171,11 @@ export default class extends Phaser.State {
 	this.game.muteMusic = !this.game.muteMusic
 	if(!this.game.muteMusic){
 	    this.mute.frame = 0
-	    this.music.resume()
+	    this.game.music.resume()
 	}
 	else{
 	    this.mute.frame = 1
-	    this.music.pause()
+	    this.game.music.pause()
 	}
     }
 
