@@ -14,21 +14,22 @@ export default class Opponent extends Phaser.Sprite {
 	this.hurt_sound = game.add.audio('hurt')
 
 	this.sanity = 3
-	this.questions = [ "What do you think about the midle-east?",
+	this.questions = [ "What do you think about the middle-east?",
                            "Are you a feminist?",
                            "Do you approve of torture?!",
-                           "What will you do about global waming?",
-                           "Did you support the war in iraq?",
+                           "What will you do about global warming?",
+                           "Did you support the war in Iraq?",
                            "Was Obama born in America?",
                            "How will America be great again?",
-                           "Do you belive mexicans are rapists?!",
+                           "What do you think about immigration?",
                            "How big are your hands?",
                            "Will you really jail Hillary?",
-                           "Do you like Putin?",
+                           "Do you think Putin is a great leader?",
 			   "What will you do about hate-crimes?",
 			   "How will you replace the affordable health care act?",
-			   "Will you release your tax repports?",
+			   "Will you release your tax reports?",
 			   "Should we use more nukes?"]
+
 	Phaser.ArrayUtils.shuffle(this.questions);
 
 	this.bubble = new Bubble(this.game, this.x, this.y, 'right')

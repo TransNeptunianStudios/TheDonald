@@ -95,9 +95,12 @@ export default class Trump extends Phaser.Sprite {
 	this.quotes = []
 	this.addQuote("You have to take out their families.")
 	this.addQuote("Grab them by the pussy.")
-	this.addQuote("That's fake news!")
+	this.addQuote("Any negative polls are fake news")
+	this.addQuote("Obama’s birth certificate is a fraud")
 	this.addQuote("Build that wall!")
+	this.addQuote("My fingers are long and beautiful")
 	this.addQuote("My IQ is one of the highest.")
+	this.addQuote("You’re disgusting.")
 	this.addQuote("I love Neil Young and he loves me!")
 	this.addQuote("I know words, I have the best words.")
 	this.addQuote("If Ivanka weren't my daughter, perhaps I'd be dating her.")
@@ -111,7 +114,6 @@ export default class Trump extends Phaser.Sprite {
 	this.addQuote("Listen, you motherfuckers, we're going to tax you 25%!")
 	this.addQuote("Global warming was created by and for the Chinese.")
 	this.addQuote("We’ve just launched 59 missiles, heading to Iraq.")
-	// this.addQuote("AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA AAAAA")
 
 	Phaser.ArrayUtils.shuffle(this.quotes)
     }
