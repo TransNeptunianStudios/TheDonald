@@ -12,7 +12,7 @@ export default class extends Phaser.State {
     create () {
 	ga('send', {
 	    hitType: 'event',
-	    eventCategory: 'InGame',
+	    eventCategory: 'completed',
 	    eventAction: 'completed',
 	});
 

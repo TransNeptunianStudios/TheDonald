@@ -43,7 +43,7 @@ export default class extends Phaser.State {
 					    0);
 	this.playBtn.anchor.setTo(0.5)
 	this.playBtn.visible = false
-	this.version = new Phaser.Text(game, game.world.width-10, game.world.height, "version 0.3",
+	this.version = new Phaser.Text(game, game.world.width-10, game.world.height, "version 1.0",
 				       {
 					   font: 'bold 10px Arial',
 					   fill: 'white'
