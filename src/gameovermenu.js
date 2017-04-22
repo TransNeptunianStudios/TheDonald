@@ -128,7 +128,7 @@ export default class extends Phaser.State {
 
     fadeToBlack() {
 	this.camera.fade('#FFFFFF', 2000);
-        this.camera.onFadeComplete.add(this.showRetryButton,this)
+        this.camera.onFadeComplete.addOnce(this.showRetryButton,this)
     }
 
     updateGodzilla(){
