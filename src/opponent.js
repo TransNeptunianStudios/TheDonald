@@ -13,7 +13,7 @@ export default class Opponent extends Phaser.Sprite {
 	this.animations.add('collapse', [5, 6, 7], 10, true)
 	this.hurt_sound = game.add.audio('hurt')
 
-	this.sanity = 3
+	this.sanity = 2
 	this.questions = [ "What do you think about the middle-east?",
                            "Are you a feminist?",
                            "Do you approve of torture?!",
