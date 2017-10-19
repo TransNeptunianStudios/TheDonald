@@ -1,5 +1,5 @@
 node_modules/
-dist/
+src/
 .vscode/
 .DS_store
 npm-debug.log
